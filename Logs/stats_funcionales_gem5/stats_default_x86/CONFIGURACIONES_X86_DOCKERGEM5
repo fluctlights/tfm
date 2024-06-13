@@ -1,0 +1,32 @@
+/root/lkmc/out.docker/gem5/default/build/X86/gem5.opt \
+  /root/lkmc/submodules/gem5/configs/example/fs.py \
+  --debug-file trace.txt \
+  --listener-mode on \
+  --outdir /root/lkmc/out.docker/run/gem5/x86_64/0/m5out \
+  --kernel /root/lkmc/out.docker/linux/default/x86_64/vmlinux \
+  --num-cpus 4 \
+  --script /root/lkmc/out.docker/run/gem5/x86_64/0/readfile \
+  --disk-image /root/lkmc/out.docker/buildroot/build/default/x86_64/images/rootfs.ext2 \
+  --command-line 'earlycon=ttyS0 earlyprintk=ttyS0 lpj=7999923 root=/dev/sda console_msg_format=syslog nokaslr norandmaps panic=-1 printk.devkmsg=on printk.time=y rw console=ttyS0 - lkmc_home=/lkmc' \
+  --mem-size 8GB \
+  --cpu-type DerivO3CPU
+  
+./run \
+  /root/lkmc/submodules/gem5/configs/example/fs.py \
+  --debug-file trace.txt \
+  --listener-mode on \
+  --outdir /root/lkmc/out.docker/run/gem5/x86_64/0/m5out \
+  --kernel /root/lkmc/out.docker/linux/default/x86_64/vmlinux \
+  --num-cpus 4 \
+  --script /root/lkmc/out.docker/run/gem5/x86_64/0/readfile \
+  --disk-image /root/lkmc/out.docker/buildroot/build/default/x86_64/images/rootfs.ext2 \
+  --command-line 'earlycon=ttyS0 earlyprintk=ttyS0 lpj=7999923 root=/dev/sda console_msg_format=syslog nokaslr norandmaps panic=-1 printk.devkmsg=on printk.time=y rw console=ttyS0 - lkmc_home=/lkmc' \
+  --mem-size 8GB \
+  --cpu-type DerivO3CPU
+  
+
+/root/lkmc/out.docker/gem5/default/build/X86/gem5.opt --debug-file trace.txt --listener-mode on --outdir /root/lkmc/out.docker/run/gem5/x86_64/0/m5out /root/lkmc/submodules/gem5/configs/example/fs.py --kernel /root/lkmc/out.docker/linux/default/x86_64/vmlinux --num-cpus 4 --script /root/lkmc/out.docker/run/gem5/x86_64/0/readfile --disk-image /root/lkmc/out.docker/buildroot/build/default/x86_64/images/rootfs.ext2 --command-line 'earlycon=ttyS0 earlyprintk=ttyS0 lpj=7999923 root=/dev/sda console_msg_format=syslog nokaslr norandmaps panic=-1 printk.devkmsg=on printk.time=y rw console=ttyS0 - lkmc_home=/lkmc' --mem-size 4096MB --cpu-type DerivO3CPU --caches --l1d_size=64kB --l1i_size=16kB --l2_size=1024kB
+
+/root/lkmc/out.docker/gem5/default/build/X86/gem5.opt --debug-flags=O3PipeView --debug-start=2420 --debug-file=trace.txt /root/lkmc/submodules/gem5/configs/example/fs.py --cpu-type=detailed --caches -c <path to binary> -m 2420308666
+
+

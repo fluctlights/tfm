@@ -1,0 +1,4 @@
+root@aarch64-gem5:~# ls
+root@aarch64-gem5:~# cd ... 
+root@aarch64-gem5:/# cd home/
+root@aarch64-gem5:/home# 

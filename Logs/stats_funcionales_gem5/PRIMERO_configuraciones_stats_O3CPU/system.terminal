@@ -1,0 +1,407 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd070]
+[    0.000000] Linux version 4.18.0+ (arm-employee@arm-computer) (gcc version 7.4.0 (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #1 SMP PREEMPT Wed Nov 6 14:10:00 GMT 2019
+[    0.000000] Machine model: V2P-CA15
+[    0.000000] Memory limited to 2048MB
+[    0.000000] cma: Reserved 16 MiB at 0x00000000ff000000
+[    0.000000] random: get_random_bytes called from start_kernel+0xa8/0x3e8 with crng_init=0
+[    0.000000] percpu: Embedded 23 pages/cpu @(____ptrval____) s53976 r8192 d32040 u94208
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 832075
+[    0.000000] CPU features: enabling workaround for ARM erratum 834220
+[    0.000000] CPU features: enabling workaround for EL2 vector hardening
+[    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Kernel command line: console=ttyAMA0 lpj=19988480 norandmaps root=/dev/vda1 rw mem=2GB
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] Memory: 2034324K/2097152K available (6910K kernel code, 452K rwdata, 2312K rodata, 448K init, 217K bss, 46444K reserved, 16384K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] 	Tasks RCU enabled.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GIC: GICv2 detected, but range too small and irqchip.gicv2_force_probe not set
+[    0.000000] clk_gem5_energy_ctrl: No cpu-map in DT! Falling back to old detection method!
+[    0.000000] clk_gem5_energy_ctrl: No clusters in DT! Falling back to using CPU topology!
+[    0.000002] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000073] arch_timer: Unable to find a suitable frame in timer @ 0x000000002a810000
+[    0.000077] Failed to initialize '/timer@2a810000': -22
+[    0.000123] Console: colour dummy device 80x25
+[    0.000130] Calibrating delay loop (skipped) preset value.. 9994.24 BogoMIPS (lpj=19988480)
+[    0.000135] pid_max: default: 32768 minimum: 301
+[    0.000165] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000171] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.024085] ASID allocator initialised with 128 entries
+[    0.032082] Hierarchical SRCU implementation.
+[    0.048095] smp: Bringing up secondary CPUs ...
+[    0.048098] smp: Brought up 1 node, 1 CPU
+[    0.048101] SMP: Total of 1 processors activated.
+[    0.048104] CPU features: detected: Privileged Access Never
+[    0.048107] CPU features: detected: User Access Override
+[    0.048109] CPU features: detected: 32-bit EL0 Support
+[    0.048112] CPU features: detected: Scalable Vector Extension
+[    0.049908] SVE: maximum available vector length 16 bytes per vector
+[    0.049911] SVE: default vector length 16 bytes per vector
+[    0.049913] CPU: All CPU(s) started at EL2
+[    0.049918] alternatives: patching kernel code
+[    0.050583] devtmpfs: initialized
+[    0.051180] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.051185] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.051831] NET: Registered protocol family 16
+[    0.132209] cpuidle: using governor menu
+[    0.132263] vdso: 2 pages (1 code @ (____ptrval____), 1 data @ (____ptrval____))
+[    0.132269] hw-breakpoint: found 16 breakpoint and 16 watchpoint registers.
+[    0.132589] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.132592] Serial: AMBA PL011 UART driver
+[    0.132735] OF: amba_device_add() failed (-2) for /watchdog@2a490000
+[    0.132862] OF: amba_device_add() failed (-2) for /watchdog@2b060000
+[    0.132944] 1c090000.uart: ttyAMA0 at MMIO 0x1c090000 (irq = 13, base_baud = 0) is a PL011 rev3
+[    0.135044] console [ttyAMA0] enabled
+[    0.135326] 1c0a0000.uart: ttyAMA1 at MMIO 0x1c0a0000 (irq = 14, base_baud = 0) is a PL011 rev3
+[    0.135541] 1c0b0000.uart: ttyAMA2 at MMIO 0x1c0b0000 (irq = 15, base_baud = 0) is a PL011 rev3
+[    0.135759] 1c0c0000.uart: ttyAMA3 at MMIO 0x1c0c0000 (irq = 16, base_baud = 0) is a PL011 rev3
+[    0.135930] OF: amba_device_add() failed (-2) for /kmi@1c060000
+[    0.135998] OF: amba_device_add() failed (-2) for /kmi@1c070000
+[    0.136067] OF: /watchdog@1c0f0000: could not find phandle
+[    0.136100] ERROR: could not get clock /watchdog@1c0f0000:apb_pclk(1)
+[    0.136138] OF: amba_device_add() failed (-2) for /watchdog@1c0f0000
+[    0.136267] OF: /rtc@1c170000: could not find phandle
+[    0.136298] ERROR: could not get clock /rtc@1c170000:apb_pclk(0)
+[    0.136335] OF: amba_device_add() failed (-2) for /rtc@1c170000
+[    0.147081] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.148523] vgaarb: loaded
+[    0.148615] SCSI subsystem initialized
+[    0.152322] usbcore: registered new interface driver usbfs
+[    0.152367] usbcore: registered new interface driver hub
+[    0.152409] usbcore: registered new device driver usb
+[    0.152458] pps_core: LinuxPPS API ver. 1 registered
+[    0.152487] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.152543] PTP clock support registered
+[    0.156517] NET: Registered protocol family 2
+[    0.156698] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes)
+[    0.156751] TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.156851] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.156986] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.157062] UDP hash table entries: 1024 (order: 3, 32768 bytes)
+[    0.157111] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes)
+[    0.157196] NET: Registered protocol family 1
+[    0.164320] RPC: Registered named UNIX socket transport module.
+[    0.164358] RPC: Registered udp transport module.
+[    0.164386] RPC: Registered tcp transport module.
+[    0.164414] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.164638] kvm [1]: SVE system without VHE unsupported.  Broken cpu?
+[    0.165044] workingset: timestamp_bits=62 max_order=19 bucket_order=0
+[    0.168100] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.170452] fuse init (API version 7.27)
+[    0.171042] io scheduler noop registered
+[    0.171148] io scheduler cfq registered (default)
+[    0.171177] io scheduler mq-deadline registered
+[    0.171205] io scheduler kyber registered
+[    0.171248] atomic64_test: passed
+[    0.171697] pci-host-generic 30000000.pci: host bridge /pci ranges:
+[    0.171738] pci-host-generic 30000000.pci:   No bus range found for /pci, using [bus 00-ff]
+[    0.171793] pci-host-generic 30000000.pci:    IO 0x2f000000..0x2f00ffff -> 0x00000000
+[    0.171842] pci-host-generic 30000000.pci:   MEM 0x40000000..0x7fffffff -> 0x00000000
+[    0.171901] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff] for [bus 00-ff]
+[    0.172013] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+[    0.172055] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.172088] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.172126] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff] (bus address [0x00000000-0x3fffffff])
+[    0.172459] pci 0000:00:01.0: BAR 6: assigned [mem 0x40000000-0x400007ff pref]
+[    0.172503] pci 0000:00:01.0: BAR 0: assigned [io  0x1000-0x101f]
+[    0.172861] virtio-pci 0000:00:01.0: enabling device (0000 -> 0001)
+[    0.172901] virtio-pci 0000:00:01.0: virtio_pci: leaving for legacy driver
+[    0.174355] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.175252] virtio_blk virtio0: [vda] 3906250 512-byte logical blocks (2.00 GB/1.86 GiB)
+[    0.180472]  vda: vda1
+[    0.188590] libphy: Fixed MDIO Bus: probed
+[    0.188631] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+[    0.188672] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    0.188718] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[    0.188752] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    0.188800] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.4.0-k
+[    0.188840] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    0.188885] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver - version 5.1.0-k
+[    0.188929] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[    0.192378] ixgbevf: Intel(R) 10 Gigabit PCI Express Virtual Function Network Driver - version 4.1.0-k
+[    0.192433] ixgbevf: Copyright (c) 2009 - 2015 Intel Corporation.
+[    0.196369] i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.3.2-k
+[    0.196414] i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+[    0.200404] ixgb: Intel(R) PRO/10GbE Network Driver - version 1.0.135-k2-NAPI
+[    0.200446] ixgb: Copyright (c) 1999-2008 Intel Corporation.
+[    0.200491] i40evf: Intel(R) 40-10 Gigabit Virtual Function Network Driver - version 3.2.2-k
+[    0.200539] Copyright (c) 2013 - 2015 Intel Corporation.
+[    0.204472] usbcore: registered new interface driver usb-storage
+[    0.204711] mousedev: PS/2 mouse device common for all mice
+[    0.204825] gem5 DVFS handler is disabled
+[    0.204851] gem5-energy-ctrl loaded at (____ptrval____)
+[    0.204883] gem5_energy_ctrl_mc: gem5_mc_init: DVFS handler in energy controller is disabled,                         ARM gem5 multi-cluster cpufreq driver                         will not be registered
+[    0.205189] usbcore: registered new interface driver usbhid
+[    0.205222] usbhid: USB HID core driver
+[    0.205295] NET: Registered protocol family 17
+[    0.208560] EXT4-fs (vda1): mounted filesystem with ordered data mode. Opts: (null)
+[    0.208618] VFS: Mounted root (ext4 filesystem) on device 254:1.
+[    0.208744] devtmpfs: mounted
+[    0.208863] Freeing unused kernel memory: 448K
++ mount -t proc - /proc
++ mount -t sysfs - /sys
++ mount -t debugfs - /sys/kernel/debug/
++ [ -e /dev/sdb1 ]
++ [ -e /dev/sdb ]
++ [ -e /dev/vdb1 ]
++ [ -e /dev/vdb ]
++ [ -e /dev/vda1 ]
++ mount /dev/vda1 /data
+[    0.217729] random: fast init done
++ break
++ f=/tmp/script
++ /sbin/m5 readfile
++ [ -s /tmp/script ]
++ chmod +rx /tmp/script
++ /tmp/script
++ exec /sbin/getty -a root -L ttyAMA0 vt102
+
+Ubuntu 18.04.2 LTS aarch64-gem5 ttyAMA0
+
+aarch64-gem5 login: root (automatic login)
+
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.18.0+ aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@aarch64-gem5:~# uname -a
+Linux aarch64-gem5 4.18.0+ #1 SMP PREEMPT Wed Nov 6 14:10:00 GMT 2019 aarch64 aarch64 aarch64 GNU/Linux
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# dmesg | less
+-bash: less: command not found
+ÿôÿý^Fÿü^ÿü^root@aarch64-gem5:~# 
+root@aarch64-gem5:~# ^\377\374^
+-bash: :s^ÿü^: substitution failed
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# dmesg | more
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd070]
+[    0.000000] Linux version 4.18.0+ (arm-employee@arm-computer) (gcc version 7.
+4.0 (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #1 SMP PREEMPT Wed Nov 6 14:10:00 GM
+T 2019
+[    0.000000] Machine model: V2P-CA15
+[    0.000000] Memory limited to 2048MB
+[    0.000000] cma: Reserved 16 MiB at 0x00000000ff000000
+[    0.000000] On node 0 totalpages: 524288
+[    0.000000]   DMA32 zone: 8192 pages used for memmap
+[    0.000000]   DMA32 zone: 0 pages reserved
+[    0.000000]   DMA32 zone: 524288 pages, LIFO batch:31
+[    0.000000] random: get_random_bytes called from start_kernel+0xa8/0x3e8 with
+ crng_init=0
+[    0.000000] percpu: Embedded 23 pages/cpu @(____ptrval____) s53976 r8192 d320
+40 u94208
+[    0.000000] pcpu-alloc: s53976 r8192 d32040 u94208 alloc=23*4096
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 832075
+[    0.000000] CPU features: enabling workaround for ARM erratum 834220
+[    0.000000] CPU features: enabling workaround for EL2 vector hardening
+[    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[7m--More--[m[    0.000000] Kernel command line: console=ttyAMA0 lpj=19988480 norandmaps root
+[7m--More--[m=/dev/vda1 rw mem=2GB
+[7m--More--[m[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[7m--More--[m[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[7m--More--[m[    0.000000] Memory: 2034324K/2097152K available (6910K kernel code, 452K rwda
+[7m--More--[mta, 2312K rodata, 448K init, 217K bss, 46444K reserved, 16384K cma-reserved)
+[7m--More--[m[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[7m--More--[m[    0.000000] Preemptible hierarchical RCU implementation.
+[7m--More--[m[    0.000000] 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[7m--More--[m[    0.000000] 	Tasks RCU enabled.
+[7m--More--[m[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[7m--More--[m[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[7m--More--[m[    0.000000] GIC: GICv2 detected, but range too small and irqchip.gicv2_force_
+[7m--More--[mprobe not set
+[7m--More--[m[    0.000000] clk_gem5_energy_ctrl: No cpu-map in DT! Falling back to old detec
+[7m--More--[mtion method!
+[7m--More--[m[    0.000000] clk_gem5_energy_ctrl: No clusters in DT! Falling back to using CP
+[7m--More--[mU topology!
+[7m--More--[m[    0.000002] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478
+[7m--More--[m484971ns
+[7m--More--[m[    0.000073] arch_timer: Unable to find a suitable frame in timer @ 0x00000000
+[7m--More--[m2a810000
+[7m--More--[m[    0.000077] Failed to initialize '/timer@2a810000': -22
+[7m--More--[m[    0.000123] Console: colour dummy device 80x25
+[7m--More--[m[    0.000130] Calibrating delay loop (skipped) preset value.. 9994.24 BogoMIPS 
+[7m--More--[m(lpj=19988480)
+[7m--More--[m[    0.000135] pid_max: default: 32768 minimum: 301
+[7m--More--[m[    0.000165] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[7m--More--[m[    0.000171] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[7m--More--[m[    0.024085] ASID allocator initialised with 128 entries
+[7m--More--[m[    0.032082] Hierarchical SRCU implementation.
+[7m--More--[m[    0.048095] smp: Bringing up secondary CPUs ...
+[7m--More--[m[    0.048098] smp: Brought up 1 node, 1 CPU
+[7m--More--[m[    0.048101] SMP: Total of 1 processors activated.
+[7m--More--[m[    0.048104] CPU features: detected: Privileged Access Never
+[7m--More--[m[    0.048107] CPU features: detected: User Access Override
+[7m--More--[m[    0.048109] CPU features: detected: 32-bit EL0 Support
+[7m--More--[m[    0.048112] CPU features: detected: Scalable Vector Extension
+[7m--More--[m[    0.049908] SVE: maximum available vector length 16 bytes per vector
+[7m--More--[m[    0.049911] SVE: default vector length 16 bytes per vector
+[7m--More--[m[    0.049913] CPU: All CPU(s) started at EL2
+[7m--More--[m[    0.049918] alternatives: patching kernel code
+[7m--More--[m[    0.050583] devtmpfs: initialized
+[7m--More--[m[    0.051180] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, ma
+[7m--More--[mx_idle_ns: 7645041785100000 ns
+[7m--More--[m[    0.051185] futex hash table entries: 256 (order: 2, 16384 bytes)
+[7m--More--[m[    0.051831] NET: Registered protocol family 16
+[7m--More--[m[    0.132209] cpuidle: using governor menu
+[7m--More--[m[    0.132263] vdso: 2 pages (1 code @ (____ptrval____), 1 data @ (____ptrval___
+[7m--More--[m_))[K
+[7m--More--[m[    0.132269] hw-breakpoint: found 16 breakpoint and 16 watchpoint registers.
+[7m--More--[m[    0.132589] DMA: preallocated 256 KiB pool for atomic allocations
+[7m--More--[m[    0.132592] Serial: AMBA PL011 UART driver
+[7m--More--[m[    0.132735] OF: amba_device_add() failed (-2) for /watchdog@2a490000
+[7m--More--[m[    0.132862] OF: amba_device_add() failed (-2) for /watchdog@2b060000
+[7m--More--[m[    0.132944] 1c090000.uart: ttyAMA0 at MMIO 0x1c090000 (irq = 13, base_baud = 
+[7m--More--[m0) is a PL011 rev3
+[7m--More--[m[    0.135044] console [ttyAMA0] enabled
+[7m--More--[m[    0.135326] 1c0a0000.uart: ttyAMA1 at MMIO 0x1c0a0000 (irq = 14, base_baud = 
+[7m--More--[m0) is a PL011 rev3
+[7m--More--[m[    0.135541] 1c0b0000.uart: ttyAMA2 at MMIO 0x1c0b0000 (irq = 15, base_baud = 
+[7m--More--[m0) is a PL011 rev3
+[7m--More--[m[    0.135759] 1c0c0000.uart: ttyAMA3 at MMIO 0x1c0c0000 (irq = 16, base_baud = 
+[7m--More--[m0) is a PL011 rev3
+[7m--More--[m[    0.135930] OF: amba_device_add() failed (-2) for /kmi@1c060000
+[7m--More--[m[    0.135998] OF: amba_device_add() failed (-2) for /kmi@1c070000
+[7m--More--[m[    0.136067] OF: /watchdog@1c0f0000: could not find phandle
+[7m--More--[m[    0.136100] ERROR: could not get clock /watchdog@1c0f0000:apb_pclk(1)
+[7m--More--[m[    0.136138] OF: amba_device_add() failed (-2) for /watchdog@1c0f0000
+[7m--More--[m[    0.136267] OF: /rtc@1c170000: could not find phandle
+[7m--More--[m[    0.136298] ERROR: could not get clock /rtc@1c170000:apb_pclk(0)
+[7m--More--[m[    0.136335] OF: amba_device_add() failed (-2) for /rtc@1c170000
+[7m--More--[m[    0.147081] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[7m--More--[m[    0.148523] vgaarb: loaded
+[7m--More--[m[    0.148615] SCSI subsystem initialized
+[7m--More--[m[    0.152263] libata version 3.00 loaded.
+[7m--More--[m[    0.152322] usbcore: registered new interface driver usbfs
+[7m--More--[m[    0.152367] usbcore: registered new interface driver hub
+[7m--More--[m[    0.152409] usbcore: registered new device driver usb
+[7m--More--[m[    0.152458] pps_core: LinuxPPS API ver. 1 registered
+[7m--More--[m[    0.152487] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giome
+[7m--More--[mtti <giometti@linux.it>
+[7m--More--[m[    0.152543] PTP clock support registered
+[7m--More--[m[    0.156517] NET: Registered protocol family 2
+[7m--More--[m[    0.156698] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 1638
+[7m--More--[m4 bytes)
+[7m--More--[m[    0.156751] TCP established hash table entries: 16384 (order: 5, 131072 bytes
+[7m--More--[m)[K
+[7m--More--[m[    0.156851] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[7m--More--[m[    0.156986] TCP: Hash tables configured (established 16384 bind 16384)
+[7m--More--[m[    0.157062] UDP hash table entries: 1024 (order: 3, 32768 bytes)
+[7m--More--[m[    0.157111] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes)
+[7m--More--[m[    0.157196] NET: Registered protocol family 1
+[7m--More--[m[    0.164320] RPC: Registered named UNIX socket transport module.
+[7m--More--[m[    0.164358] RPC: Registered udp transport module.
+[7m--More--[m[    0.164386] RPC: Registered tcp transport module.
+[7m--More--[m[    0.164414] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[7m--More--[m[    0.164454] PCI: CLS 0 bytes, default 64
+[7m--More--[m[    0.164638] kvm [1]: SVE system without VHE unsupported.  Broken cpu?
+[7m--More--[m[    0.165044] workingset: timestamp_bits=62 max_order=19 bucket_order=0
+[7m--More--[m[    0.168100] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[7m--More--[m[    0.170452] fuse init (API version 7.27)
+[7m--More--[m[    0.171042] io scheduler noop registered
+[7m--More--[m[    0.171148] io scheduler cfq registered (default)
+[7m--More--[m[    0.171177] io scheduler mq-deadline registered
+[7m--More--[m[    0.171205] io scheduler kyber registered
+[7m--More--[m[    0.171248] atomic64_test: passed
+[7m--More--[m[    0.171697] pci-host-generic 30000000.pci: host bridge /pci ranges:
+[7m--More--[m[    0.171738] pci-host-generic 30000000.pci:   No bus range found for /pci, usi
+[7m--More--[mng [bus 00-ff]
+[7m--More--[m[    0.171788] pci-host-generic 30000000.pci: Parsing ranges property...
+[7m--More--[m[    0.171793] pci-host-generic 30000000.pci:    IO 0x2f000000..0x2f00ffff -> 0x
+[7m--More--[m00000000
+[7m--More--[m[    0.171842] pci-host-generic 30000000.pci:   MEM 0x40000000..0x7fffffff -> 0x
+[7m--More--[m00000000
+[7m--More--[m[    0.171901] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff
+[7m--More--[m] for [bus 00-ff]
+[7m--More--[m[    0.172013] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+[7m--More--[m[    0.172055] pci_bus 0000:00: root bus resource [bus 00-ff]
+[7m--More--[m[    0.172088] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[7m--More--[m[    0.172126] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff] (b
+[7m--More--[mus address [0x00000000-0x3fffffff])
+[7m--More--[m[    0.172184] pci_bus 0000:00: scanning bus
+[7m--More--[m[    0.172205] pci 0000:00:01.0: [1af4:1000] type 00 class 0xff0000
+[7m--More--[m[    0.172215] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x001f]
+[7m--More--[m[    0.172226] pci 0000:00:01.0: reg 0x30: [mem 0x40000000-0x400007ff pref]
+[7m--More--[m[    0.172449] pci_bus 0000:00: fixups for bus
+[7m--More--[m[    0.172452] pci_bus 0000:00: bus scan returning with max=00
+[7m--More--[m[    0.172459] pci 0000:00:01.0: BAR 6: assigned [mem 0x40000000-0x400007ff pref
+[7m--More--[m][K
+[7m--More--[m[    0.172503] pci 0000:00:01.0: BAR 0: assigned [io  0x1000-0x101f]
+[7m--More--[m[    0.172854] virtio-pci 0000:00:01.0: assign IRQ: got 23
+[7m--More--[m[    0.172861] virtio-pci 0000:00:01.0: enabling device (0000 -> 0001)
+[7m--More--[m[    0.172901] virtio-pci 0000:00:01.0: virtio_pci: leaving for legacy driver
+[7m--More--[m[    0.172944] virtio-pci 0000:00:01.0: enabling bus mastering
+[7m--More--[m[    0.174355] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[7m--More--[m[    0.175252] virtio_blk virtio0: [vda] 3906250 512-byte logical blocks (2.00 G
+[7m--More--[mB/1.86 GiB)
+[7m--More--[m[    0.180472]  vda: vda1
+[7m--More--[m[    0.188590] libphy: Fixed MDIO Bus: probed
+[7m--More--[m[    0.188631] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+[7m--More--[m[    0.188672] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[7m--More--[m[    0.188718] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[7m--More--[m[    0.188752] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[7m--More--[m[    0.188800] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.4.0-k
+[7m--More--[m[    0.188840] igb: Copyright (c) 2007-2014 Intel Corporation.
+[7m--More--[m[    0.188885] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver - version 5
+[7m--More--[m.1.0-k[K
+[7m--More--[m[    0.188929] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[7m--More--[m[    0.192378] ixgbevf: Intel(R) 10 Gigabit PCI Express Virtual Function Network
+[7m--More--[m Driver - version 4.1.0-k
+[7m--More--[m[    0.192433] ixgbevf: Copyright (c) 2009 - 2015 Intel Corporation.
+[7m--More--[m[    0.196369] i40e: Intel(R) Ethernet Connection XL710 Network Driver - version
+[7m--More--[m 2.3.2-k
+[7m--More--[m[    0.196414] i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+[7m--More--[m[    0.200404] ixgb: Intel(R) PRO/10GbE Network Driver - version 1.0.135-k2-NAPI
+[7m--More--[m[    0.200446] ixgb: Copyright (c) 1999-2008 Intel Corporation.
+[7m--More--[m[    0.200491] i40evf: Intel(R) 40-10 Gigabit Virtual Function Network Driver - 
+[7m--More--[mversion 3.2.2-k
+[7m--More--[m[    0.200539] Copyright (c) 2013 - 2015 Intel Corporation.
+[7m--More--[m[    0.204472] usbcore: registered new interface driver usb-storage
+[7m--More--[m[    0.204711] mousedev: PS/2 mouse device common for all mice
+[7m--More--[m[    0.204825] gem5 DVFS handler is disabled
+[7m--More--[m[    0.204851] gem5-energy-ctrl loaded at (____ptrval____)
+[7m--More--[m[    0.204883] gem5_energy_ctrl_mc: gem5_mc_init: DVFS handler in energy control
+[7m--More--[mler is disabled,                         ARM gem5 multi-cluster cpufreq driver  
+[7m--More--[m                       will not be registered
+[7m--More--[m[    0.205189] usbcore: registered new interface driver usbhid
+[7m--More--[m[    0.205222] usbhid: USB HID core driver
+[7m--More--[m[    0.205295] NET: Registered protocol family 17
+[7m--More--[m[    0.208560] EXT4-fs (vda1): mounted filesystem with ordered data mode. Opts: 
+[7m--More--[m(null)[K
+[7m--More--[m[    0.208618] VFS: Mounted root (ext4 filesystem) on device 254:1.
+[7m--More--[m[K
+...skipping 1 line
+[    0.208863] Freeing unused kernel memory: 448K
+[    0.217729] random: fast init done
+root@aarch64-gem5:~# ^[K
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# ^cd /tmp
+-bash: :s^cd /tmp: substitution failed
+root@aarch64-gem5:~# 
+root@aarch64-gem5:~# cd /tmp
+root@aarch64-gem5:/tmp# 
+root@aarch64-gem5:/tmp# ./script
+root@aarch64-gem5:/tmp# 
+root@aarch64-gem5:/tmp# 

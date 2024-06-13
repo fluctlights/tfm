@@ -1,0 +1,5 @@
+root@aarch64-gem5:/home/Codigo-GEM5# ./deploy-benchmarks.sh --repetitions 6
+[    1.044000] random: cc1: uninitialized urandom read (8 bytes read)
+Ejecutando benchmark Dhrystone
+^C^C
+root@aarch64-gem5:/home/Codigo-GEM5# 
