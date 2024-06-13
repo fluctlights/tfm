@@ -1,0 +1,4 @@
+# NECESARIO PARA EVITAR PROBLEMAS DE ARCHIVOS +100 MB
+gem5/Kernels/disks/*
+gem5/Kernels/binaries/*
+gem5/Kernels/disks/ubuntu-18.04-arm64-docker.img

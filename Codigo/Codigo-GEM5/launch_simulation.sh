@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Current Variables for Gem5 Trials!
-export M5_PATH=/home/fluctlights/Pi4-Kernel/ALTERNATIVO/aarch-system-20220707
+export M5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels
 export GEM5_HOME=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export GEM5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5
 
