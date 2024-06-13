@@ -1,0 +1,9 @@
+root@aarch64-gem5:~# cd /home/Codigo-GEM5/
+root@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 60000 ^C
+root@aarch64-gem5:/home/Codigo-GEM5# cd /home/Codigo-GEM5/[Km5 resetstats && ./benchmarks -b D -s 60000 [Aroot@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 6000 6[P
+[K[Aroot@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 30000 [Aoot@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 3^C
+
+root@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 30000  && m5 dumpresetstats
+^C
+root@aarch64-gem5:/home/Codigo-GEM5# m5 resetstats && ./benchmarks -b D -s 3000 &&& m5 dumpresetstats
+root@aarch64-gem5:/home/Codigo-GEM5# 
