@@ -345,7 +345,7 @@ class BaseSimpleSystem(ArmSystem):
     def __init__(self, mem_size, platform, **kwargs):
         super(BaseSimpleSystem, self).__init__(**kwargs)
 
-        self.voltage_domain = VoltageDomain(voltage="0.8201V")
+        self.voltage_domain = VoltageDomain(voltage="0.8688V")
         self.clk_domain = SrcClockDomain(
             clock="1.5GHz", voltage_domain=Parent.voltage_domain
         )

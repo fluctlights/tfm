@@ -57,7 +57,7 @@ int do_miller_rabin_primes_benchmark() {
     #ifdef GEM5
         m5op_addr = 0x10010000;
         map_m5_mem();
-        m5_dump_stats_addr(0,0); //m5_work_begin_addr(0,0)
+		m5_reset_stats(0,0);
     #endif
 
     for (uint64_t num = 2; count < LOOP; num++) {

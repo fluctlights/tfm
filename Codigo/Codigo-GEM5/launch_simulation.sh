@@ -30,6 +30,8 @@ if [ -z "$2" ]; then
         --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
         --script make_checkpoint.sh
 
+    # Waits for Ctrl+C to continue
+
     $GEM5_PATH/build/ARM/gem5.opt \
         -d $GEM5_PATH/pruebas \
         --stats-file=text://stats.txt?spaces=False \
@@ -38,7 +40,7 @@ if [ -z "$2" ]; then
         --disk-image=$M5_PATH/disks/ubuntu-18.04-extended.img \
         --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
         --restore $GEM5_PATH/pruebas/cpt.$CHECKPOINT/ --power-models \
-        --pw-model-number 1 --script deploy-benchmarks.sh
+        --pw-model-number 1
 else
     $GEM5_PATH/build/ARM/gem5.opt \
         -d $GEM5_PATH/pruebas \
@@ -48,6 +50,6 @@ else
         --disk-image=$M5_PATH/disks/ubuntu-18.04-extended.img \
         --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
         --restore $GEM5_PATH/pruebas/cpt.$2/ --power-models \
-        --pw-model-number 1 --script deploy-benchmarks.sh
+        --pw-model-number 3
 fi
 

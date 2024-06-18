@@ -67,7 +67,10 @@ default_kernel = "vmlinux.arm64"
 default_disk = "linaro-minimal-aarch64.img"
 default_root_device = "/dev/vda1"
 
-# Pre-defined CPU configurations. Each tuple must be ordered as : (cpu_class,
+clock_freq = ((1/(666/1000000000000))/1000000)
+voltage_sq = (0.8688*0.8688)
+
+# CPU configurations. Each tuple must be ordered as : (cpu_class,
 # l1_icache_class, l1_dcache_class, l2_Cache_class). Any of
 # the cache class may be 'None' if the particular cache is not present.
 cpu_types = {
@@ -86,238 +89,39 @@ class CpuPowerOn(MathExprPowerModel):
     def __init__(self, cpu_path, args, **kwargs):
         super(CpuPowerOn, self).__init__(**kwargs)
 
+        # Results are in pW!
         # if(args.pw_model_number == 1):
         #     self.dyn = (
-        #         "((({}.numCycles/simSeconds) * "
-        #         "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845))".format(cpu_path)
+        #         "(((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845) * (1000000000000))".format(cpu_path)
         #     )
 
-        if(args.pw_model_number == 1):
-            self.dyn = "(((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)*1000000000000)".format(cpu_path)
-
-        elif(args.pw_model_number == 2):
+        if(args.pw_model_number == 2):
             self.dyn = (
-                "((({}.numCycles/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845)"
-                " + "
-                "(({}.dcache.overall_accesses::total)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 2.32633723171e-10))".format(cpu_path,cpu_path)
+                "(((({}.numCycles*system.clk_domain.clock)/(simSeconds*1000000000000000000)) * 1501.5 * (0.8688*0.8688) * 0.000000000606992538845)* 1000000000000)".format(cpu_path)
             )
-
+        
         elif(args.pw_model_number == 3):
             self.dyn = (
-                "((({}.numCycles/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845)"
-                "+"
-                "(({}.dcache.overall_accesses::total)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 2.32633723171e-10)"
+                "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
                 " + "
-                "((({}.iew.iewExecutedInsts/simSeconds) - "
-                "(({}.iq.FU_type_0::IntAlu + {}.iq.FU_type_0::IntMult + {}.iq.FU_type_0::IntDiv)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 5.43933973638e-10))".format(cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path)
+                "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path)
             )
 
-        elif(args.pw_model_number == 4):
-            self.dyn = (
-                "((({}.numCycles/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845)"
-                "+"
-                "(({}.dcache.overall_accesses::total)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 2.32633723171e-10)"
-                " + "
-                "((({}.iew.iewExecutedInsts/simSeconds) - "
-                "(({}.iq.FU_type_0::IntAlu + {}.iq.FU_type_0::IntMult + {}.iq.FU_type_0::IntDiv)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 5.43933973638e-10)"
-                " + "
-                "(({}.dcache.WriteReq_misses::total/simSeconds) * "
-                "(system.voltage_domain.voltage*system.voltage_domain.voltage) * 4.79625288372e-08))".format(cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path)
-            )
-
-        elif(args.pw_model_number == 5):
-            self.dyn = (
-                "((({}.numCycles/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845)"
-                "+"
-                "(({}.dcache.overall_accesses::total)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 2.32633723171e-10)"
-                " + "
-                "((({}.iew.iewExecutedInsts/simSeconds) - "
-                "(({}.iq.FU_type_0::IntAlu + {}.iq.FU_type_0::IntMult + {}.iq.FU_type_0::IntDiv)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 5.43933973638e-10)"
-                " + "
-                "(({}.dcache.WriteReq_misses::total/simSeconds) * "
-                "(system.voltage_domain.voltage*system.voltage_domain.voltage) * 4.79625288372e-08)"
-                " + "
-                "(({}.dcache.overallAccesses::total/simSeconds) * "
-                "(system.voltage_domain.voltage*system.voltage_domain.voltage) * 5.72830963981e-09))".format(cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path)
-            )
-
-        elif(args.pw_model_number == 6):
-            self.dyn = (
-                "((({}.numCycles/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 0.000000000606992538845)"
-                "+"
-                "(({}.dcache.overall_accesses::total)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 2.32633723171e-10)"
-                " + "
-                "((({}.iew.iewExecutedInsts/simSeconds) - "
-                "(({}.iq.FU_type_0::IntAlu + {}.iq.FU_type_0::IntMult + {}.iq.FU_type_0::IntDiv)/simSeconds) * "
-                "(system.voltage_domain.voltage * system.voltage_domain.voltage) * 5.43933973638e-10)"
-                " + "
-                "(({}.dcache.WriteReq_misses::total/simSeconds) * "
-                "(system.voltage_domain.voltage*system.voltage_domain.voltage) * 4.79625288372e-08)"
-                " + "
-                "(({}.dcache.overallAccesses::total/simSeconds) * "
-                "(system.voltage_domain.voltage*system.voltage_domain.voltage) * 5.72830963981e-09))"
-                " + ".format(cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path,cpu_path)
-            )
-
-        # else: # default model
+        # ESTE ES IMPORTANTE
+        # elif(args.pw_model_number == 3):
         #     self.dyn = (
-        #         "1*simSeconds"
+        #         "(((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)) + (((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) * ((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.00000000023263372317)) * 1000000000000".format(cpu_path,cpu_path)
         #     )
 
+        else: # default model
+            self.dyn = (
+                "1*simSeconds"
+            )
+
+        # Static energy is always the same
         self.st = (
-            "((1 * (-681.604059986)) + ((1/(1500000000/1500000000)) * 0.117551170367) + "
-            "(system.voltage_domain.voltage * 2277.16890778) + "
-            "(((1/(1500000000/1500000000)) * system.voltage_domain.voltage) * (-0.491846201277)) + "
-            "((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + "
-            "(((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + "
-            "((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + "
-            "(((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))"
+            "((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))"
         )
-
-        # meter atributo de energia!!! -> calcular consumo de energia -> que este aqui ademas!
-
-        # guardar voltaje, intensidad por acierto/fallo cache, ipc, sinSeconds para excel
-        # mA de intensidad -> para ajustar la intensidad -> buscar intensidad del micro como tal dentro del cpu/cache
-        # COMPARAR CON LOS DATOS DE INTENSIDAD DE LA CPU DENTRO DEL TFG
-
-        # HACER LAS SIMULACIONES CON AMBOS TIPOS DE INTENSIDAD! -> COMPARARLO CON EL TFG, NO MODIFICAR CACHE!
-
-        # guardar parametros de la simulacion
-
-        # SCRIPT PARA MOSTRAR LOS DATOS QUE ME INTERESEN DE STATS.TXT -> POTENCIA/CONSUMO EN CADA COMPONENTE INTERESANTE
-        # MOSTRAR RESULTADOS DE POTENCIA/CONSUMO DE CADA CONFIGURACION PARA CADA COMPONENTE HW!!!!!
-        # EL TOTAL ES LA SUMA DE LOS COMPONENTES HW QUE TENIAMOS EN CUENTA -> COMO EN EL TFG -> CUANTO CONSUME APP
-        # ESTO SE HACE PARA CADA 
-
-
-        # 2A per IPC, 3pA per cache miss
-        # and then convert to Watt
-        # self.dyn = (
-        #     "voltage * (2 * {}.ipc + 3 * 0.000000001 * "
-        #     "{}.dcache.overallMisses / simSeconds)".format(cpu_path, cpu_path)
-        # )
-
-        #self.st = "4 * temp"
-
-
-        # self.dyn = "(((((system.cpu_cluster.cpus0.numCycles" \
-        #     + " + system.cpu_cluster.cpus1.numCycles" \
-        #     + " + system.cpu_cluster.cpus2.numCycles" \
-        #     + " + system.cpu_cluster.cpus3.numCycles)/4)/simSeconds)" \
-        #     + "/1/1000000)" \
-        #     + " * (1" \
-        #     + "/1000000) * (system.voltage_domain.voltage" \
-        #     + "*system.voltage_domain.voltage) * 6.06992538845e-10) + " \
-        #     + "(((((system.cpu_cluster.cpus0.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus1.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus2.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus3.dcache.overallAccesses::total)/4)" \
-        #     + "/simSeconds)/(1/(1500000000" \
-        #     + "/1500000000))/1000000) * ((1" \
-        #     + "/(1500000000/1500000000))/1000000)" \
-        #     + " * (system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * 2.32633723171e-10) + " \
-        #     + "" \
-        #     + "(((((system.cpu_cluster.cpus0.executeStats0.numInsts" \
-        #     + "+system.cpu_cluster.cpus1.executeStats0.numInsts" \
-        #     + "+system.cpu_cluster.cpus2.executeStats0.numInsts" \
-        #     + "+system.cpu_cluster.cpus3.executeStats0.numInsts)/4)/simSeconds)" \
-        #     + "" \
-        #     + "/1/1000000" \
-        #     + "-(((system.cpu_cluster.cpus0.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus0.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus0.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus1.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus1.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus1.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus2.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus2.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus2.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus3.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus3.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus3.commit.committedInstType_0::IntDiv)/4)/simSeconds)" \
-        #     + "/1/1000000)" \
-        #     + " * (1" \
-        #     + "/1000000) * (system.voltage_domain.voltage" \
-        #     + "*system.voltage_domain.voltage) * 5.43933973638e-10) + " \
-        #     + "(((((system.cpu_cluster.cpus0.dcache.WriteReq.misses::total" \
-        #     + " + system.cpu_cluster.cpus1.dcache.WriteReq.misses::total" \
-        #     + " + system.cpu_cluster.cpus2.dcache.WriteReq.misses::total" \
-        #     + " + system.cpu_cluster.cpus3.dcache.WriteReq.misses::total)/4)" \
-        #     + "/simSeconds)/(1/(1500000000" \
-        #     + "/1500000000))/1000000) * ((1" \
-        #     + "/(1500000000/1500000000))/1000000)" \
-        #     + " * (system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * 4.79625288372e-08) + " \
-        #     + "(((((system.cpu_cluster.cpus0.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus1.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus2.dcache.overallAccesses::total" \
-        #     + " + system.cpu_cluster.cpus3.dcache.overallAccesses::total)" \
-        #     + "/4)/simSeconds)/(1/(1500000000" \
-        #     + "/1500000000))/1000000) * ((1" \
-        #     + "/(1500000000/1500000000))/1000000)" \
-        #     + " * (system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * 5.72830963981e-09) + " \
-        #     + "(((((system.cpu_cluster.cpus0.icache.ReadReq_accesses::total" \
-        #     + " + system.cpu_cluster.cpus1.icache.ReadReq_accesses::total" \
-        #     + " + system.cpu_cluster.cpus2.icache.ReadReq_accesses::total" \
-        #     + " + system.cpu_cluster.cpus3.icache.ReadReq_accesses::total)/4)" \
-        #     + "/simSeconds)/(1/(1500000000" \
-        #     + "/1500000000))/1000000) * ((1" \
-        #     + "/(1500000000/1500000000))/1000000)" \
-        #     + " * (system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * 8.41332534886e-10) + " \
-        #     + "(((((system.cpu_cluster.cpus0.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus0.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus0.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus1.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus1.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus1.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus2.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus2.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus2.commit.committedInstType_0::IntDiv" \
-        #     + " + system.cpu_cluster.cpus3.commit.committedInstType_0::IntAlu" \
-        #     + "+system.cpu_cluster.cpus3.commit.committedInstType_0::IntMult" \
-        #     + "+system.cpu_cluster.cpus3.commit.committedInstType_0::IntDiv)/4)/simSeconds)" \
-        #     + "/1/1000000)" \
-        #     + " * (1" \
-        #     + "/1000000) * (system.voltage_domain.voltage" \
-        #     + "*system.voltage_domain.voltage) * 2.44859350364e-10)"
-
-        # self.st = "((1) * -681.604059986) + " \
-        #     + "((1" \
-        #     + "/1000000) * 0.117551170367) + " \
-        #     + "((system.voltage_domain.voltage) * 2277.16890778) + " \
-        #     + "((1" \
-        #     + "/1000000) * (system.voltage_domain.voltage) * -0.491846201277)" \
-        #     + " + " \
-        #     + "((system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * -2528.1574686) + " \
-        #     + "((1" \
-        #     + "/1000000) * (system.voltage_domain.voltage" \
-        #     + "*system.voltage_domain.voltage) * 0.645456768269) + " \
-        #     + "((system.voltage_domain.voltage) * (" \
-        #     + "system.voltage_domain.voltage*system.voltage_domain.voltage)" \
-        #     + " * 932.937276293) + " \
-        #     + "((1" \
-        #     + "/1000000) * (system.voltage_domain.voltage)" \
-        #     + " * (system.voltage_domain.voltage" \
-        #     + "*system.voltage_domain.voltage) * -0.271180478671)"
-
-
 
 class CpuPowerOff(MathExprPowerModel):
     dyn = "0"
@@ -414,8 +218,8 @@ def create(args):
         devices.ArmCpuCluster(
             system,
             args.num_cores,
-            "1.5GHz", # 1GHz
-            "0.8201V", # 1V
+            "1500MHz", # 1GHz
+            "0.8688V", # 1V
             *cpu_types[args.cpu],
             tarmac_gen=args.tarmac_gen,
             tarmac_dest=args.tarmac_dest,

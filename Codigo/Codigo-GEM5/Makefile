@@ -1,7 +1,7 @@
 TARGET_ISA=arm64
 CC=aarch64-linux-gnu-gcc
 OPTIMIZATION=-O0 -static
-EXTRA_PARAMS=-DREPETITIONS=1
+EXTRA_PARAMS=-DREPETITIONS=3
 CFLAGS=-I$(GEM5_PATH)/include -I$(GEM5_PATH)/util/m5/src
 LDFLAGS=-L$(GEM5_PATH)/util/m5/build/$(TARGET_ISA)/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
 

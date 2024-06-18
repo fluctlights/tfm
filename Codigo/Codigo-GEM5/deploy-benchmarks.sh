@@ -2,14 +2,14 @@
 
 cd /home/Codigo-GEM5
 
-items=("D" "W" "p" "P")
+#items=("D" "W" "p" "P")
+items=("P")
 
 # FACTOR 2 PARA CONSEGUIR LINEALIDAD!!
 sizes_dhrystone=("60000" "120000" "240000" "480000" "960000")
 sizes_whetstone=("3000" "6000" "12000" "24000" "48000")
 sizes_calcpi=("300000" "600000" "1200000" "2400000" "4800000")
-sizes_calcprime=("3000" "6000" "12000" "24000" "48000")
-n_repetitions=6
+sizes_calcprime=("48000")
 
 for item in "${items[@]}"
 do

@@ -24,6 +24,7 @@ declare -a patterns=(
     "system.cpu_cluster.cpus[0-3].commit.committedInstType_0\:*" # tipos de instrucciones realizadas
     "system.cpu_cluster.cpus[0-3].commitStats0.numOps" # sumatorio de todos los tipos de instrucciones realizadas (thread level)
     "system.cpu_cluster.cpus[0-3].commitStats0.numInsts" # valor mas pequeño y al parecer sin sentido alguno, pero se deja (thread level)
+    "system.cpu_cluster.cpus[0-3].dcache.overallAccesses::total"
     "system.cpu_cluster.cpus[0-3].executeStats0\.*" # (thread level)
     "system.cpu_cluster.cpus[0-3].fetch\.*"
     "system.cpu_cluster.cpus[0-3].decode\.*"
@@ -39,6 +40,7 @@ declare -a patterns_description=(
     "---- TYPES OF INSTRUCTIONS COMMITTED ----" # tipos de instrucciones realizadas
     "---- OPERATIONS DONE BY EACH CPU THREAD ----" # sumatorio de todos los tipos de instrucciones realizadas (thread level)
     "---- INSTRUCTIONS DONE BY EACH CPU THREAD ----" # valor mas pequeño y al parecer sin sentido alguno, pero se deja (thread level)
+    "---- CACHE ACCESSES BY EACH CPU THREAD ----"
     "---- OPERATIONS EXECUTED BY EACH CPU THREAD ----" # (thread level)
     "---- OPERATIONS FETCHED BY EACH CPU THREAD ----"
     "---- OPERATIONS DECODED BY EACH CPU THREAD ----"
@@ -89,25 +91,22 @@ print_first_lines()
     echo "" >> $output_file
     
     # Marcar nueva ejecucion de benchmark
-    if (( num_executions >= 0 && num_executions <= 4 )); then
+    if (( num_executions >= 0 && num_executions <= 14 )); then
         echo "------------------------------------------------" >> $output_file
         echo "EXECUTION $num_executions - DHRYSTONE BENCHMARK" >> $output_file
         echo "------------------------------------------------" >> $output_file
-    elif (( num_executions >= 5 && num_executions <= 9 )); then
+    elif (( num_executions >= 15 && num_executions <= 29 )); then
         echo "------------------------------------------------" >> $output_file
         echo "EXECUTION $num_executions - WHETSTONE BENCHMARK" >> $output_file
         echo "------------------------------------------------" >> $output_file
-    elif (( num_executions >= 10 && num_executions <= 14 )); then
+    elif (( num_executions >= 30 && num_executions <= 44 )); then
         echo "----------------------------------------------" >> $output_file
         echo "EXECUTION $num_executions - CALC-PI BENCHMARK" >> $output_file
         echo "----------------------------------------------" >> $output_file
-    elif (( num_executions >= 15 && num_executions <= 29 )); then
+    elif (( num_executions >= 45 && num_executions <= 59 )); then
         echo "--------------------------------------------------" >> $output_file
         echo "EXECUTION $num_executions - CALC-PRIMES BENCHMARK" >> $output_file
         echo "--------------------------------------------------" >> $output_file
-    else
-        echo "BENCHMARKS EJECUTADOS!!"
-        exit 0
     fi
 
     # Imprimiendo los atributos iniciales, no pertenecientes a CPU concretas
@@ -130,6 +129,13 @@ main()
     stats_desc_pointer=0 # posicion del array de descripciones
 
     while true; do
+
+        # Todas las ejecuciones realizadas
+        if (( num_executions == 60 )); then
+            echo "BENCHMARKS EJECUTADOS!!"
+            exit 0
+        fi
+        
         # Obtiene el tamaño actual del archivo usando `stat`
         current_size=$(stat --format="%s" "$file_to_monitor")
 
@@ -144,12 +150,6 @@ main()
             new_lines=$(tail -n "$num_lines" "$file_to_monitor")
 
             print_first_lines
-
-            # Imprimiendo los atributos iniciales, no pertenecientes a CPU concretas
-            echo "" >> $output_file
-            echo "---------- GLOBAL ATTRIBUTES ----------" >> $output_file
-            echo "" >> $output_file
-
 
             # Recorre la matriz de atributos generales
             for pattern in "${general_attrs[@]}"; do

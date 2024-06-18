@@ -19,7 +19,7 @@ fontsize=14;
 label="system \n: SimpleSystem";
 shape=box;
 style="rounded, filled";
-tooltip="auto_reset_addr&#61;true&#10;\auto_unlink_shared_backstore&#61;false&#10;\cache_line_size&#61;64&#10;\eventq_index&#61;0&#10;\exit_on_work_items&#61;false&#10;\gic_cpu_addr&#61;0&#10;\have_large_asid_64&#61;false&#10;\highest_el_is_64&#61;true&#10;\init_param&#61;0&#10;\m5ops_base&#61;268500992&#10;\mem_mode&#61;timing&#10;\mem_ranges&#61;2147483648:6442450944&#10;\memories&#61;system.mem_ctrls.dram system.realview.bootmem system.realview.flash0 system.realview.flash1 system.realview.non_trusted_sram system.realview.trusted_dram system.realview.trusted_sram system.realview.vram&#10;\mmap_using_noreserve&#61;false&#10;\multi_proc&#61;true&#10;\multi_thread&#61;false&#10;\num_work_ids&#61;16&#10;\phys_addr_range_64&#61;40&#10;\readfile&#61;deploy-benchmarks.sh&#10;\redirect_paths&#61;&#10;\release&#61;system.release&#10;\reset_addr&#61;0&#10;\semihosting&#61;Null&#10;\shadow_rom_ranges&#61;&#10;\shared_backstore&#61;&#10;\sme_vl&#61;1&#10;\sve_vl&#61;1&#10;\symbolfile&#61;&#10;\thermal_components&#61;&#10;\thermal_model&#61;Null&#10;\work_begin_ckpt_count&#61;0&#10;\work_begin_cpu_id_exit&#61;-1&#10;\work_begin_exit_count&#61;0&#10;\work_cpus_ckpt_count&#61;0&#10;\work_end_ckpt_count&#61;0&#10;\work_end_exit_count&#61;0&#10;\work_item_id&#61;-1&#10;\workload&#61;system.workload";
+tooltip="auto_reset_addr&#61;true&#10;\auto_unlink_shared_backstore&#61;false&#10;\cache_line_size&#61;64&#10;\eventq_index&#61;0&#10;\exit_on_work_items&#61;false&#10;\gic_cpu_addr&#61;0&#10;\have_large_asid_64&#61;false&#10;\highest_el_is_64&#61;true&#10;\init_param&#61;0&#10;\m5ops_base&#61;268500992&#10;\mem_mode&#61;timing&#10;\mem_ranges&#61;2147483648:6442450944&#10;\memories&#61;system.mem_ctrls.dram system.realview.bootmem system.realview.flash0 system.realview.flash1 system.realview.non_trusted_sram system.realview.trusted_dram system.realview.trusted_sram system.realview.vram&#10;\mmap_using_noreserve&#61;false&#10;\multi_proc&#61;true&#10;\multi_thread&#61;false&#10;\num_work_ids&#61;16&#10;\phys_addr_range_64&#61;40&#10;\readfile&#61;&#10;\redirect_paths&#61;&#10;\release&#61;system.release&#10;\reset_addr&#61;0&#10;\semihosting&#61;Null&#10;\shadow_rom_ranges&#61;&#10;\shared_backstore&#61;&#10;\sme_vl&#61;1&#10;\sve_vl&#61;1&#10;\symbolfile&#61;&#10;\thermal_components&#61;&#10;\thermal_model&#61;Null&#10;\work_begin_ckpt_count&#61;0&#10;\work_begin_cpu_id_exit&#61;-1&#10;\work_begin_exit_count&#61;0&#10;\work_cpus_ckpt_count&#61;0&#10;\work_end_ckpt_count&#61;0&#10;\work_end_exit_count&#61;0&#10;\work_item_id&#61;-1&#10;\workload&#61;system.workload";
 system_system_port [color="#000000", fillcolor="#b6b8bc", fontcolor="#000000", fontname=Arial, fontsize=14, label=system_port, shape=box, style="rounded, filled"];
 subgraph cluster_system_release {
 color="#000000";
@@ -54,7 +54,7 @@ fontsize=14;
 label="workload \n: ArmFsLinux";
 shape=box;
 style="rounded, filled";
-tooltip="addr_check&#61;true&#10;\boot_loader&#61;/home/fluctlights/Pi4-Kernel/ALTERNATIVO/aarch-system-20220707/binaries/boot_v2.arm64&#10;\command_line&#61;console=ttyAMA0 lpj=19988480 norandmaps root=/dev/vda1 rw mem=4GB&#10;\cpu_release_addr&#61;2281701368&#10;\dtb_addr&#61;2281701376&#10;\dtb_filename&#61;/home/fluctlights/Escritorio/Repos/tfm/gem5/pruebas/system.dtb&#10;\early_kernel_symbols&#61;false&#10;\enable_context_switch_stats_dump&#61;false&#10;\eventq_index&#61;0&#10;\extras&#61;&#10;\extras_addrs&#61;&#10;\initrd_addr&#61;2283798528&#10;\initrd_filename&#61;&#10;\load_addr_mask&#61;0&#10;\load_addr_offset&#61;2147483648&#10;\machine_type&#61;DTOnly&#10;\object_file&#61;/home/fluctlights/Pi4-Kernel/ALTERNATIVO/aarch-system-20220707/binaries/vmlinux.arm64&#10;\panic_on_oops&#61;false&#10;\panic_on_panic&#61;false&#10;\remote_gdb_port&#61;#7000&#10;\wait_for_remote_gdb&#61;false";
+tooltip="addr_check&#61;true&#10;\boot_loader&#61;/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels/binaries/boot_v2.arm64&#10;\command_line&#61;console=ttyAMA0 lpj=19988480 norandmaps root=/dev/vda1 rw mem=4GB&#10;\cpu_release_addr&#61;2281701368&#10;\dtb_addr&#61;2281701376&#10;\dtb_filename&#61;/home/fluctlights/Escritorio/Repos/tfm/gem5/pruebas/system.dtb&#10;\early_kernel_symbols&#61;false&#10;\enable_context_switch_stats_dump&#61;false&#10;\eventq_index&#61;0&#10;\extras&#61;&#10;\extras_addrs&#61;&#10;\initrd_addr&#61;2283798528&#10;\initrd_filename&#61;&#10;\load_addr_mask&#61;0&#10;\load_addr_offset&#61;2147483648&#10;\machine_type&#61;DTOnly&#10;\object_file&#61;/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels/binaries/vmlinux.arm64&#10;\panic_on_oops&#61;false&#10;\panic_on_panic&#61;false&#10;\remote_gdb_port&#61;#7000&#10;\wait_for_remote_gdb&#61;false";
 }
 
 subgraph cluster_system_voltage_domain {
@@ -66,7 +66,7 @@ fontsize=14;
 label="voltage_domain \n: VoltageDomain";
 shape=box;
 style="rounded, filled";
-tooltip="eventq_index&#61;0&#10;\voltage&#61;0.8201";
+tooltip="eventq_index&#61;0&#10;\voltage&#61;0.8688";
 }
 
 subgraph cluster_system_clk_domain {
@@ -1819,7 +1819,7 @@ fontsize=14;
 label="child \n: RawDiskImage";
 shape=box;
 style="rounded, filled";
-tooltip="eventq_index&#61;0&#10;\image_file&#61;/home/fluctlights/Pi4-Kernel/ALTERNATIVO/aarch-system-20220707/disks/ubuntu-18.04-extended.img&#10;\read_only&#61;true";
+tooltip="eventq_index&#61;0&#10;\image_file&#61;/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels/disks/ubuntu-18.04-extended.img&#10;\read_only&#61;true";
 }
 
 }
@@ -1847,7 +1847,7 @@ fontsize=14;
 label="voltage_domain \n: VoltageDomain";
 shape=box;
 style="rounded, filled";
-tooltip="eventq_index&#61;0&#10;\voltage&#61;0.8201";
+tooltip="eventq_index&#61;0&#10;\voltage&#61;0.8688";
 }
 
 subgraph cluster_system_cpu_cluster_clk_domain {
@@ -2933,7 +2933,7 @@ fontsize=14;
 label="pm0 \n: CpuPowerOn";
 shape=box;
 style="rounded, filled";
-tooltip="dyn&#61;((((system.cpu_cluster.cpus0.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)*1000000000000)&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + ((1/(1500000000/1500000000)) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage) * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
+tooltip="dyn&#61;(((system.cpu_cluster.cpus0.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))) + ((system.cpu_cluster.cpus0.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
 }
 
 subgraph cluster_system_cpu_cluster_cpus0_power_model_pm1 {
@@ -4047,7 +4047,7 @@ fontsize=14;
 label="pm0 \n: CpuPowerOn";
 shape=box;
 style="rounded, filled";
-tooltip="dyn&#61;((((system.cpu_cluster.cpus1.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)*1000000000000)&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + ((1/(1500000000/1500000000)) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage) * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
+tooltip="dyn&#61;(((system.cpu_cluster.cpus1.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))) + ((system.cpu_cluster.cpus1.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
 }
 
 subgraph cluster_system_cpu_cluster_cpus1_power_model_pm1 {
@@ -5161,7 +5161,7 @@ fontsize=14;
 label="pm0 \n: CpuPowerOn";
 shape=box;
 style="rounded, filled";
-tooltip="dyn&#61;((((system.cpu_cluster.cpus2.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)*1000000000000)&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + ((1/(1500000000/1500000000)) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage) * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
+tooltip="dyn&#61;(((system.cpu_cluster.cpus2.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))) + ((system.cpu_cluster.cpus2.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
 }
 
 subgraph cluster_system_cpu_cluster_cpus2_power_model_pm1 {
@@ -6275,7 +6275,7 @@ fontsize=14;
 label="pm0 \n: CpuPowerOn";
 shape=box;
 style="rounded, filled";
-tooltip="dyn&#61;((((system.cpu_cluster.cpus3.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)*1000000000000)&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + ((1/(1500000000/1500000000)) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage) * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(1500000000/1500000000)) * system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
+tooltip="dyn&#61;(((system.cpu_cluster.cpus3.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))) + ((system.cpu_cluster.cpus3.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))&#10;\eventq_index&#61;0&#10;\st&#61;((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))";
 }
 
 subgraph cluster_system_cpu_cluster_cpus3_power_model_pm1 {

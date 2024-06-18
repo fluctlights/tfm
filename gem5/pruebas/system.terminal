@@ -1,4 +1,3 @@
-root@aarch64-gem5:~# M5 DUMPSTATS ^C
-mroot@aarch64-gem5:~# m5 dumpstats
-root@aarch64-gem5:~# m5 dumpstats
-root@aarch64-gem5:~# 
+
+root@aarch64-gem5:~# . cd /home/Codigo-GEM5/
+root@aarch64-gem5:/home/Codigo-GEM5# ./deploy-benchmarks.sh 

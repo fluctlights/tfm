@@ -5,6 +5,7 @@
 ***************/
 
 int i,j = 0;
+int reps = 0;
 
 char *resetstats ={
     "/sbin/m5 resetstats"
@@ -64,6 +65,7 @@ int do_calc_prime()
 	{
 		j = do_miller_rabin_primes_benchmark();	
 	}
+	reps++;
 	return j;
 }
 
@@ -98,7 +100,9 @@ int main(int argc, char *argv[])
 			benchmark_name = "CALC-PRIME";
 			benchmark_num_trials = atoi(argv[4]);
 			do_calc_prime(); //primes calculus benchmark
-			system(exitm5);
+			
+			if(reps == 5) system(exitm5); // exit condition
+			
 			break;
 		
 		default:
