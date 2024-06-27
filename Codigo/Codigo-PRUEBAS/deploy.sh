@@ -7,7 +7,7 @@ else
 	sudo sh -c 'echo -1 >/proc/sys/kernel/perf_event_paranoid'
 	rm benchmarks_deploy > /dev/null 2>&1
 
-	items=("W" "p" "P")
+	items=("D" "W" "p" "P")
 	sizes_dhrystone=("60000" "120000" "240000" "480000" "960000")
 	sizes_whetstone=("3000" "6000" "12000" "24000" "48000")
 	sizes_calcpi=("300000" "600000" "1200000" "2400000" "4800000")
