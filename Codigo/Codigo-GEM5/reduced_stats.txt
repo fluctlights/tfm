@@ -62096,25 +62096,25 @@ system.clk_domain.clock 666
 
 ---- DYNAMIC POWER ----
 
-system.cpu_cluster.cpus0.power_model.dynamicPower 0.517366
+system.cpu_cluster.cpus0.power_model.dynamicPower 0.743460
 
-system.cpu_cluster.cpus1.power_model.dynamicPower 0.010017
+system.cpu_cluster.cpus1.power_model.dynamicPower 0.000276
 
-system.cpu_cluster.cpus2.power_model.dynamicPower 0.010062
+system.cpu_cluster.cpus2.power_model.dynamicPower 0.000280
 
-system.cpu_cluster.cpus3.power_model.dynamicPower 0.010254
+system.cpu_cluster.cpus3.power_model.dynamicPower 0.000277
 
 
 
 ---- STATIC POWER ----
 
-system.cpu_cluster.cpus0.power_model.staticPower -1.781286
+system.cpu_cluster.cpus0.power_model.staticPower -0.285085
 
-system.cpu_cluster.cpus1.power_model.staticPower -0.034488
+system.cpu_cluster.cpus1.power_model.staticPower -0.005533
 
-system.cpu_cluster.cpus2.power_model.staticPower -0.034644
+system.cpu_cluster.cpus2.power_model.staticPower -0.005578
 
-system.cpu_cluster.cpus3.power_model.staticPower -0.035305
+system.cpu_cluster.cpus3.power_model.staticPower -0.005523
 
 
 
