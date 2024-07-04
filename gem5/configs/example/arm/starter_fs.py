@@ -90,10 +90,10 @@ class CpuPowerOn(MathExprPowerModel):
         super(CpuPowerOn, self).__init__(**kwargs)
 
         # Results are in pW!
-        # if(args.pw_model_number == 1):
-        #     self.dyn = (
-        #         "(((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845) * (1000000000000))".format(cpu_path)
-        #     )
+        if(args.pw_model_number == 1): 
+            self.dyn = (
+                "1*simSeconds" # very simple model, for trials
+            )
 
         if(args.pw_model_number == 2):
             self.dyn = (
@@ -106,12 +106,6 @@ class CpuPowerOn(MathExprPowerModel):
                 " + "
                 "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path)
             )
-
-        # ESTE ES IMPORTANTE
-        # elif(args.pw_model_number == 3):
-        #     self.dyn = (
-        #         "(((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) *((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.000000000606992538845)) + (((({}.numCycles/simSeconds)/(1/(system.clk_domain.clock/1000000000000))/1000000) * ((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.00000000023263372317)) * 1000000000000".format(cpu_path,cpu_path)
-        #     )
 
         else: # default model
             self.dyn = (
