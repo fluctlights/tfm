@@ -3191,84 +3191,7 @@ system.cpu_cluster.cpus3.statIssuedInstType_0::VectorMisc 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerExtension 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::VectorConfig 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::total 571589
-system.cpu_cluster.cpus3.statIssuedInstType_0::No_OpClass 0 0.00% 0.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntAlu 409197 71.59% 71.59%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntMult 339 0.06% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAddAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShift 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShiftAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatReduceAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatReduceCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAes 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAesMix 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha1Hash 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha1Hash2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha256Hash 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha256Hash2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShaSigma2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShaSigma3 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdPredAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::Matrix 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MatrixMov 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MatrixOP 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MemRead 80692 14.12% 85.76%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MemWrite 81367 14.24% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMemRead 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMemWrite 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IprAccess 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::InstPrefetch 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideMaskLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideMaskStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorStridedLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorStridedStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIndexedLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIndexedStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideFaultOnlyFirstLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorWholeRegisterLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorWholeRegisterStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerArith 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatArith 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatConvert 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerReduce 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatReduce 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorMisc 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerExtension 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorConfig 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::total 571595
+
 
 
 
@@ -6465,84 +6388,7 @@ system.cpu_cluster.cpus3.statIssuedInstType_0::VectorMisc 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerExtension 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::VectorConfig 0 0.00% 100.00%
 system.cpu_cluster.cpus3.statIssuedInstType_0::total 1141487
-system.cpu_cluster.cpus3.statIssuedInstType_0::No_OpClass 0 0.00% 0.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntAlu 817184 71.59% 71.59%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntMult 677 0.06% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IntDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAddAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdMatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShift 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShiftAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatCvt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatDiv 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMisc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMult 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatMatMultAcc 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatSqrt 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdReduceCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatReduceAdd 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdFloatReduceCmp 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAes 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdAesMix 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha1Hash 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha1Hash2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha256Hash 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdSha256Hash2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShaSigma2 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdShaSigma3 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::SimdPredAlu 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::Matrix 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MatrixMov 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MatrixOP 0 0.00% 71.65%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MemRead 161143 14.12% 85.76%
-system.cpu_cluster.cpus3.statIssuedInstType_0::MemWrite 162494 14.24% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMemRead 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::FloatMemWrite 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::IprAccess 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::InstPrefetch 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideMaskLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideMaskStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorStridedLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorStridedStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIndexedLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIndexedStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorUnitStrideFaultOnlyFirstLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorWholeRegisterLoad 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorWholeRegisterStore 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerArith 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatArith 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatConvert 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerReduce 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorFloatReduce 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorMisc 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorIntegerExtension 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::VectorConfig 0 0.00% 100.00%
-system.cpu_cluster.cpus3.statIssuedInstType_0::total 1141498
+
 
 
 
@@ -61083,7 +60929,7 @@ system.cpu_cluster.cpus3.statIssuedInstType_0::total 10553510
 ##########################################################################
 
 ------------------------------------------------
-EXECUTION 60 - DHRYSTONE BENCHMARK
+EXECUTION 60 - CALC-PRIMES BENCHMARK
 ------------------------------------------------
 
 ---------- GLOBAL ATTRIBUTES ----------
@@ -62080,7 +61926,7 @@ system.cpu_cluster.cpus3.statIssuedInstType_0::total 10752506
 ##########################################################################
 
 ------------------------------------------------
-EXECUTION 61 - DHRYSTONE BENCHMARK
+EXECUTION 61 - CALC-PRIMES BENCHMARK
 ------------------------------------------------
 
 ---------- GLOBAL ATTRIBUTES ----------
