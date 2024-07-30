@@ -6,6 +6,14 @@ extern int benchmark_num_trials;
 extern int n_events;
 int do_gauss_legendre_pi_benchmark();
 
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
 do_gauss_legendre_pi_benchmark()
 {
     
@@ -18,6 +26,9 @@ do_gauss_legendre_pi_benchmark()
     int LOOP = benchmark_num_trials;
     
     /* BENCHMARK START */
+
+    // Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
     
     for (int i = 0; i < benchmark_num_trials; i++) {
         double a_next = (a + b) / 2;
@@ -35,5 +46,23 @@ do_gauss_legendre_pi_benchmark()
 
     /* BENCHMARK END */
     
+    // Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+
+
     return 0;
 }

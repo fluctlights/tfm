@@ -5,6 +5,7 @@
 
 #include "benchmarks_deploy.h"
 
+
 /* Compiler dependent options */
 #undef	NOENUM			/* Define if compiler has no enum's */
 #undef	NOSTRUCTASSIGN		/* Define if compiler can't assign structures */
@@ -71,6 +72,14 @@ extern int n_events;
 int do_dhrystone_benchmark();
 
 /*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+/*
  * Package 1
  */
 int		IntGlob;
@@ -101,15 +110,19 @@ do_dhrystone_benchmark()
 	PtrGlb->Discr = Ident1;
 	PtrGlb->EnumComp = Ident3;
 	PtrGlb->IntComp = 40;
-	strcpy(PtrGlb->StringComp, "DHRYSTONE PROGRAM, SOME STRING");
-#ifndef	GOOF
-	strcpy(String1Loc, "DHRYSTONE PROGRAM, 1'ST STRING");	/*GOOF*/
-#endif
+
+	/* Se sospecha que esta operacion ralentiza mucho los tiempos */
+	/* COMPARAR VALORES Y TIEMPOS ENTRE LA VERSION COMPLETA YA HECHA Y LA NUEVA
+	/* strcpy(PtrGlb->StringComp, "DHRYSTONE PROGRAM, SOME STRING");*/
+	
 	Array2Glob[8][7] = 10;	/* Was missing in published program */
 
 	long LOOPS = benchmark_num_trials;
 
 	/* BENCHMARK START */
+	
+	// Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
 
 	for (long l = 0; l < LOOPS; ++l)
 	{
@@ -138,6 +151,23 @@ do_dhrystone_benchmark()
 	}
 
 	/* BENCHMARK END */
+
+	// Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
 
 	return 0;
 }

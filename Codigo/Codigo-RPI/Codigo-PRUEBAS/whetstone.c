@@ -22,6 +22,15 @@ void P3(double X, double Y, double *Z);
 int do_whetstone_benchmark();
 
 /*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+
+/*
 	COMMON T,T1,T2,E1(4),J,K,L
 */
 double T,T1,T2,E1[5];
@@ -42,6 +51,9 @@ do_whetstone_benchmark()
 	loopstart = benchmark_num_trials;
 
 	/* BENCHMARK START */
+
+	clock_gettime(CLOCK_MONOTONIC, &start);
+
 
 	T  = .499975;
 	T1 = 0.50025;
@@ -268,6 +280,22 @@ C
 
 
 	/* BENCHMARK END */
+
+	clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
 
 	return 0;
 }

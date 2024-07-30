@@ -6,6 +6,14 @@ extern int benchmark_num_trials;
 extern int n_events;
 int do_miller_rabin_primes_benchmark();
 
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
 // Función para calcular a^b mod m
 uint64_t power(uint64_t a, uint64_t b, uint64_t m) {
     uint64_t result = 1;
@@ -59,6 +67,9 @@ int do_miller_rabin_primes_benchmark() {
 
     /* BENCHMARK START */
 
+    // Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
+
     for (uint64_t num = 2; count < LOOP; num++) {
         if (isPrimeMillerRabin(num, 10)) {
             count++;
@@ -66,5 +77,23 @@ int do_miller_rabin_primes_benchmark() {
     }
 
     /* BENCHMARK END */
+    
+    // Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+
     return 0;
 }

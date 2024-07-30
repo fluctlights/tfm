@@ -10,6 +10,8 @@
         "regex": "c",
         "utility": "c",
         "valarray": "c",
-        "benchmarks_deploy_gem5.h": "c"
+        "benchmarks_deploy_gem5.h": "c",
+        "benchmarks_deploy.h": "c",
+        "time.h": "c"
     }
 }
