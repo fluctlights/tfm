@@ -37,7 +37,6 @@ void do_solo()
 	{
 		j = solomain();
 	}
-	return j;
 }
 
 void do_sumas_alu()
