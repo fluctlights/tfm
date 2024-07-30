@@ -1,4 +1,2 @@
-
-root@aarch64-gem5:~# . cd /home/Codigo-GEM5/
-root@aarch64-gem5:/home/Codigo-GEM5# ./deploy-benchmarks.sh 
-root@aarch64-gem5:/home/Codigo-GEM5# 
+root@aarch64-gem5:~# cd  cd /home/Codigo-GEM5/Benchmarks/
+root@aarch64-gem5:/home/Codigo-GEM5/Benchmarks# ./deploy-benchmarks.sh 

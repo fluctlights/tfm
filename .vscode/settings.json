@@ -1,5 +1,15 @@
 {
     "files.associations": {
-        "m5ops.h": "c"
+        "m5ops.h": "c",
+        "benchmarks_test.h": "c",
+        "benchmark_menu.h": "c",
+        "array": "c",
+        "bitset": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "regex": "c",
+        "utility": "c",
+        "valarray": "c",
+        "benchmarks_deploy_gem5.h": "c"
     }
 }
