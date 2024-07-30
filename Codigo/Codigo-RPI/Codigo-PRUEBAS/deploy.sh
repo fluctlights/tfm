@@ -21,12 +21,12 @@ else
 		if [[ $item == "D" ]]; then
 			for size in "${sizes_dhrystone[@]}" 
 			do
+				echo "Ejecutando benchmark Dhrystone"
 				echo ""
 				echo "LISTO? [yes]"
 				read decision
 				echo ""
-				echo "Ejecutando benchmark Dhrystone"
-			
+				
 				for i in {1..5}; do
 					./benchmarks_deploy -b $item -s $size
 				done
@@ -39,9 +39,10 @@ else
 			do
 				echo "Ejecutando benchmark Whetstone"
 				echo ""
-                        	echo "LISTO? [yes]"
-                        	read decision
-                        	echo ""
+				echo "LISTO? [yes]"
+				read decision
+				echo ""
+
 				for i in {1..5}; do
 					./benchmarks_deploy -b $item -s $size
 				done
@@ -54,9 +55,10 @@ else
 			do
 				echo "Ejecutando benchmark Calculo de Pi"
 				echo ""
-                        	echo "LISTO? [yes]"
-                        	read decision
-                        	echo ""
+				echo "LISTO? [yes]"
+				read decision
+				echo ""
+
 				for i in {1..5}; do
 					./benchmarks_deploy -b $item -s $size
 				done
@@ -69,9 +71,10 @@ else
 			do
 				echo "Ejecutando benchmark Calculo de primos"
 				echo ""
-                        	echo "LISTO? [yes]"
-                        	read decision
-                        	echo ""
+				echo "LISTO? [yes]"
+				read decision
+				echo ""
+
 				for i in {1..5}; do
 					./benchmarks_deploy -b $item -s $size
 				done
