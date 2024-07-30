@@ -9,8 +9,9 @@ mult_fpu() {
     int i;
 
 	// Variables para las operaciones
-    float num_float = 20.5f; //ejemplo
-    float factorial_approx;
+    float a_float = 1.5f;
+	float b_float = 2.5f;
+    float result_float;
 
 	/* BENCHMARK START */
 	#ifdef GEM5
@@ -19,7 +20,7 @@ mult_fpu() {
 		m5_reset_stats(0,0);
     #endif
 	
-    factorial_approx = tgammaf(num_float + 1.0f); // Calcula factorial
+    for (i = 0; i < N_REPETITIONS; i++) result_float = result_float + a_float + b_float;
 	
 	/* BENCHMARK END */
 	#ifdef GEM5

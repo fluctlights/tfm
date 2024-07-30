@@ -9,8 +9,8 @@ mult_alu() {
     int i;
 
 	// Variables para las operaciones
-	int fact = 20;
-    unsigned long long factor = 1; //CAMBIAR A FLOAT
+	int fact = 1000;
+    float factor = 1;
     
 	/* BENCHMARK START */
 	#ifdef GEM5

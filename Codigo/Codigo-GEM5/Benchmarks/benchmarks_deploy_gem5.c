@@ -32,44 +32,42 @@ void show_usage()
 	exit(1);
 }
 
-int do_dhrystone() 
+void do_dhrystone() 
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = do_dhrystone_benchmark();
 	}
-	return j;
 }
 
-int do_whetstone()
+void do_whetstone()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = do_whetstone_benchmark();	
 	}
-	return j;
 }
 
-int do_calc_pi()
+void do_calc_pi()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = do_gauss_legendre_pi_benchmark();	
 	}
-	return j;
 }
 
-int do_calc_prime()
+void do_calc_prime()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = do_miller_rabin_primes_benchmark();	
 	}
 	
-	if (reps == 5) {
+	reps++; 
+	
+	if (reps == 5) { //cuando llegue a 5 habra que terminar
 		end = true;
 	}
-	return j;
 }
 
 int main(int argc, char *argv[])

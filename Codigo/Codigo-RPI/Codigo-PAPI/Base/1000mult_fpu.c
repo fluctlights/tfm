@@ -9,8 +9,9 @@ mult_fpu() {
     int i;
 
 	// Variables para las operaciones
-    float num_float = 20.5f; //ejemplo
-    float factorial_approx;
+    float a_float = 1.5f;
+	float b_float = 2.5f;
+    float result_float;
     
     for(i=0; arm_cortex_pmu_events[i]!=NULL; i++)
 		n_events++;
@@ -57,7 +58,7 @@ mult_fpu() {
 
 	/* BENCHMARK START */
 	
-    factorial_approx = tgammaf(num_float + 1.0f); // Calcula factorial
+    for (i = 0; i < N_REPETITIONS; i++) result_float = result_float + a_float + b_float;
 	
 	/* BENCHMARK END */
 

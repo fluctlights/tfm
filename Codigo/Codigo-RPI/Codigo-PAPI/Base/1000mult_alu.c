@@ -9,8 +9,8 @@ mult_alu() {
     int i;
 
 	// Variables para las operaciones
-	int fact = 20;
-    unsigned long long factor = 1;
+	int fact = 1000;
+    float factor = 1;
     
     for(i=0; arm_cortex_pmu_events[i]!=NULL; i++)
 		n_events++;

@@ -140,11 +140,10 @@ class CpuPowerOn(MathExprPowerModel):
                 "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
                 " + "
                 "(({}.dcache.ReadReq.accesses * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path)
-                #" + "
-                #"(({}.dcache.ReadReq.accesses * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path)
             )
 
-        # NOT ABLE TO RUN BY GEM5, SINCE IT HAS SEMICOLONS INSIDE THE FORMULA
+        # NOT ABLE TO RUN BY GEM5, SINCE IT HAS SEMICOLONS AND SOME THINGS GEM5 STATS CANNOT INTERPRET
+        # UP TO NOW, IT IS UNKNOWN WHY DOES THIS THING HAPPEN
 
         # elif(args.pw_model_number == 6):
         #     self.dyn = (
@@ -163,14 +162,14 @@ class CpuPowerOn(MathExprPowerModel):
         #         "((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntMult * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000244859350364)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
         #     )
 
-        else: # default model, trials only
+        else: # default model
             self.dyn = (
                 "1*simSeconds"
             )
 
         # Static energy is always the same
         self.st = (
-            "((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671)))"
+            "((1 * (-681.604059986)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * system.voltage_domain.voltage * (-0.491846201277)) + ((system.voltage_domain.voltage * system.voltage_domain.voltage) * (-2528.1574686)) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1000000000000))/1000000) * (system.voltage_domain.voltage*system.voltage_domain.voltage*system.voltage_domain.voltage) * (-0.271180478671))*(-1))"
         )
 
 class CpuPowerOff(MathExprPowerModel):
@@ -190,13 +189,14 @@ class CpuPowerModel(PowerModel):
 class L2PowerOn(MathExprPowerModel):
     def __init__(self, l2_path, **kwargs):
         super(L2PowerOn, self).__init__(**kwargs)
+        
         # Example to report l2 Cache overallAccesses
-        # The estimated power is converted to Watt and will vary based
-        # on the size of the cache
+        # The estimated power is converted to Watt and will vary based on the size of the cache
+        # Data extracted from Soton University and ARM papers.
         self.dyn = (
             "((((system.cpu_cluster.l2.overallAccesses*system.clk_domain.clock)/(simSeconds*1000000000000000000)) * 1501.5 * (0.8688*0.8688) * 0.00000000572830963981)* 1000000000000)"
         )
-        self.st = "((0.8688 * 3)/10)" # provided by gem5
+        self.st = "((0.8688 * 3)/10)" # provided by gem5 documentation
 
 class L2PowerOff(MathExprPowerModel):
     dyn = "0"
@@ -343,8 +343,8 @@ def run(args):
             m5.checkpoint(os.path.join(cpt_dir))
             print("Checkpoint done.")
 
-        elif exit_msg == "workbegin":
-            print("NUEVO REGISTRO en tick %d\n" % m5.curTick())
+        elif exit_msg == "exit":
+            print("Execution ended on tick %d\n" % m5.curTick())
         
         else:
             print(f"{exit_msg} ({event.getCode()}) @ {m5.curTick()}")

@@ -48,12 +48,12 @@ extern char *benchmark_name;
 ***************/
 
 void show_usage();
-int do_solo();
-int do_sumas_alu();
-int do_sumas_fpu();
-int do_mult_alu();
-int do_mult_fpu();
-int do_div_alu();
-int do_div_fpu();
-int do_mem_access();
-int do_mem_copy();
+void do_solo();
+void do_sumas_alu();
+void do_sumas_fpu();
+void do_mult_alu();
+void do_mult_fpu();
+void do_div_alu();
+void do_div_fpu();
+void do_mem_access();
+void do_mem_copy();

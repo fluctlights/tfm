@@ -4,7 +4,7 @@
  * VARIABLES *
 ***************/
 
-int i,j = 0;
+int i,j, reps = 0;
 bool end = false;
 
 char *resetstats ={
@@ -31,7 +31,7 @@ void show_usage()
 	printf("USAGE: ./benchmarks_test -b(enchmark) <D,W,p,P> -s(ize) <integer value>");
 	exit(1);
 }
-int do_solo() 
+void do_solo() 
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
@@ -40,77 +40,75 @@ int do_solo()
 	return j;
 }
 
-int do_sumas_alu()
+void do_sumas_alu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = sumas_alu();	
 	}
-	return j;
 }
 
-int do_sumas_fpu()
+void do_sumas_fpu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = sumas_fpu();	
 	}
-	return j;
 }
 
-int do_mult_alu()
+void do_mult_alu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = mult_alu();	
 	}
-	return j;
 }
 
-int do_mult_fpu()
+void do_mult_fpu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = mult_fpu();	
 	}
-	return j;
 }
 
-int do_div_alu()
+void do_div_alu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = div_alu();	
 	}
-	return j;
 }
 
-int do_div_fpu()
+void do_div_fpu()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = div_fpu();	
 	}
-	return j;
 }
 
-int do_mem_access()
+void do_mem_access()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = mem_access();	
 	}
-	return j;
 }
 
-int do_mem_copy()
+void do_mem_copy()
 {
 	for (i=0; i<REPETITIONS; i++)
 	{
 		j = mem_copy();	
 	}
-	end = true; //all repetitions done
-	return j;
+	
+	reps++;
+
+	if (reps == 5) { //cuando llegue a 5 habra que terminar
+		end = true;
+	}
+
 }
 
 int main(int argc, char *argv[])

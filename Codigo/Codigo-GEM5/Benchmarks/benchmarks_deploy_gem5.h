@@ -37,7 +37,7 @@ extern char *benchmark_name;
 ***************/
 
 void show_usage();
-int do_dhrystone();
-int do_whetstone();
-int do_calc_pi();
-int do_calc_prime();
+void do_dhrystone();
+void do_whetstone();
+void do_calc_pi();
+void do_calc_prime();
