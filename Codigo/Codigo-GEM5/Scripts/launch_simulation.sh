@@ -1,15 +1,22 @@
 #!/bin/bash
 
-# Current Variables for Gem5 Trials!
+#######################################
+# DECLARACION DE VARIABLES DE ENTORNO #
+#######################################
+
 export M5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels
 export GEM5_HOME=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export GEM5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export CODE_PATH=/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5
 
-CHECKPOINT=""
+############################
+# DECLARACION DE VARIABLES #
+############################
+
 OPTION=""
 
 # Handle Ctrl+C
+
 handle_interrupt() {
     echo "SIMULATION DONE!!!!"
     trap - SIGINT #unset the interruption
@@ -34,7 +41,6 @@ if [ -z "$2" ]; then
     # Waits for Ctrl+C to continue
 
 else
-    
     while [[ "$OPTION" != "1" && "$OPTION" != "2" ]]; do
         echo "What kind of simulations want to do?"
         echo "[1] Basic benchmarks"
@@ -66,6 +72,12 @@ else
             --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
             --restore $GEM5_PATH/pruebas/cpt.$2/ --power-models \
             --pw-model-number 5
+    fi
+
+    if [[ "$OPTION" == "1" ]]; then
+        ./get_stats.sh base
+    else
+        ./get_stats.sh benchmarks
     fi
 
 fi
