@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Current Variables for Gem5 Trials!
+#######################################
+# DECLARACION DE VARIABLES DE ENTORNO #
+#######################################
+
 export M5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels
 export GEM5_HOME=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export GEM5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5
@@ -9,6 +12,26 @@ export CODE_PATH=/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5
 ############################
 # DECLARACION DE VARIABLES #
 ############################
+
+simulation_lines=0 # lineas que ocupa una simulacion
+stats_file="$GEM5_PATH/pruebas/stats.txt"
+output_file=""
+python_script=""
+total_executions=0
+declare -a line_counts # tamaño de las lineas entre begin y end en cada ejecucion
+
+if [[ "$1" == "benchmarks" ]]; then
+    output_file="$CODE_PATH/Benchmarks/benchmark_stats.txt"
+    python_script="$CODE_PATH/Scripts/save_to_excel.py benchmarks"
+    total_executions=60
+    
+elif [[ "$1" == "base" ]]; then
+    output_file="$CODE_PATH/Base/base_stats.txt"
+    python_script="$CODE_PATH/Scripts/save_to_excel.py base"
+    total_executions=27
+fi
+
+num_executions=0 # numero de ejecuciones realizadas
 
 declare -a general_attrs=(
     "simFreq" 
@@ -59,48 +82,7 @@ declare -a patterns_description=(
 # DECLARACION DE FUNCIONES #
 ############################
 
-save_to_excel() 
-{
-    python_script="
-import pandas as pd
-from collections import defaultdict
-
-# Inicializar un diccionario para almacenar los valores por nombre
-data = defaultdict(list)
-
-try:
-    # Leer el archivo de texto
-    with open('/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Base/reduced_stats.txt', 'r') as file:
-        for line in file:
-            # Omitir las cabeceras si no siguen el formato nombre valor
-            parts = line.strip().split()
-            if len(parts) != 2:
-                if len(parts) > 1:
-                    if not isinstance(parts[1], str):
-                        data[parts[0]].append(parts[1])
-            
-            else:
-                name, value = parts
-                data[name].append(value)
-
-    # Convertir el diccionario a un DataFrame
-    df = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in data.items()]))
-
-    # Añadir una fila vacía
-    df.loc[-1] = [None] * len(df.columns)
-    df.index = df.index + 1
-    df = df.sort_index()
-
-    # Guardar el DataFrame en un archivo Excel sin la columna de índice
-    df.to_excel('/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Base/resultados.xlsx', index=False)
-
-except Exception as e:
-    print(e)
-"
-    echo "$python_script" | python
-}
-
-print_first_lines()
+print_base_first_lines()
 {
     echo "" >> $output_file
     echo "##########################################################################" >> $output_file
@@ -151,86 +133,148 @@ print_first_lines()
     echo "" >> $output_file
 }
 
+print_benchmark_first_lines()
+{
+    echo "" >> $output_file
+    echo "##########################################################################" >> $output_file
+    echo "" >> $output_file
+    
+    # Marcar nueva ejecucion de benchmark
+    if (( num_executions >= 0 && num_executions <= 14 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - DHRYSTONE BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 15 && num_executions <= 29 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - WHETSTONE BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 30 && num_executions <= 44 )); then
+        echo "----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - CALC-PI BENCHMARK" >> $output_file
+        echo "----------------------------------------------" >> $output_file
+    elif (( num_executions >= 45 && num_executions <= 59 )); then
+        echo "--------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - CALC-PRIMES BENCHMARK" >> $output_file
+        echo "--------------------------------------------------" >> $output_file
+    fi
+
+    # Imprimiendo los atributos iniciales, no pertenecientes a CPU concretas
+    echo "" >> $output_file
+    echo "---------- GLOBAL ATTRIBUTES ----------" >> $output_file
+    echo "" >> $output_file
+}
+
+read_simulation_lines()
+{
+    # Obtiene el tamaño actual del archivo usando `stat`
+    current_size=$(stat --format="%s" "$stats_file")
+
+    # Comprobar que el fichero tiene simulaciones realizadas previamente
+    if [ "$current_size" -eq 0 ]; then
+        echo "File is empty! Try some simulation first!"
+        exit 1
+    fi
+    
+    # Flag para saber si estamos dentro de un bloque de simulacion
+    in=0
+
+    input_file="$stats_file"
+
+    # Leer fichero linea a linea desde Begin hasta encontrar End
+    # Asi sacamos el numero de lineas de cada bloque de simulacion
+    while IFS= read -r line; do
+
+        # Check for the start
+        if [[ "$line" == "---------- Begin Simulation Statistics ----------" ]]; then
+            in=1
+            sim_lines=$((sim_lines + 1))
+
+        # Check for the end
+        elif [[ "$line" == "---------- End Simulation Statistics   ----------" ]]; then
+            in=2
+            sim_lines=$((sim_lines + 1))
+        fi
+
+        if (( in == 2 )); then # end found
+            sim_lines=$((sim_lines - 1))
+            line_counts+=("$sim_lines")
+            sim_lines=0
+            in=0
+        else
+            sim_lines=$((sim_lines + 1)) # continue counting lines
+        fi
+    done < "$input_file"
+}
 
 main()
 {
-    file_to_monitor="$GEM5_PATH/pruebas/stats.txt"
-    output_file="$CODE_PATH/Base/reduced_stats.txt"
+    # Leer fichero linea a linea desde Begin hasta encontrar End
+    # Asi sacamos el numero de lineas de cada bloque de simulacion
 
-    prev_size=$(stat --format="%s" "$file_to_monitor")
-    sleep_time=1
-    current_size=-1
-    num_lines=6107 # lineas que ocupa un dump de datos
-    num_executions=0 # numero de ejecuciones realizadas
-    stats_desc_pointer=0 # posicion del array de descripciones
+    start_line=1
+    input_file="$stats_file"
+    index=0
 
     while true; do
 
         # Todas las ejecuciones realizadas
-        if (( num_executions == 27 )); then
+        if (( num_executions == total_executions )); then
             echo "BENCHMARKS EJECUTADOS!!"
             exit 0
         fi
         
-        # Obtiene el tamaño actual del archivo usando `stat`
-        current_size=$(stat --format="%s" "$file_to_monitor")
+        simulation_lines=${line_counts[index]}
+        endline=$((start_line + simulation_lines - 1))
+        #new_lines=""
+        #new_lines=$(head -n "$endline" "$input_file" | tail -n "$simulation_lines")
+        new_lines=$(sed -n "${start_line},${endline}p" "$input_file")
+        sleep 1
 
-        # Verifica si el tamaño del archivo ha cambiado y si el archivo tiene contenido
-        if [ "$current_size" -ne "$prev_size" ] && [ "$current_size" -gt 0 ]; then
-
-            sleep $sleep_time
-
-            stats_desc_pointer=0 # posicion del array de descripciones
-
-            # Leer las últimas líneas del archivo
-            new_lines=$(tail -n "$num_lines" "$file_to_monitor")
-
-            print_first_lines
-
-            # Recorre la matriz de atributos generales
-            for pattern in "${general_attrs[@]}"; do
-                
-                # Buscar cada patrón en las nuevas líneas
-                matches=$(echo "$new_lines" | grep -E "$pattern")
-                echo "$matches" >> $output_file
-            done
-
-            # Recorre la matriz de patrones de busqueda
-            for pattern in "${patterns[@]}"; do
-                
-                # Buscar cada patrón en las nuevas líneas
-                matches=$(echo "$new_lines" | grep -E "$pattern")
-
-                # Imprimir descritor
-                echo "" >> $output_file
-                echo "${patterns_description[stats_desc_pointer]}" >> $output_file
-                echo "" >> $output_file
-
-                # Muestreo por CPU de cada patrón
-                for cpu_num in {0..3}; do
-                    
-                    filtered_matches=$(echo "$matches" | grep "cpus$cpu_num")
-                
-                    if [[ -n "$filtered_matches" ]]; then 
-                        echo "$filtered_matches" >> $output_file
-                        echo "" >> $output_file # Línea vacía para separar los resultados por CPU
-                    fi
-                done
-                
-                echo "" >> $output_file # Línea vacía para separar los resultados por patrón
-                stats_desc_pointer=$((stats_desc_pointer + 1)) # Nuevo descriptor
-
-            done
-
-            # Actualiza el tamaño anterior del archivo
-            prev_size=$current_size
-            num_executions=$((num_executions + 1)) # Nuevo descriptor
-
-            save_to_excel # Guardamos un excel de lo que aparece en el archivo
-
-            sleep $sleep_time
-
+        if [[ "$1" -eq "base" ]]; then
+            print_base_first_lines
+        else
+            print_benchmark_first_lines
         fi
+
+        # Recorre la matriz de atributos generales
+        for pattern in "${general_attrs[@]}"; do
+            # Buscar cada patrón en las nuevas líneas
+            matches=$(echo "$new_lines" | grep -E "$pattern")
+            echo "$matches" >> $output_file
+            sleep 1
+        done
+
+        # Recorre la matriz de patrones de busqueda
+        for pattern in "${patterns[@]}"; do
+            
+            # Buscar cada patrón en las nuevas líneas
+            matches=$(echo "$new_lines" | grep -E "$pattern")
+
+            # Imprimir descritor
+            echo "" >> $output_file
+            echo "${patterns_description[stats_desc_pointer]}" >> $output_file
+            echo "" >> $output_file
+
+            # Muestreo por CPU de cada patrón
+            for cpu_num in {0..3}; do
+                
+                filtered_matches=$(echo "$matches" | grep "cpus$cpu_num")
+            
+                if [[ -n "$filtered_matches" ]]; then 
+                    echo "$filtered_matches" >> $output_file
+                    echo "" >> $output_file # Línea vacía para separar los resultados por CPU
+                fi
+            done
+            
+            echo "" >> $output_file # Línea vacía para separar los resultados por patrón
+
+        done
+
+        num_executions=$((num_executions + 1)) # Nuevo descriptor
+        index=$((index + 1)) # Nuevo descriptor
+        start_line=$((start_line + simulation_lines))
+        new_lines=
+        python3 $python_script # Guardamos un excel de lo que aparece en el archivo
 
     done
 }
@@ -239,4 +283,5 @@ main()
 # TODO #
 ########
 
+read_simulation_lines
 main

@@ -147,7 +147,7 @@ main()
     while true; do
 
         # Todas las ejecuciones realizadas
-        if (( num_executions == 60 )); then
+        if (( num_executions == 27 )); then
             echo "BENCHMARKS EJECUTADOS!!"
             exit 0
         fi
