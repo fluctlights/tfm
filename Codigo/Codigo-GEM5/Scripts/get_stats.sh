@@ -219,7 +219,7 @@ main()
 
         # Todas las ejecuciones realizadas
         if (( num_executions == total_executions )); then
-            echo "BENCHMARKS EJECUTADOS!!"
+            echo "Estadisticas guardadas!"
             exit 0
         fi
         
