@@ -214,8 +214,11 @@ main()
     start_line=1
     input_file="$stats_file"
     index=0
+    BENCH_TYPE=$1
 
     while true; do
+
+        stats_desc_pointer=0
 
         # Todas las ejecuciones realizadas
         if (( num_executions == total_executions )); then
@@ -225,12 +228,9 @@ main()
         
         simulation_lines=${line_counts[index]}
         endline=$((start_line + simulation_lines - 1))
-        #new_lines=""
-        #new_lines=$(head -n "$endline" "$input_file" | tail -n "$simulation_lines")
         new_lines=$(sed -n "${start_line},${endline}p" "$input_file")
-        sleep 1
 
-        if [[ "$1" -eq "base" ]]; then
+        if [[ "$BENCH_TYPE" == "base" ]]; then
             print_base_first_lines
         else
             print_benchmark_first_lines
@@ -241,7 +241,6 @@ main()
             # Buscar cada patrón en las nuevas líneas
             matches=$(echo "$new_lines" | grep -E "$pattern")
             echo "$matches" >> $output_file
-            sleep 1
         done
 
         # Recorre la matriz de patrones de busqueda
@@ -267,7 +266,7 @@ main()
             done
             
             echo "" >> $output_file # Línea vacía para separar los resultados por patrón
-
+            stats_desc_pointer=$((stats_desc_pointer + 1))
         done
 
         num_executions=$((num_executions + 1)) # Nuevo descriptor
