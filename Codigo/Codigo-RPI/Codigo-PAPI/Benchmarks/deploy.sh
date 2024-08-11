@@ -1,27 +1,5 @@
 #!/bin/bash
 
-#######################
-# CONFIGURANDO CPUSET #
-#######################
-
-CPUS=0
-MEMS=0
-CPUSET_NAME="my_cpuset"
-
-# Crear y montar el sistema de archivos cpuset si no está ya montado
-if ! mount | grep -q cpuset; then
-    sudo mkdir -p /dev/cpuset
-    sudo mount -t cpuset cpuset /dev/cpuset
-fi
-
-# Crear el cpuset
-sudo mkdir -p /dev/cpuset/$CPUSET_NAME
-
-# Asignar CPUs y memoria
-echo $CPUS | sudo tee /dev/cpuset/$CPUSET_NAME/cpus
-echo $MEMS | sudo tee /dev/cpuset/$CPUSET_NAME/mems
-
-
 ########################
 # DESPLEGUE DE PRUEBAS #
 ########################
@@ -53,7 +31,8 @@ else
 
 				for size_dhrystone in "${sizes_dhrystone[@]}"
 				do
-					sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks_test -b $item -s $size_dhrystone
+					# despliegue del benchmark en el core 0 de la RPi4
+					sudo taskset -c 0 ./benchmarks_test -b $item -s $size_dhrystone
 				done
 			done
 		fi
@@ -67,7 +46,8 @@ else
 
 				for size_whetstone in "${sizes_whetstone[@]}"
 				do
-					sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks_test -b $item -s $size_whetstone
+					# despliegue del benchmark en el core 0 de la RPi4
+					sudo taskset -c 0 ./benchmarks_test -b $item -s $size_whetstone
 				done
 			done
 		fi
@@ -81,7 +61,8 @@ else
 
 				for size_calcpi in "${sizes_calcpi[@]}"
 				do
-					sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks_test -b $item -s $size_calcpi
+					# despliegue del benchmark en el core 0 de la RPi4
+					sudo taskset -c 0 ./benchmarks_test -b $item -s $size_calcpi
 				done
 			done
 		fi
@@ -95,7 +76,8 @@ else
 
 				for size_calcprime in "${sizes_calcprime[@]}"
 				do
-					sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks_test -b $item -s $size_calcprime
+					# despliegue del benchmark en el core 0 de la RPi4
+					sudo taskset -c 0 ./benchmarks_test -b $item -s $size_calcprime
 				done
 			done
 		fi

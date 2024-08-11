@@ -93,7 +93,7 @@ void save_counters(const char *arm_pmu_events[], long long values[], int size)
 	FILE *f;
 	int n=0;
 	char filename[200];
-	sprintf(filename, "/home/pi/benchmarks/Codigo-PAPI/CSV/");
+	sprintf(filename, "/home/pi/benchmarks/Codigo-PAPI/Benchmarks/CSV/");
     strcat(filename, benchmark_name);
 
     // Make the filename title with the events taken

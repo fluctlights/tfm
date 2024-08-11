@@ -1,27 +1,5 @@
 #!/bin/bash
 
-#######################
-# CONFIGURANDO CPUSET #
-#######################
-
-CPUS=0
-MEMS=0
-CPUSET_NAME="my_cpuset"
-
-# Crear y montar el sistema de archivos cpuset si no está ya montado
-if ! mount | grep -q cpuset; then
-    sudo mkdir -p /dev/cpuset
-    sudo mount -t cpuset cpuset /dev/cpuset
-fi
-
-# Crear el cpuset
-sudo mkdir -p /dev/cpuset/$CPUSET_NAME
-
-# Asignar CPUs y memoria
-echo $CPUS | sudo tee /dev/cpuset/$CPUSET_NAME/cpus
-echo $MEMS | sudo tee /dev/cpuset/$CPUSET_NAME/mems
-
-
 ########################
 # DESPLEGUE DE PRUEBAS #
 ########################
@@ -46,7 +24,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -56,7 +34,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 		
@@ -66,7 +44,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -76,7 +54,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -86,7 +64,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -96,7 +74,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -106,7 +84,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -116,7 +94,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
@@ -126,7 +104,7 @@ else
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
 				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_menu.c -o benchmarks -lpapi -lm > /dev/null 2>&1
-				sudo cgexec -g cpuset:$CPUSET_NAME ./benchmarks -b $item
+				sudo taskset -c 0 ./benchmarks -b $item #despliegue del programa de benchmark en el core 0 de la RPi4
 			done
 		fi
 
