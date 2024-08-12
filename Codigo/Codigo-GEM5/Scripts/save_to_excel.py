@@ -1,6 +1,8 @@
+import warnings
 import pandas as pd
 import sys
 from collections import defaultdict
+warnings.filterwarnings("ignore")
 
 # Inicializar un diccionario para almacenar los valores por nombre
 data = defaultdict(list)
@@ -22,10 +24,13 @@ try:
             # Omitir las cabeceras si no siguen el formato nombre valor
             parts = line.strip().split()
             if len(parts) != 2:
-                if len(parts) > 1:
-                    if not isinstance(parts[1], str):
-                        data[parts[0]].append(parts[1])
-            
+                if len(parts) > 1:              
+                    if isinstance(parts[1], str):
+                        try:
+                            dato = int(parts[1])
+                            data[parts[0]].append(dato)
+                        except ValueError:
+                            pass
             else:
                 name, value = parts
                 data[name].append(value)

@@ -20,12 +20,19 @@ python_script=""
 total_executions=0
 declare -a line_counts # tamaño de las lineas entre begin y end en cada ejecucion
 
-if [[ "$1" == "benchmarks" ]]; then
+if [ -z "$1" ]; then
+    echo "ERROR! USAGE: ./get_stats.sh <base, benchmarks>"
+    exit 1
+fi
+
+BENCH_TYPE="$1"
+
+if [[ "$BENCH_TYPE" == "benchmarks" ]]; then
     output_file="$CODE_PATH/Benchmarks/benchmark_stats.txt"
     python_script="$CODE_PATH/Scripts/save_to_excel.py benchmarks"
     total_executions=60
     
-elif [[ "$1" == "base" ]]; then
+elif [[ "$BENCH_TYPE" == "base" ]]; then
     output_file="$CODE_PATH/Base/base_stats.txt"
     python_script="$CODE_PATH/Scripts/save_to_excel.py base"
     total_executions=27
@@ -214,7 +221,6 @@ main()
     start_line=1
     input_file="$stats_file"
     index=0
-    BENCH_TYPE=$1
 
     while true; do
 
@@ -230,10 +236,10 @@ main()
         endline=$((start_line + simulation_lines - 1))
         new_lines=$(sed -n "${start_line},${endline}p" "$input_file")
 
-        if [[ "$BENCH_TYPE" == "base" ]]; then
-            print_base_first_lines
-        else
+        if [[ "$BENCH_TYPE" == "benchmarks" ]]; then
             print_benchmark_first_lines
+        elif [[ "$BENCH_TYPE" == "base" ]]; then
+            print_base_first_lines     
         fi
 
         # Recorre la matriz de atributos generales

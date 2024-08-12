@@ -1,9 +1,0 @@
-#!/bin/bash
-
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -c dhrystone-gem5.c -o dhrystone-gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -c whetstone-gem5.c -o whetstone-gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -c calcular-pi-gem5.c -o calcular-pi-gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -c calcular-primos-gem5.c -o calcular-primos-gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -c benchmarks_deploy_gem5.c -o benchmarks_deploy_gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
-
-aarch64-linux-gnu-gcc -O0 -static -I/home/fluctlights/Escritorio/Repos/tfm/gem5/include -I/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/src -o benchmarks benchmarks_deploy_gem5.o dhrystone-gem5.o whetstone-gem5.o calcular-pi-gem5.o calcular-primos-gem5.o -L/home/fluctlights/Escritorio/Repos/tfm/gem5/util/m5/build/arm64/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
