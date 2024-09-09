@@ -4,7 +4,7 @@
 # DECLARACION DE VARIABLES DE ENTORNO #
 #######################################
 
-export M5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels
+export M5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5/Kernels #everything here: boot, kernel, dtb
 export GEM5_HOME=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export GEM5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5
 export CODE_PATH=/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5
@@ -34,6 +34,7 @@ if [ -z "$2" ]; then
         --stats-file=text://stats.txt?spaces=False \
         $GEM5_PATH/configs/example/arm/starter_fs.py \
         --cpu="atomic" --num-cores=4 \
+        --dtb=$M5_PATH/dtb/armv8_gem5_v2_4cpu.dtb \
         --disk-image=$M5_PATH/disks/ubuntu-18.04-extended.img \
         --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
         --script $CODE_PATH/Scripts/make_checkpoint.sh
@@ -58,6 +59,7 @@ else
             $GEM5_PATH/configs/example/arm/starter_fs.py \
             --cpu="o3" --num-cores=4 \
             --disk-image=$M5_PATH/disks/ubuntu-18.04-extended.img \
+            --dtb=$M5_PATH/dtb/armv8_gem5_v2_4cpu.dtb \
             --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
             --restore $GEM5_PATH/pruebas/cpt.$2/ --power-models \
             --pw-model-number 5
@@ -69,6 +71,7 @@ else
             $GEM5_PATH/configs/example/arm/starter_fs.py \
             --cpu="o3" --num-cores=4 \
             --disk-image=$M5_PATH/disks/ubuntu-18.04-extended.img \
+            --dtb=$M5_PATH/dtb/armv8_gem5_v2_4cpu.dtb \
             --root-device=/dev/vda1 --mem-type DDR4_2400_8x8 --mem-size 4GB \
             --restore $GEM5_PATH/pruebas/cpt.$2/ --power-models \
             --pw-model-number 5

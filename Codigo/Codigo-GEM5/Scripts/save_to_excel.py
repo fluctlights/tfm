@@ -14,8 +14,8 @@ if benchmark_type == 'base':
     benchmark_file = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Base/base_stats.txt"
     benchmark_spreadsheet = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Base/resultados_base.xlsx"
 else:
-    benchmark_file = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Benchmarks/benchmark_stats.txt"
-    benchmark_spreadsheet = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Benchmarks/resultados_benchmark.xlsx"
+    benchmark_file = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Benchmarks/Information/Stats/benchmark_stats.txt"
+    benchmark_spreadsheet = "/home/fluctlights/Escritorio/Repos/tfm/Codigo/Codigo-GEM5/Benchmarks/Information/Stats/resultados_benchmark.xlsx"
 
 try:
     # Leer el archivo de texto

@@ -28,7 +28,7 @@ fi
 BENCH_TYPE="$1"
 
 if [[ "$BENCH_TYPE" == "benchmarks" ]]; then
-    output_file="$CODE_PATH/Benchmarks/benchmark_stats.txt"
+    output_file="$CODE_PATH/Benchmarks/Information/Stats/benchmark_stats.txt"
     python_script="$CODE_PATH/Scripts/save_to_excel.py benchmarks"
     total_executions=60
     

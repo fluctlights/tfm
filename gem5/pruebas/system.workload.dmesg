@@ -1,0 +1,5 @@
+[0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd070]
+[0.000000] Linux version 5.15.92+ (fluctlights@hamilton) (aarch64-linux-gnu-gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #1 SMP PREEMPT Sat Feb 17 00:01:06 CET 2024
+[0.000000] Machine model: Raspberry Pi 4 Model B
+[0.000000] Memory limited to 2048MB
+[0.000000] OF: reserved mem: failed to allocate memory for node 'linux,cma'
