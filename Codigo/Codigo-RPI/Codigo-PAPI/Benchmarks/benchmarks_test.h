@@ -17,32 +17,8 @@
  * VARIABLES *
  **************/
 
-/* Type of benchmark to perform
-    EXAMPLES ALREADY TRIED:
-
-    |-----------|-----------|
-    | DHRYSTONE |  10000000 |
-    |-----------|-----------|
-    | WHETSTONE |    200000 |
-    |-----------|-----------|
-    | CALC_PI   | 100000000 |
-    |-----------|-----------|
-    | CALC_PRIM |   1000000 |
-    |-----------|-----------|
-
-*/
-
 char *benchmark_name;
 int benchmark_num_trials;
-
-/************************************
- *    ARM CORTEX A72 PMU EVENTS     *
- * FROM TECHNICAL REFERENCE MANUAL  *
- * As that doc say we cannot gather *
- *  more than 6 PMU event counters  *
- *     concurrently so we select    *
- *     6 by 6 on each iteration     *
- ************************************/
 
 #ifndef HEADER_H
 #define HEADER_H

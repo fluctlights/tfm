@@ -13,7 +13,7 @@ else
 	rm benchmarks_test > /dev/null 2>&1
 
 	items=("D" "W" "p" "P")
-	pmu_events_sets=("PMU_SET_0" "PMU_SET_1" "PMU_SET_2" "PMU_SET_3")
+	pmu_events_sets=("PMU_SET_0" "PMU_SET_1" "PMU_SET_2" "PMU_SET_3" "PMU_SET_4")
 	sizes_dhrystone=("60000" "120000" "240000" "480000" "960000")
 	sizes_whetstone=("3000" "6000" "12000" "24000" "48000")
 	sizes_calcpi=("300000" "600000" "1200000" "2400000" "4800000")
@@ -27,7 +27,7 @@ else
 
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
-				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
+				aarch64-linux-gnu-gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
 
 				for size_dhrystone in "${sizes_dhrystone[@]}"
 				do
@@ -42,7 +42,7 @@ else
 
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
-				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
+				aarch64-linux-gnu-gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
 
 				for size_whetstone in "${sizes_whetstone[@]}"
 				do
@@ -57,7 +57,7 @@ else
 
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
-				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
+				aarch64-linux-gnu-gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
 
 				for size_calcpi in "${sizes_calcpi[@]}"
 				do
@@ -72,7 +72,7 @@ else
 
 			for pmu_events in "${pmu_events_sets[@]}"
 			do
-				gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
+				aarch64-linux-gnu-gcc -O0 -D$pmu_events -DREPETITIONS=$n_repetitions benchmarks_test.c -o benchmarks_test -lpapi -lm > /dev/null 2>&1
 
 				for size_calcprime in "${sizes_calcprime[@]}"
 				do

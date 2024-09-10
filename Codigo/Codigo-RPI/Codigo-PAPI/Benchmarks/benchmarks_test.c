@@ -13,31 +13,50 @@ extern int benchmark_num_trials;
 extern char *benchmark_name;
 int n_events;
 
+/************************************
+ *    ARM CORTEX A72 PMU EVENTS     *
+ * FROM TECHNICAL REFERENCE MANUAL  *
+ * As that doc say we cannot gather *
+ *  more than 6 PMU event counters  *
+ *     concurrently so we select    *
+ *     6 by 6 on each iteration     *
+ ************************************/
+
 char *arm_cortex_pmu_events[] = 
 {
 #ifdef PMU_SET_0
-    "L1I_CACHE_REFILL",
-    "L1I_CACHE_ACCESS",
-    "L1D_CACHE_REFILL",
-    "L1D_CACHE_ACCESS",
-    "L2D_CACHE_ACCESS",
-    "L2D_CACHE_REFILL",
+	"L1I_CACHE_REFILL",
+	"L1I_CACHE_ACCESS",
+	"L1D_CACHE_REFILL",
+	"L1D_CACHE_ACCESS",
+	"L2D_CACHE_ACCESS",
+	"L2D_CACHE_REFILL",
 #elif PMU_SET_1
-    "L1D_READ_ACCESS",
-    "L1D_WRITE_ACCESS",
-    "L1D_READ_REFILL",
-    "L1D_WRITE_REFILL",
-    "L2D_READ_ACCESS",
-    "L2D_WRITE_ACCESS",
+	"L1D_TLB_REFILL",
+	"L1I_TLB_REFILL",
+	"L1D_TLB_READ_REFILL",
+	"L1D_TLB_WRITE_REFILL",
 #elif PMU_SET_2
-    "L2D_READ_REFILL",
-    "L2D_WRITE_REFILL",
+	"CPU_CYCLES",
+	"INST_RETIRED",
+	"INST_SPEC_EXEC",
+	"INST_SPEC_EXEC_VFP",
+	"INST_SPEC_EXEC_INTEGER_INST",
+	"INST_SPEC_EXEC_LOAD_STORE",
 #elif PMU_SET_3
-    "INST_RETIRED", // completed instructions
-    "INST_SPEC_EXEC", // speculative executed instructions
-    "INST_SPEC_EXEC_VFP", // floating point instructions
-    "INST_SPEC_EXEC_INTEGER_INST", // integer instructions
-    "CPU_CYCLES",
+	"INST_SPEC_EXEC_LOAD",
+	"INST_SPEC_EXEC_STORE",
+	"INST_SPEC_EXEC_SIMD",
+	"INST_SPEC_EXEC_SOFT_PC",
+	"INST_SPEC_EXEC_LDREX",
+	"INST_SPEC_EXEC_STREX_PASS",
+#elif PMU_SET_4
+	"INST_SPEC_EXEC_STREX_FAIL",
+	"BRANCH_MISPRED",
+	"BRANCH_PRED",
+	"BRANCH_SPEC_EXEC_IMM_BRANCH",
+	"BRANCH_SPEC_EXEC_RET",
+	"BRANCH_SPEC_EXEC_IND",
 #endif
 };
 
