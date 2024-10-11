@@ -90,8 +90,6 @@ class CpuPowerOn(MathExprPowerModel):
         super(CpuPowerOn, self).__init__(**kwargs)
 
         # Result are in Watt (power of each core).
-        # L2 IS TAKEN INTO ACCOUNT BELOW, SINCE IT HAS TO BE SUM TO THE TOTAL POWER, NOT BY EACH CORE POWER
-        # ALSO NO ALU,MUL,DIV INSTRUCTIONS TAKEN IN THE PROGRAM SINCE GEM5 HAS PROBLEMS RECOGNISING SEMICOLON CHARS (MODELS 3 AND 6)
         
         if(args.pw_model_number == 1): 
             self.dyn = (
@@ -105,8 +103,6 @@ class CpuPowerOn(MathExprPowerModel):
                 "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path)
             )
         
-        # NOT ABLE TO RUN BY GEM5, SINCE IT HAS SEMICOLONS INSIDE THE FORMULA
-
         # elif(args.pw_model_number == 3):
         #     self.dyn = (
         #         "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
@@ -118,20 +114,18 @@ class CpuPowerOn(MathExprPowerModel):
         #         "((({}.commit.committedInstType_0::IntAlu * 0.000000000543933973638) + ({}.commit.committedInstType_0::IntMult * 0.000000000543933973638) + ({}.commit.committedInstType_0::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
         #     )
 
-        elif(args.pw_model_number == 4):
-            self.dyn = (
-                "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-                " + "
-                "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-                #" + "
-                #"(({}.executeStats0.numInsts * 0.000000000543933973638) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-                #" - "
-                #"((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntMult * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-                " + "
-                "(({}.dcache.WriteReq.misses * 0.0000000479625288372) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
-            )
-
-        # SKIPPING THE SEMICOLONS, WE SUM IT INTO THE EXCEL FILES, NOT HERE
+        # elif(args.pw_model_number == 4):
+        #     self.dyn = (
+        #         "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+        #         " + "
+        #         "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+        #         #" + "
+        #         #"(({}.executeStats0.numInsts * 0.000000000543933973638) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+        #         #" - "
+        #         #"((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntMult * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+        #         " + "
+        #         "(({}.dcache.WriteReq.misses * 0.0000000479625288372) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
+        #     )
 
         elif(args.pw_model_number == 5):
             self.dyn = (
@@ -139,28 +133,16 @@ class CpuPowerOn(MathExprPowerModel):
                 " + "
                 "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
                 " + "
-                "(({}.dcache.ReadReq.accesses * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path)
+                "(({}.executeStats0.numInsts * 0.000000000543933973638) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+                " - "
+                "((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntMult * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+                " + "
+                "(({}.dcache.WriteReq.misses::total * 0.0000000479625288372) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+                " + "
+                "(({}.dcache.ReadReq.accesses::total * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
+                " + "
+                "((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntMult * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000244859350364)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
             )
-
-        # NOT ABLE TO RUN BY GEM5, SINCE IT HAS SEMICOLONS AND SOME THINGS GEM5 STATS CANNOT INTERPRET
-        # UP TO NOW, IT IS UNKNOWN WHY DOES THIS THING HAPPEN
-
-        # elif(args.pw_model_number == 6):
-        #     self.dyn = (
-        #         "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " + "
-        #         "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " + "
-        #         "(({}.executeStats0.numInsts * 0.000000000543933973638) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " - "
-        #         "((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntMult * 0.000000000543933973638) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " + "
-        #         "(({}.dcache.WriteReq.misses::total * 0.0000000479625288372) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " + "
-        #         "(({}.dcache.ReadReq.accesses::total * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000)))"
-        #         " + "
-        #         "((({}.executeStats0.commitStats0.committedInstType::IntAlu * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntMult * 0.000000000244859350364) + ({}.commitStats0.committedInstType::IntDiv * 0.000000000244859350364)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) * 1000000000000)/(simSeconds*1000000000000000000))))".format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
-        #     )
 
         else: # default model
             self.dyn = (
