@@ -1,0 +1,42 @@
+\chapter{Conclusiones}
+\label{cap:Conclusiones}
+
+En este capítulo se expondrán las competencias adquiridas, y se realizará una valoración crítica sobre los objetivos planteados en este TFM.
+
+\section{Justificación de competencias adquiridas}
+
+Dentro de este \ac{TFM} se han desarrollado y aplicado las siguientes competencias \cite{objetivos}: 
+
+\begin{description}
+\item [CE9] \emph{Capacidad para diseñar y evaluar sistemas operativos y servidores, y aplicaciones y sistemas basados en computación distribuida}: esta competencia se ha aplicado durante el estudio del estado del arte de los sistemas operativos, necesario para poder construir la plataforma a simular y al despliegue de las mismas.
+
+\item[CE11] \emph{Capacidad de diseñar y desarrollar sistemas, aplicaciones y servicios informáticos en sistemas empotrados y ubicuos}: se ha aplicado esta competencia durante el desarrollo de los \textit{benchmarks} seleccionados por su relevancia energética, y ejecutados en los diferentes entornos de pruebas tenidos en cuenta en el trabajo.
+
+\item [CE13] \emph{Capacidad para utilizar y desarrollar metodologías, métodos, técnicas, programas de uso específico, normas y estándares de computación gráfica}: esta competencia se ha aplicado durante el desarrollo de la metodología para desarrollar el modelo teórico de energía, así como los programas \textit{benchmark} enfocados en aspectos energéticos concretos.
+
+\end{description}
+
+\section{Revisión de los objetivos}
+
+Una vez completado el proyecto, se ha realizado una re-evaluación de los objetivos que se establecieron al principio del trabajo, con el objetivo de comprobar si han sido cumplidos o no.
+
+\begin{enumerate}
+\item Para el objetivo principal, \emph{el desarrollo y evaluación un modelo de consumo energético para aplicaciones intensivas en cómputo en procesadores \ac{ARM}}: se ha considerado este objetivo como \textbf{cumplido}, gracias a la validación realizada con el DMM frente a PAPI y Gem5, para todos los programas \textit{benchmark}, en los diversos casos tenidos en cuenta en el proyecto.
+
+\item Para el objetivo parcial: \emph{análisis y experimentación de herramientas que permitan la obtención de métricas de ejecución a bajo nivel para un conjunto de \textit{benchmarks} intensivos en cómputo ejecutados en procesadores \ac{ARM} y una mínima interferencia de factores externos, con el propósito de obtener el consumo energético del sistema}, se considera \textbf{cumplido} gracias al estudio del estado del arte en las diferentes arquitecturas \ac{ARM} y las unidades \ac{PMU} de éstas, como forma de recolección de eventos \textit{hardware} de forma fiable y precisa, a la vez que se reduce la interferencia externa mediante la desactivación de servicios innecesarios en el contexto de este trabajo.
+
+\item Para el objetivo parcial: \emph{Deducción, a partir de los resultados obtenidos, un modelo de consumo energético, que permita la caracterización fiable y precisa del consumo energético de aplicaciones intensivas en cómputo que ejecutan sobre la arquitectura \ac{ARM}}, se considera \textbf{cumplido} gracias a la aplicación del modelo desarrollado en este trabajo y su posterior validación con el DMM, con una desviación razonablemente baja en las ejecuciones de los \textit{benchmark} con la librería PAPI.
+
+\item Para el objetivo parcial: \emph{Comparación del modelo desarrollado con otros modelos de energía estudiados, en términos de precisión y fiabilidad y proporcionar un análisis de las ventajas y limitaciones del modelo desarrollado}, se considera \textbf{parcialmente cumplido}, debido a la comparación realizada con un modelo distinto, realizado para un trabajo previo \cite{antoniomateo}, exponiéndose sus debilidades frente al desarrollado dentro de este trabajo, pero sin especificar valores concretos ni desviaciones entre ambos.
+
+\end{enumerate}
+
+\section{Valoración crítica del trabajo}
+
+\subsection{Cuestiones de mejora}
+
+Como posibles puntos de mejora tras la realización de este \ac{TFM}, destacando la necesidad de perfeccionar el modelado de las unidades funcionales utilizadas en la plataforma desarrollada para las simulaciones con Gem5, ya que, en este trabajo, debido a las carencias a la hora de modelar estos componentes, los resultados han sido peores de lo esperado en un principio. También se ha considerado un aspecto de mejora la implantación de más componentes de la plataforma simulada, y obtener métricas de su consumo para integrarlas en el consumo global estimado por Gem5. Un ejemplo de componente para agregar sería la memoria \ac{RAM}, pero el no soporte de \ac{LPDDR4} en Gem5 dificulta el proceso.
+
+\subsection{Valoración personal}
+
+La energía es un tema cada vez más en la boca de todos nosotros, aunque, desgraciadamente, a veces no se le da la importancia que debiera, en mi opinión. El haber realizado este \ac{TFM} me han aportado innumerables conocimientos, donde destaco conceptos de \textit{hardware} que no conocía, como los DTBs, o las diferentes tecnologías de buses de interconexión. Sin embargo, esto no ha sido todo: también he aprendido a cómo realizar compilaciones cruzadas (algo que desconocía cómo se hacía antes de este trabajo). Por último, ahora un mejor entendimiento de las consecuencias relativas a caídas de voltaje en una plataforma \textit{hardware}: esto sucedió durante el desarrollo de este trabajo, utilizando un DMM diferente al utilizado finalmente para la validación. Me falta espacio para decir todo lo aprendido en este trabajo, así que pararé aquí. Resumiendo, este trabajo me ha ayudado a crecer en conocimientos que, en otro contexto, creo que nunca habría aprendido.

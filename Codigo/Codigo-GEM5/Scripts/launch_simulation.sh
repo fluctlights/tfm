@@ -76,14 +76,6 @@ else
             --restore $GEM5_PATH/pruebas/cpt.$2/ --power-models \
             --pw-model-number 5
     fi
-
-    # if [[ "$OPTION" == "1" ]]; then
-    #     ./get_stats.sh base
-    # else
-    #     echo "Guardando estadisticas Benchmark"
-    #     ./get_stats.sh benchmarks
-    # fi
-
 fi
 
 

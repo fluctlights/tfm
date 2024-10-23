@@ -1,0 +1,99 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Resumen}{\es@scroman {v}}{section*.1}%
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Abstract}{\es@scroman {vii}}{section*.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Agradecimientos}{\es@scroman {ix}}{chapter*.4}%
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {xv}}{section*.9}%
+\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {xvii}}{section*.13}%
+\contentsline {chapter}{Índice de listados}{\es@scroman {xix}}{section*.15}%
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Objetivos}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Estado del Arte}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Dispositivos ARM}{7}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Características principales}{7}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Tipos de núcleos \ac {ARM}}{8}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Ejemplos de dispositivos basados en \ac {ARM}}{8}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Técnicas de análisis de consumo}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Análisis vía eventos del \textit {hardware}}{9}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Características}{10}{subsubsection.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.2}Aplicaciones principales}{10}{subsubsection.3.2.1.2}%
+\contentsline {subsection}{\numberline {3.2.2}Análisis empírico sobre la plataforma}{10}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Conceptos de \textit {hardware}}{11}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Conceptos de electricidad}{11}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.3}Herramientas de medición}{13}{subsubsection.3.2.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Análisis vía simulaciones del \textit {hardware}}{14}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}qEMU}{14}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}Comparativa}{15}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}Conceptos fundamentales}{15}{subsubsection.3.2.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.4}Métricas importantes}{16}{subsubsection.3.2.3.4}%
+\contentsline {section}{\numberline {3.3}Benchmark}{17}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Metodología}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Procesos Unificado de Desarrollo}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Iteraciones}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Marco tecnológico}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Herramientas hardware}{21}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Herramientas software}{21}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Herramientas de gestión del proyecto}{22}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Herramientas para el desarrollo de la documentación}{23}{subsection.4.3.4}%
+\contentsline {chapter}{\numberline {5}Resultados}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Iteración 1 - Modelo del sistema}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Iteración 2 - Elección del simulador}{29}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Iteración 3 - Desarrollo del marco teórico}{29}{section.5.3}%
+\contentsline {paragraph}{}{29}{section.5.3}%
+\contentsline {paragraph}{}{30}{equation.5.3.3}%
+\contentsline {section}{\numberline {5.4}Iteración 4 - Configuración del entorno para Gem5}{33}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Conceptos fundamentales}{34}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}\textit {Kernel}}{34}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}\textit {Bootloader}}{34}{subsubsection.5.4.1.2}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}DTB}{34}{subsubsection.5.4.1.3}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}GIC}{34}{subsubsection.5.4.1.4}%
+\contentsline {subsubsection}{\numberline {5.4.1.5}Memoria principal}{34}{subsubsection.5.4.1.5}%
+\contentsline {subsubsection}{\numberline {5.4.1.6}Memoria secundaria}{35}{subsubsection.5.4.1.6}%
+\contentsline {subsubsection}{\numberline {5.4.1.7}Bus}{35}{subsubsection.5.4.1.7}%
+\contentsline {subsubsection}{\numberline {5.4.1.8}Compilación cruzada}{35}{subsubsection.5.4.1.8}%
+\contentsline {subsubsection}{\numberline {5.4.1.9}Utilidades m5 y m5ops}{36}{subsubsection.5.4.1.9}%
+\contentsline {subsubsection}{\numberline {5.4.1.10}El procesador en Gem5}{37}{subsubsection.5.4.1.10}%
+\contentsline {subsection}{\numberline {5.4.2}Preparación del entorno de las simulaciones}{38}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}Desarrollo de la plataforma \textit {hardware} simulada}{38}{subsubsection.5.4.2.1}%
+\contentsline {subsection}{\numberline {5.4.3}Escritura de código}{40}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}Código de los \textit {benchmarks} utilizados }{40}{subsubsection.5.4.3.1}%
+\contentsline {subsubsection}{\numberline {5.4.3.2}Código del \textit {script} Python para lanzar simulaciones}{49}{subsubsection.5.4.3.2}%
+\contentsline {subsubsection}{\numberline {5.4.3.3}Archivo \textit {Makefile} para automatizar la compilación cruzada}{49}{subsubsection.5.4.3.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.4}Interfaz y \textit {script} para ejecución y automatización de los \textit {benchmarks}}{49}{subsubsection.5.4.3.4}%
+\contentsline {subsubsection}{\numberline {5.4.3.5}\textit {Scripts} para la automatización de las simulaciones}{50}{subsubsection.5.4.3.5}%
+\contentsline {subsubsection}{\numberline {5.4.3.6}\textit {Scripts} para recogida y simplificación de los resultados}{50}{subsubsection.5.4.3.6}%
+\contentsline {subsection}{\numberline {5.4.4}Inclusión de directivas Gem5 en los \textit {benchmarks}}{51}{subsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.4.1}Modelo de potencia utilizado}{51}{subsubsection.5.4.4.1}%
+\contentsline {paragraph}{}{53}{table.caption.80}%
+\contentsline {section}{\numberline {5.5}Iteración 5 - Configuración del entorno para PAPI}{56}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Estudio del estado del arte de medidores de rendimiento}{56}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Preparación del entorno de pruebas}{57}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Escritura del código}{57}{subsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.3.1}Interfaz para ejecución de \textit {benchmarks}}{57}{subsubsection.5.5.3.1}%
+\contentsline {subsection}{\numberline {5.5.4}Inclusión de directivas \ac {PAPI} en los \textit {benchmarks}}{57}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Modelo de potencia utilizado}{59}{subsection.5.5.5}%
+\contentsline {section}{\numberline {5.6}Iteración 6 - Obtención de resultados}{60}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Optimizaciones del código desarrollado}{60}{subsection.5.6.1}%
+\contentsline {paragraph}{}{61}{figure.caption.82}%
+\contentsline {subsection}{\numberline {5.6.2}Resultados}{61}{subsection.5.6.2}%
+\contentsline {section}{\numberline {5.7}Iteración 7 - Comparativa de resultados frente a mediciones con DMM}{71}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Lectura de especificaciones del \ac {DMM}}{71}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Preparación del entorno de pruebas}{72}{subsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.7.3}Resultados y conclusiones}{73}{subsection.5.7.3}%
+\contentsline {section}{\numberline {5.8}Iteración 8 - Validación del marco teórico de medición}{74}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Resultados y conclusiones}{74}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Validación frente a las mediciones con el DMM}{76}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}Validación del modelo teórico en Gem5}{76}{subsubsection.5.8.2.1}%
+\contentsline {subsubsection}{\numberline {5.8.2.2}Validación del modelo teórico en PAPI}{76}{subsubsection.5.8.2.2}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{79}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Justificación de competencias adquiridas}{79}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Revisión de los objetivos}{79}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Valoración crítica del trabajo}{80}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuestiones de mejora}{80}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Valoración personal}{80}{subsection.6.3.2}%
+\contentsline {chapter}{Bibliografía}{81}{section*.101}%
+\contentsline {chapter}{\numberline {A}Anexo :: Código de los \textit {benchmarks} utilizados}{89}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Anexo :: Ejemplo de reporte reducido de Gem5}{115}{appendix.Alph2}%

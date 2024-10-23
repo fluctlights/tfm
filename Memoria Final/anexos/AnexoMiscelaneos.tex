@@ -1,0 +1,179 @@
+\chapter{Anexo :: Ejemplo de reporte reducido de Gem5}
+\label{cap:AnexoMiscelaneos}
+
+\begin{lstlisting}[basicstyle=\ttfamily,label=metricasCompletas,showstringspaces=false]
+# GLOBAL ATTRIBUTES #
+simFreq 1000000000000
+simTicks 26564036040
+finalTick 469528770564
+simInsts 50849574
+simOps 55932362
+simSeconds 0.026564
+hostSeconds 160.20
+system.clk_domain.clock 666
+
+# DYNAMIC POWER #
+[...].cpus0.power_model.dynamicPower 1.357067
+[...].cpus1.power_model.dynamicPower 0.021331
+[...].cpus2.power_model.dynamicPower 0.021337
+[...].cpus3.power_model.dynamicPower 0.020882
+
+# STATIC POWER #
+[...].cpus0.power_model.staticPower 0.079725
+[...].cpus1.power_model.staticPower 0.079721
+[...].cpus2.power_model.staticPower 0.079721
+[...].cpus3.power_model.staticPower 0.079723
+
+# NUMBER OF CYCLES #
+[...].cpus0.numCycles 39885940
+[...].cpus1.numCycles 773114
+[...].cpus2.numCycles 773556
+[...].cpus3.numCycles 768424
+
+# CYCLES PER INSTRUCTION #
+[...].cpus0.cpi 1.093169
+[...].cpus1.cpi 1.801795
+[...].cpus2.cpi 1.793258
+[...].cpus3.cpi 1.971076
+
+# INSTRUCTIONS PER CYCLE #
+[...].cpus0.ipc 0.914771
+[...].cpus1.ipc 0.555002
+[...].cpus2.ipc 0.557644
+[...].cpus3.ipc 0.507337
+
+# TYPES OF INSTRUCTIONS COMMITTED
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.commit.committedInstType_0::No_OpClass 8 0.000.00%
+[...].cpus0.commit.[...]::IntAlu 20935777 55.1855.18%
+[...].cpus0.commit.[...]::IntMult 60479 0.1655.34%
+[...].cpus0.commit.[...]::IntDiv 60117 0.1655.50%
+[...].cpus0.commit.[...]::FloatAdd 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatCmp 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatCvt 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatMult 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatMultAcc 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatDiv 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatMisc 0 0.0055.50%
+[...].cpus0.commit.[...]::FloatSqrt 0 0.0055.50%
+[...].cpus0.commit.[...]::MemRead 10873177 28.6684.16%
+[...].cpus0.commit.[...]::MemWrite 6011081 15.84100.00%
+[...].cpus0.commit.[...]::FloatMemRead 0 0.00100.00%
+[...].cpus0.commit.[...]::FloatMemWrite 0 0.00100.00%
+[...].cpus0.commit.[...]::total 37940639
+
+
+# OPERATIONS DONE BY EACH CPU THREAD #
+[...].cpus0.commitStats0.numOps 37940639
+[...].cpus0.commitStats0.numOpsNotNOP 37160014
+[...].cpus1.commitStats0.numOps 552359
+[...].cpus1.commitStats0.numOpsNotNOP 549089
+[...].cpus2.commitStats0.numOps 554648
+[...].cpus2.commitStats0.numOpsNotNOP 551378
+[...].cpus3.commitStats0.numOps 503132
+[...].cpus3.commitStats0.numOpsNotNOP 500237
+
+# INSTRUCTIONS DONE BY EACH CPU
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.commitStats0.numInsts 36486517
+[...].cpus0.commitStats0.numInstsNotNOP 35705892
+[...].cpus1.commitStats0.numInsts 429080
+[...].cpus1.commitStats0.numInstsNotNOP 425810
+[...].cpus2.commitStats0.numInsts 431369
+[...].cpus2.commitStats0.numInstsNotNOP 428099
+[...].cpus3.commitStats0.numInsts 389850
+[...].cpus3.commitStats0.numInstsNotNOP 386955
+
+# OPERATIONS EXECUTED BY EACH CPU
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.executeStats0.numInsts 37164385
+[...].cpus0.executeStats0.numNop 780817
+[...].cpus0.executeStats0.numBranches 4633297
+[...].cpus0.executeStats0.numLoadInsts 10874587
+[...].cpus0.executeStats0.numStoreInsts 6011302
+[...].cpus0.executeStats0.instRate 0.931767
+[...].cpus0.executeStats0.numFpRegWrites 0
+[...].cpus0.executeStats0.numIntRegReads 39993239
+[...].cpus0.executeStats0.numIntRegWrites 25442089
+[...].cpus0.executeStats0.numMemRefs 16885889
+[...].cpus0.executeStats0.numVecAluAccesses 0
+
+# OPERATIONS FETCHED BY EACH CPU
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.fetch.predictedBranches 3492869
+[...].cpus0.fetch.cycles 39763136
+[...].cpus0.fetch.tlbCycles 42
+[...].cpus0.fetchStats0.numInsts 36559747
+[...].cpus0.fetchStats0.numOps 0
+[...].cpus0.fetchStats0.fetchRate 0.916607
+[...].cpus0.fetchStats0.numBranches 4646343
+
+# OPERATIONS DECODED BY EACH CPU #
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.decode.idleCycles 7251285
+[...].cpus0.decode.blockedCycles 19909231
+[...].cpus0.decode.runCycles 17363
+[...].cpus0.decode.unblockCycles 12638891
+[...].cpus0.decode.squashCycles 1791
+[...].cpus0.decode.branchResolved 2525719
+[...].cpus0.decode.branchMispred 1110
+[...].cpus0.decode.decodedInsts 37957546
+[...].cpus0.decode.squashedInsts 6410
+
+# INSTRUCTIONS ISSUED BY EACH CPU 
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.statIssuedInstType_0::No_OpClass 32 0.000.00%
+[...].cpus0.[...]::IntAlu 20158691 54.2454.24%
+[...].cpus0.[...]::IntMult 60494 0.1654.40%
+[...].cpus0.[...]::IntDiv 60143 0.1654.56%
+[...].cpus0.[...]::FloatAdd 0 0.0054.56%
+[...].cpus0.[...]::FloatCmp 0 0.0054.56%
+[...].cpus0.[...]::FloatMult 0 0.0054.56%
+[...].cpus0.[...]::FloatDiv 0 0.0054.56%
+[...].cpus0.[...]::FloatSqrt 0 0.0054.56%
+[...].cpus0.[...]::MemRead 10875135 29.2683.83%
+[...].cpus0.[...]::MemWrite 6011536 16.17100.00%
+[...].cpus0.[...]::FloatMemRead 0 0.00100.00%
+[...].cpus0.[...]::FloatMemWrite 0 0.00100.00%
+[...].cpus0.[...]::total 37166031
+
+# LEVEL 1 DATA CACHE INFORMATION BY EACH CPU
+# PARA EL RESTO DE CPUs SE OMITEN #
+[...].cpus0.dcache.overallHits::total 13665418
+[...].cpus0.dcache.overallMisses::total 793
+[...].cpus0.dcache.overallMissLatency::total 25900693
+[...].cpus0.dcache.overallAccesses::total 13666211
+[...].cpus0.dcache.replacements 520
+[...].cpus0.dcache.ReadReq.hits::total 7654754
+[...].cpus0.dcache.ReadReq.misses::total 496
+[...].cpus0.dcache.ReadReq.missLatency::total 19637010
+[...].cpus0.dcache.ReadReq.accesses::total 7655250
+[...].cpus0.dcache.WriteReq.hits.cpus0.data 6010664
+[...].cpus0.dcache.WriteReq.hits::total 6010664
+[...].cpus0.dcache.WriteReq.misses.cpus0.data 233
+[...].cpus0.dcache.WriteReq.misses::total 233
+[...].cpus0.dcache.WriteReq.missLatency::total 4564758
+[...].cpus0.dcache.WriteReq.accesses::total 6010897
+
+# LEVEL 2 DATA CACHE ACCESSES #
+[...].l2.overallHits.cpus0.mmu.dtb_walker 16
+[...].l2.overallHits.cpus0.mmu.itb_walker 1
+[...].l2.overallHits.cpus0.inst 598
+[...].l2.overallHits.cpus0.data 246
+[...].l2.overallMisses.cpus0.mmu.itb_walker 1
+[...].l2.overallMisses.cpus0.inst 1248
+[...].l2.overallMisses.cpus0.data 166
+[...].l2.overallMissLatency.cpus0.mmu.itb_walker 90575
+[...].l2.overallMissLatency.cpus0.inst 93209364
+[...].l2.overallMissLatency.cpus0.data 14023296
+[...].l2.overallAccesses.cpus0.mmu.dtb_walker 16
+[...].l2.overallAccesses.cpus0.mmu.itb_walker 2
+[...].l2.overallAccesses.cpus0.inst 1846
+[...].l2.overallAccesses.cpus0.data 412
+[...].l2.overallMissRate.cpus0.mmu.itb_walker 0.500000
+[...].l2.overallMissRate.cpus0.inst 0.676056
+[...].l2.overallMissRate.cpus0.data 0.402913
+[...].l2.overallAvgMissLatency.cpus0.mmu.itb_walker 90575
+[...].l2.overallAvgMissLatency.cpus0.inst 74686.990385
+[...].l2.overallAvgMissLatency.cpus0.data 84477.686747
+\end{lstlisting}

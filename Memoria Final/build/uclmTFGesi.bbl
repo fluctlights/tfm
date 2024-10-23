@@ -1,0 +1,574 @@
+\begin{thebibliography}{10}
+
+\bibitem{PUD-2}
+Suliman Al~Freidi.
+\newblock A unified project management methodology (upmm) based on pmbok and
+  prince2 protocols: foundations, principles, structures and benefits of the
+  integrated approach.
+\newblock {\em International Journal of Business Policy and Strategy
+  Management}, 2:27--38, 11 2015.
+
+\bibitem{mercadoArm}
+Thomas Alsop.
+\newblock Cuota de mercado de arm holdings en mercados tecnológicos clave en
+  todo el mundo en 2020 y 2022.
+\newblock Recurso web:
+  \url{https://www.statista.com/statistics/1132112/arm-market-share-targets/}.
+\newblock Cuota de mercado de Arm. Accedido 29-07-2024.
+
+\bibitem{arm-a}
+ARM.
+\newblock A-profile architecture.
+\newblock Recurso web:
+  \url{https://developer.arm.com/Architectures/A-Profile%20Architecture }.
+\newblock Referencia técnica de las ISA Cortex-A. Accedido 15-01-2024.
+
+\bibitem{arm-especificacion-arquitecturas}
+ARM.
+\newblock Arm cortex-a processor comparison table.
+\newblock Recurso web:
+  \url{file:///home/fluctlights/Escritorio/Arm_Cortex-A_Processor_Comparison_Table.pdf}.
+\newblock Documento PDF. Accedido 06-04-2024.
+
+\bibitem{referencia-a72}
+ARM.
+\newblock Arm cortex-a72 mpcore processor technical reference manual.
+\newblock Recurso web:
+  \url{https://developer.arm.com/documentation/100095/0003/?lang=en }.
+\newblock Referencia técnica del ARM Cortex-A72. Accedido 12-03-2024.
+
+\bibitem{arm-fastmodels}
+ARM.
+\newblock Arm fast models.
+\newblock Recurso web:
+  \url{https://developer.arm.com/Tools%20and%20Software/Fast%20Models}.
+\newblock Página oficial del simulador ARM Fast Models. Accedido 20-02-2024.
+
+\bibitem{arm-rsk}
+ARM.
+\newblock Arm researck starter kit.
+\newblock Recurso web: \url{ https://github.com/arm-university/arm-gem5-rsk }.
+\newblock Repositorio GitHub con el RSK. Accedido 03-02-2024.
+
+\bibitem{datasheetA53}
+ARM.
+\newblock Cortex a53 arm developer portal.
+\newblock Recurso web: \url{https://developer.arm.com/Processors/Cortex-A53}.
+\newblock Especificaciones Cortex A53. Accedido 06-04-2024.
+
+\bibitem{A72-Gem5-pierre}
+Pierre Ayoub.
+\newblock Cortex-a72 configuration for gem5.
+\newblock Recurso web:
+  \url{https://github.com/pierreay/reproduce-spectre-gem5/blob/main/gem5/ARMv8A_Cortex_A72.py}.
+\newblock Fichero de configuración de Cortex-A72 en gem5. Accedido 06-04-2024.
+
+\bibitem{dhrystone-code}
+The Netlib~Library Benchmarks.
+\newblock Dhrystone sourcecode - c version.
+\newblock Recurso web: \url{https://www.netlib.org/benchmark/dhrystone.c}.
+\newblock Código fuente en C del benchmark Dhrystone. Accedido 04-04-2024.
+
+\bibitem{whetstone-code}
+The Netlib~Library Benchmarks.
+\newblock Whetstone sourcecode - c version.
+\newblock Recurso web: \url{https://www.netlib.org/benchmark/whetstone.c}.
+\newblock Código fuente en C del benchmark Whetstone. Accedido 04-04-2024.
+
+\bibitem{energiaSoc}
+Yahia Benmoussa.
+\newblock {\em Performance and Energy Consumption Characterization and Modeling
+  of Video Decoding on Multi-core Heterogenous Mobile SoC and their
+  Applications}.
+\newblock PhD thesis, Université de Bretagne Occidentale, 06 2015.
+
+\bibitem{10.1109/MM.2006.82}
+Nathan~L. Binkert, Ronald~G. Dreslinski, Lisa~R. Hsu, Kevin~T. Lim, Ali~G.
+  Saidi, and Steven~K. Reinhardt.
+\newblock The m5 simulator: Modeling networked systems.
+\newblock {\em IEEE Micro}, 26(4):52–60, July 2006.
+
+\bibitem{explicacionElectricidad}
+MCI Capacitación.
+\newblock Voltaje, corriente, resistencia, y ley de ohm.
+\newblock Recurso web:
+  \url{https://cursos.mcielectronics.cl/2019/06/18/voltaje-corriente-resistencia-y-ley-de-ohm/}.
+\newblock Explicación de la electricidad. Accedido 10-05-2024.
+
+\bibitem{electron}
+Jerry Coffey.
+\newblock What is an electron - universe today.
+\newblock Recurso web:
+  \url{https://www.universetoday.com/73323/what-is-an-electron/}.
+\newblock Explicación del electrón. Accedido 10-05-2024.
+
+\bibitem{build-arm-kernel}
+GEM5 Community.
+\newblock Building arm kernel.
+\newblock Recurso web:
+  \url{https://www.gem5.org/documentation/general_docs/fullsystem/building_arm_kernel}.
+\newblock Compilación del kernel de ARM. Accedido 10-04-2024.
+
+\bibitem{arm-linux-kernel-Gem5}
+GEM5 Community.
+\newblock Linux kernel configurations for gem5.
+\newblock Recurso web:
+  \url{https://gem5.googlesource.com/public/gem5-resources/+/refs/heads/stable/src/linux-kernel}.
+\newblock Configuraciones del kernel de Linux para gem5. Accedido 12-04-2024.
+
+\bibitem{m5ops-documentacion2}
+GEM5 Community.
+\newblock M5 and m5ops utility readme file.
+\newblock Recurso web:
+  \url{https://github.com/gem5/gem5/blob/stable/util/m5/README.md}.
+\newblock Documentación sobre m5ops. Accedido 29-04-2024.
+
+\bibitem{m5ops-documentacion}
+GEM5 Community.
+\newblock The m5ops.
+\newblock Recurso web:
+  \url{https://www.gem5.org/documentation/general_docs/m5ops/}.
+\newblock Documentación sobre m5ops. Accedido 27-04-2024.
+
+\bibitem{scons-doc}
+SCons Community.
+\newblock Scons: A software construction tool.
+\newblock Recurso web: \url{https://scons.org/}.
+\newblock Página oficial del constructor software SCons. Accedido 15-01-2024.
+
+\bibitem{bsc-riscv}
+@cothan.
+\newblock Bsc performance tools - riscv hwc interface.
+\newblock Recurso web:
+  \url{https://github.com/bsc-performance-tools/riscv-hwc-interface}.
+\newblock Repositorio para utilizar PAPI en arquitecturas RISC-V. Accedido
+  19-07-2024.
+
+\bibitem{papi-github-referencia}
+@cothan.
+\newblock Papi armv8 cortex a72 - github.
+\newblock Recurso web: \url{https://github.com/cothan/PAPI_ARMv8_Cortex_A72}.
+\newblock Repositorio GitHub para usar PAPI en ARM Cortex A72. Accedido
+  12-04-2024.
+
+\bibitem{objetivos}
+Universidad de~Castilla-La~Mancha.
+\newblock Competencias del máster - escuela superior de informática de uclm.
+\newblock Recurso web:
+  \url{https://www.uclm.es/estudios/masteres/master-ingenieria-informatica%202024}.
+\newblock Competencias relativas al TFM. Accedido 28-09-2024.
+
+\bibitem{datasheetA72}
+Paul~J. Drongowski.
+\newblock Raspberry pi 4 arm cortex-a72 processor.
+\newblock Recurso web:
+  \url{https://sandsoftwaresound.net/raspberry-pi-4-arm-cortex-a72-processor/}.
+\newblock Especificaciones Cortex A72. Accedido 06-04-2024.
+
+\bibitem{benchmarking-concepto}
+Therealdavidp~RPi engineer.
+\newblock Introducción al benchmarking.
+\newblock Recurso web:
+  \url{https://campusvirtual.uclm.es/pluginfile.php/597556/mod_resource/content/0/HPC2020_SESSION0X%20-%20Benchmarking.pdf}.
+\newblock Documento PDF. Accedido 04-04-2024.
+
+\bibitem{soledadPotencia}
+Semiconductor Engineering.
+\newblock Components of power consumption.
+\newblock Recurso web:
+  \url{https://semiengineering.com/knowledge_centers/low-power/low-power-design/power-consumption/}.
+\newblock Explicación de la potencia en circuitos integrados. Accedido
+  05-03-2024.
+
+\bibitem{rae-metodologia}
+Real~Academia Española.
+\newblock Definición de metodología.
+\newblock Recurso web: \url{https://dle.rae.es/metodología}.
+\newblock Página web de la Real Academia Española. Accedido 24-05-2024.
+
+\bibitem{dmm-alternativo}
+Velleman Europe.
+\newblock Multímetro usb de 6000 cuentas velleman dvm1200.
+\newblock Recurso web:
+  \url{https://www.velleman.eu/products/view/?lang=es&id=372236}.
+\newblock Página oficial del DMM utilizado. Accedido 01-09-2024.
+
+\bibitem{electricidadEspana}
+Rosa Fernández.
+\newblock Precio medio final de la electricidad españa 2010-2022.
+\newblock Recurso web:
+  \url{https://es.statista.com/estadisticas/993787/precio-medio-final-de-la-electricidad-en-espana/},
+  03 2024.
+\newblock Statista. Accedido: 19-07-2024.
+
+\bibitem{dvfs-raspi}
+Raspberry~Pi Foudation.
+\newblock Frequency management for raspberry pi.
+\newblock Recurso web:
+  \url{https://github.com/raspberrypi/documentation/blob/develop/documentation/asciidoc/computers/raspberry-pi/frequency-management.adoc
+  }.
+\newblock Uso de DVFS en la Raspberry Pi 4. Accedido 16-02-2024.
+
+\bibitem{papi-stackoverflow-referencia}
+The~PAPI Foundation.
+\newblock Is it possible to use papi on a raspberry pi 4b with raspbian buster?
+\newblock Recurso web:
+  \url{https://raspberrypi.stackexchange.com/questions/111641/is-it-possible-to-use-papi-on-a-raspberry-pi-4b-with-raspbian-buster}.
+\newblock Referencia PAPI en ARM Cortex A72. Accedido 12-05-2024.
+
+\bibitem{papi-documentacion}
+The~PAPI Foundation.
+\newblock Papi user guide.
+\newblock Recurso web:
+  \url{https://icl.utk.edu/projects/papi/files/documentation/PAPI_USER\_GUIDE_23.htm}.
+\newblock Documentación oficial de PAPI. Accedido 10-05-2024.
+
+\bibitem{antoniomateo}
+Antonio~Mateo Francés.
+\newblock Caracterización del consumo energético en plataformas iot para
+  aplicaciones intensivas en cómputo.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/8914d17353cd58293e77886459b945ac49fe3d63/Documentos/Biotrampa/Caracterizaci%C3%B3n%20del%20Consumo%20Energ%C3%A9tico%20en%20Plataformas%20IoT%20para%20Aplicaciones%20Intensivas%20en%20C%C3%B3mputo.pdf}.
+\newblock Explicación de un modelo de energía basado en componentes. Accedido
+  16-12-2024.
+
+\bibitem{gem5-cache}
+Gem5.
+\newblock Classic caches.
+\newblock Recurso web:
+  \url{https://www.gem5.org/documentation/general_docs/memory_system/classic_caches/
+  }.
+\newblock Características por defecto de las cachés en Gem5. Accedido
+  15-09-2024.
+
+\bibitem{referencia-tiempos-whetstone}
+Gem5.
+\newblock Linpack vs. whetstone benchmark discrepancies.
+\newblock Recurso web: \url{https://www.mersenneforum.org/node/14629}.
+\newblock Problemas del benchmark Whetstone. Accedido 20-09-2024.
+
+\bibitem{arm-foto}
+HardZone.
+\newblock Todo lo que necesitas saber sobre los procesadores arml.
+\newblock Recurso web:
+  \url{https://hardzone.es/tutoriales/componentes/procesador-arm/ }.
+\newblock Información sobre los procesadores ARM. Accedido 17-04-2024.
+
+\bibitem{arm1}
+Red Hat.
+\newblock What is an arm processor?
+\newblock Recurso web:
+  \url{https://www.redhat.com/en/topics/linux/what-is-arm-processor}.
+\newblock ¿Qué es un procesador ARM?. Accedido 25-07-2024.
+
+\bibitem{calcprimes-referencia}
+Carlos~Galeana Hernández.
+\newblock Introducción a las pruebas de primalidad.
+\newblock Recurso web:
+  \url{http://laberintos.itam.mx/introduccion-a-las-pruebas-de-primalidad/}.
+\newblock Explicación de la primalidad. Accedido 06-04-2024.
+
+\bibitem{dmm-github-repo}
+Luc Hondareyte.
+\newblock Velleman dvm1200 interface for *nix.
+\newblock Recurso web: \url{https://github.com/lhondareyte/dvm1200}.
+\newblock Código para utilizar el DMM. Accedido 03-09-2024.
+
+\bibitem{frecuencia}
+Intel.
+\newblock ¿qué es la velocidad de reloj?
+\newblock Recurso web:
+  \url{https://www.intel.la/content/www/xl/es/gaming/resources/cpu-clock-speed.html}.
+\newblock Concepto de frecuencia. Accedido 15-02-2024.
+
+\bibitem{libro-PUD}
+Rumbaugh Jacobson, Booch.
+\newblock {\em El proceso unificado de desarrollo de software}.
+\newblock Addison Wesley, second edition, July 2000.
+\newblock {ISBN}: 978-8478290369.
+
+\bibitem{netlib-library}
+The~Netlib Library.
+\newblock The netlib library.
+\newblock Recurso web: \url{https://www.netlib.org}.
+\newblock Página oficial de Netlib. Accedido 04-04-2024.
+
+\bibitem{documentacionDMM}
+OWON~HK Limited.
+\newblock Especificaciones técnicas del owon xdm2041.
+\newblock Recurso web:
+  \url{https://files.owon.com.cn/specifications/XDM2041\%20Digital\%20Multimeter\%20SPECIFICATIONS.pdf}.
+\newblock Documentación DMM. Accedido 22-07-2024.
+
+\bibitem{gem5-ticks-referencia1}
+Jason Lowe-Power.
+\newblock Understanding gem5 statistics and output.
+\newblock Recurso web:
+  \url{https://course.ece.cmu.edu/~ece740/gem5/part1/gem5_stats.html }.
+\newblock Learning gem5 by Jason Lowe-Power. Accedido 20-12-2024.
+
+\bibitem{Gem5-github}
+Jason Lowe-Power.
+\newblock The official repository for the gem5 computer-system architecture
+  simulator.
+\newblock Recurso web: \url{https://github.com/gem5/gem5}, 01 2020.
+\newblock Repositorio de GitHub. Accecido: 25-07-2024.
+
+\bibitem{documentacionDMM-alt}
+ManualsLib.
+\newblock Manual de usuario del velleman dvm1200.
+\newblock Recurso web:
+  \url{https://www.manualslib.com/manual/1116233/Velleman-Dvm1200.html#manual}.
+\newblock Documentación del DMM utilizado. Accedido 01-09-2024.
+
+\bibitem{repoTFM-calcpi}
+Antonio Mateo.
+\newblock Código fuente calcular decimales número pi.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-RPI/Codigo-PRUEBAS/calcular-pi.c
+  }.
+\newblock Código fuente Cálculo decimales de Pi, en el repositorio del TFM.
+  Accedido 28-02-2024.
+
+\bibitem{repoTFM-calcprimos}
+Antonio Mateo.
+\newblock Código fuente calcular números primos.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-RPI/Codigo-PRUEBAS/calcular-primos.c
+  }.
+\newblock Código fuente Cálculo de números primos, en el repositorio del
+  TFM. Accedido 28-02-2024.
+
+\bibitem{repoTFM-interfazEjecuciones}
+Antonio Mateo.
+\newblock Código fuente de benchmarks-deploy-gem5.c.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Benchmarks/benchmarks_deploy_gem5.c
+  }.
+\newblock Código fuente de la interfaz de los benchmarks en Gem5. Accedido
+  28-03-2024.
+
+\bibitem{repoTFM-interfazEjecuciones2}
+Antonio Mateo.
+\newblock Código fuente de benchmarks-deploy-papi.c.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-RPI/Codigo-PAPI/Benchmarks/benchmarks_test.c
+  }.
+\newblock Código fuente de la interfaz de los benchmarks en PAPI. Accedido
+  30-04-2024.
+
+\bibitem{repoTFM-montarImagen}
+Antonio Mateo.
+\newblock Código fuente de mount-gem5-img.sh.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Scripts/mount-gem5-img.sh
+  }.
+\newblock Script de montado del disco utilizado en Gem5. Accedido 30-04-2024.
+
+\bibitem{repoTFM-abrirTerminal}
+Antonio Mateo.
+\newblock Código fuente de open-terminal.sh.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Scripts/open_terminal.sh
+  }.
+\newblock Script de apertura de terminal para operar con las simulaciones Gem5.
+  Accedido 30-04-2024.
+
+\bibitem{repoTFM-desmontarImagen}
+Antonio Mateo.
+\newblock Código fuente de umount-gem5-img.sh.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Scripts/umount-gem5-img.sh
+  }.
+\newblock Script de desmontado del disco utilizado en Gem5. Accedido
+  30-04-2024.
+
+\bibitem{repoTFM-starterfs}
+Antonio Mateo.
+\newblock Código fuente del script para lanzar simulaciones.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/gem5/configs/example/arm/starter_fs.py
+  }.
+\newblock Código fuente del lanzador de simulaciones en el repositorio del
+  TFM. Accedido 28-03-2024.
+
+\bibitem{repoTFM-dhrystone}
+Antonio Mateo.
+\newblock Código fuente dhrystone.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-RPI/Codigo-PRUEBAS/dhrystone.c
+  }.
+\newblock Código fuente Dhrystone en el repositorio del TFM. Accedido
+  24-02-2024.
+
+\bibitem{repoTFM-whetstone}
+Antonio Mateo.
+\newblock Código fuente whetstone.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-RPI/Codigo-PRUEBAS/whetstone.c
+  }.
+\newblock Código fuente Whetstone en el repositorio del TFM. Accedido
+  25-02-2024.
+
+\bibitem{repoTFM}
+Antonio Mateo.
+\newblock Repositorio tfm antonio mateo.
+\newblock Recurso web: \url{https://github.com/fluctlights/tfm }.
+\newblock Repositorio del TFM de Antonio Mateo Francés. Accedido 29-11-2024.
+
+\bibitem{repoTFM-lanzarSimulacion}
+Antonio Mateo.
+\newblock Script launch-simulation.sh.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Scripts/launch_simulation.sh
+  }.
+\newblock Script Bash del lanzado automático de simulaciones Gem5. Accedido
+  30-04-2024.
+
+\bibitem{repoTFM-crearCheckpoint}
+Antonio Mateo.
+\newblock Script make-checkpoint.sh.
+\newblock Recurso web:
+  \url{https://github.com/fluctlights/tfm/blob/main/Codigo/Codigo-GEM5/Scripts/make_checkpoint.sh
+  }.
+\newblock Script Bash del creador automático de checkpoints en Gem5. Accedido
+  30-04-2024.
+
+\bibitem{gem5-ticks-referencia2}
+Mahmood Naderan.
+\newblock Relationship between numcycles and simticks.
+\newblock Recurso web:
+  \url{https://gem5-users.gem5.narkive.com/ygvm91NA/relationship-between-numcycles-and-sim-ticks
+  }.
+\newblock Foro Gem5 oficial. Accedido 02-01-2024.
+
+\bibitem{snapdragon8}
+NanoReview.
+\newblock Snapdragon 8 gen 3: benchmarks and specs.
+\newblock Recurso web:
+  \url{https://nanoreview.net/en/soc/qualcomm-snapdragon-8-gen-3}.
+\newblock Especificaciones del Snapdragon 8 Gen 3. Accedido 30-07-2024.
+
+\bibitem{calcpi-code}
+Kenneth~Emeka Odoh.
+\newblock Gauss-legendre iterative algorithm sourcecode - python version.
+\newblock Recurso web: \url{https://gist.github.com/kenluck2001/3696618}.
+\newblock Código fuente en Python para el benchmark Cálculo de decimales de
+  Pi. Accedido 07-04-2024.
+
+\bibitem{PHILLIPS1979225}
+Don~T. Phillips, Mike Handwerker, and Gary~L. Hogg.
+\newblock Gems: A generalized manufacturing simulator.
+\newblock {\em Computers And Industrial Engineering}, 3(3):225--233, 1979.
+
+\bibitem{schematics-rpi}
+Raspberry Pi.
+\newblock Raspberry pi reduced schematics.
+\newblock Recurso web:
+  \url{https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf}.
+\newblock Esquemáticos reducidos de Raspberry Pi. Accedido 10-12-2023.
+
+\bibitem{mercadoSoc}
+Grand~View Research.
+\newblock System on chip market size, share and trends analysis report by type
+  (digital, mixed, analog), by applications (home appliance, adas system), by
+  end use, by region, and segment forecasts, 2024 - 2030.
+\newblock Recurso web:
+  \url{https://www.grandviewresearch.com/industry-analysis/system-on-chip-market-report}.
+\newblock Previsiones mercado de System-On-Chip entre 2024-2030. Accedido
+  29-07-2024.
+
+\bibitem{arm2}
+Stephen J.~Bigelow Robert~Sheldon.
+\newblock Definition of arm processor.
+\newblock Recurso web:
+  \url{https://www.techtarget.com/whatis/definition/ARM-processor}.
+\newblock Definición y descripción de un procesador ARM. Accedido 25-07-2024.
+
+\bibitem{perf-referencia}
+Ian Rogers.
+\newblock Perf wiki.
+\newblock Recurso web:
+  \url{https://perf.wiki.kernel.org/index.php/Main_Page#perf:_Linux_profiling_with_performance_counters}.
+\newblock Wiki de perf para el kernel de Linux. Accedido 20-02-2024.
+
+\bibitem{salido19}
+Jesús Salido.
+\newblock {Plantilla LaTeX para Trabajo Fin de Estudios en Ingeniería
+  Informática - UCLM (España)}.
+\newblock Zenodo, DOI: \url{https://doi.org/10.5281/zenodo.4561708}, 2019.
+
+\bibitem{spec2006}
+SPEC.
+\newblock Spec cpu 2006 (retired: January 2018).
+\newblock Recurso web: \url{https://www.spec.org/cpu2006/}.
+\newblock Suite SPEC 2006. Accedido 31-01-2024.
+
+\bibitem{spec2017}
+SPEC.
+\newblock Spec cpu 2017.
+\newblock Recurso web: \url{https://www.spec.org/cpu2017/}.
+\newblock Suite SPEC 2017. Accedido 31-01-2024.
+
+\bibitem{precio-licencias-arm}
+Strategizer.
+\newblock Arm business model.
+\newblock Recurso web:
+  \url{https://www.strategyzer.com/library/arm-business-model}.
+\newblock Precio de las licencias de ARM. Accedido 25-05-2024.
+
+\bibitem{DMM}
+TME.
+\newblock Xdm2041 owon - multímetro de mesa | lcd 4,5"; 480x320; muestreo:
+  65x/s; 50nf÷50mf | tme - elektroniikka komponentit.
+\newblock Recurso web:
+  \url{https://www.tme.eu/es/details/xdm2041/multimetros-digitales-fijos/owon/}.
+\newblock Página de compra del DMM utilizado. Página Web. Accedido
+  30-06-2024.
+
+\bibitem{funcionamiento-dmm}
+Hunter~American Tools.
+\newblock ¿qué es un multímetro digital y cómo funciona?
+\newblock Recurso web:
+  \url{https://es.linkedin.com/pulse/qu%C3%A9-es-un-mult%C3%ADmetro-digital-y-c%C3%B3mo-funciona-hunter-american-tools-rt2me?trk=public_post}.
+\newblock Funcionamiento de un DMM. Accedido 10-07-2024.
+
+\bibitem{networkmanager}
+Ubuntu.
+\newblock What is networkmanager.
+\newblock Recurso web:
+  \url{https://ubuntu.com/core/docs/networkmanager#:~:text=NetworkManager%20is%20a%20system%20network,variety%20of%20different%20VPN%20services.
+  }.
+\newblock Explicación servicio NetworkManager. Accedido 24-02-2024.
+
+\bibitem{soton418538}
+Matthew Walker, Sascha Bischoff, Stephan Diestelhorst, Geoff Merrett, and
+  Bashir Al-Hashimi.
+\newblock Hardware-validated cpu performance and energy modelling.
+\newblock In {\em 2018 IEEE International Symposium on Performance Analysis of
+  Systems and Software (02/04/18 - 04/04/18)}, April 2018.
+
+\bibitem{soton393728}
+Matthew Walker, Stephan Diestelhorst, Andreas Hansson, Anup Das, Sheng Yang,
+  Bashir~M. Al-Hashimi, and Geoff~V. Merrett.
+\newblock Accurate and stable run-time power modeling for mobile and embedded
+  cpus.
+\newblock {\em IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 36(1):106--119, January 2017.
+
+\bibitem{calcprimes-code}
+Wikilibros.
+\newblock Implementación del test de primalidad de miller-rabin.
+\newblock Recurso web:
+  \url{https://es.wikibooks.org/wiki/Implementaci%C3%B3n_de_algoritmos_de_teor%C3%ADa_de_n%C3%BAmeros/Test_de_primalidad_de_Miller-Rabin#Referencias}.
+\newblock Código fuente para el benchmark Cálculo de números primos.
+  Accedido 06-04-2024.
+
+\bibitem{xiaomiWatch}
+Xiaomi.
+\newblock Página oficial xiaomi watch 2.
+\newblock Recurso web:
+  \url{https://www.mi.com/es/product/xiaomi-watch-2/specs}.
+\newblock Especificaciones Xiaomi Watch 2. Accedido 28-07-2024.
+
+\end{thebibliography}

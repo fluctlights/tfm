@@ -59,8 +59,8 @@ int do_dhrystone_benchmark()
 		IntLoc1 = 2;
 		IntLoc2 = 3;
 		/* Se sospecha que esta operacion ralentiza mucho los tiempos */
-		/* COMPARAR VALORES Y TIEMPOS ENTRE LA VERSION COMPLETA YA HECHA Y LA NUEVA
-		/* strcpy(String2Loc, "DHRYSTONE PROGRAM, 2'ND STRING"); */
+		/* COMPARAR VALORES Y TIEMPOS ENTRE LA VERSION COMPLETA YA HECHA Y LA NUEVA */
+		strcpy(String2Loc, "DHRYSTONE PROGRAM, 2'ND STRING");
 		EnumLoc = Ident2;
 		BoolGlob = ! Func2(String1Loc, String2Loc);
 		while (IntLoc1 < IntLoc2)

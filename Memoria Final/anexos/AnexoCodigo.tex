@@ -1,0 +1,1449 @@
+\chapter{Anexo :: Código de los \textit{benchmarks} utilizados}
+\label{cap:AnexoCodigo}
+
+\begin{lstlisting}[language=bash,frame=single,caption={Código fuente para la desactivación de los servicios},showstringspaces=false,label=lst:desactivarServicios]
+#!/bin/bash
+
+if [ $(id -u) -eq 0 ]; then
+    sudo service ModemManager stop > /dev/null 2>&1
+    sudo service NetworkManager stop > /dev/null 2>&1
+    sudo ifconfig wlan0 down > /dev/null 2>&1
+    sudo service wpa_supplicant stop > /dev/null 2>&1
+    sudo ifconfig end0 down > /dev/null 2>&1
+    sudo service avahi-daemon stop > /dev/null 2>&1
+    sudo service networking stop > /dev/null 2>&1
+    sudo service ssh stop > /dev/null 2>&1
+    vcgencmd display_power 0 > /dev/null 2>&1
+else
+    echo "ERROR! Please run script as root"
+fi
+\end{lstlisting}
+
+\begin{lstlisting}[language=C,frame=single,showstringspaces=false,caption={Código fuente del benchmark Dhrystone},label=lst:dhrystone-benchmark]
+#include "benchmarks_deploy.h"
+
+/* Compiler dependent options */
+#undef	NOENUM			/* Define if compiler has no enum's */
+#undef	NOSTRUCTASSIGN		/* Define if compiler can't assign structures */
+
+/* for compatibility with goofed up version */
+/*#define GOOF			/* Define if you want the goofed up version */
+
+#ifdef GOOF
+char	Version[] = "1.0";
+#else
+char	Version[] = "1.1";
+#endif
+
+#ifdef	NOSTRUCTASSIGN
+#define	structassign(d, s)	memcpy(&(d), &(s), sizeof(d))
+#else
+#define	structassign(d, s)	d = s
+#endif
+
+#ifdef	NOENUM
+#define	Ident1	1
+#define	Ident2	2
+#define	Ident3	3
+#define	Ident4	4
+#define	Ident5	5
+typedef int	Enumeration;
+#else
+typedef enum	{Ident1, Ident2, Ident3, Ident4, Ident5} Enumeration;
+#endif
+
+typedef int	OneToThirty;
+typedef int	OneToFifty;
+typedef char	CapitalLetter;
+typedef char	String30[31];
+typedef int	Array1Dim[51];
+typedef int	Array2Dim[51][51];
+
+struct	Record
+{
+	struct Record		*PtrComp;
+	Enumeration		Discr;
+	Enumeration		EnumComp;
+	OneToFifty		IntComp;
+	String30		StringComp;
+};
+
+typedef struct Record 	RecordType;
+typedef RecordType *	RecordPtr;
+typedef int		boolean;
+
+#define	NULL		0
+#define	TRUE		1
+#define	FALSE		0
+
+#ifndef REG
+#define	REG
+#endif
+
+extern Enumeration	Func1();
+extern boolean		Func2();
+
+extern int benchmark_num_trials;
+extern int n_events;
+int do_dhrystone_benchmark();
+
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+/*
+ * Package 1
+ */
+int		IntGlob;
+boolean		BoolGlob;
+char		Char1Glob;
+char		Char2Glob;
+Array1Dim	Array1Glob;
+Array2Dim	Array2Glob;
+RecordPtr	PtrGlb;
+RecordPtr	PtrGlbNext;
+
+do_dhrystone_benchmark()
+{
+	OneToFifty		IntLoc1;
+	REG OneToFifty		IntLoc2;
+	OneToFifty		IntLoc3;
+	REG char		CharLoc;
+	REG char		CharIndex;
+	Enumeration	 	EnumLoc;
+	String30		String1Loc;
+	String30		String2Loc;
+
+	register unsigned int	i;
+
+	PtrGlbNext = (RecordPtr) malloc(sizeof(RecordType));
+	PtrGlb = (RecordPtr) malloc(sizeof(RecordType));
+	PtrGlb->PtrComp = PtrGlbNext;
+	PtrGlb->Discr = Ident1;
+	PtrGlb->EnumComp = Ident3;
+	PtrGlb->IntComp = 40;
+
+	/* Se sospecha que esta operacion ralentiza mucho los tiempos */
+	/* strcpy(PtrGlb->StringComp, "DHRYSTONE PROGRAM, SOME STRING");*/
+	
+	Array2Glob[8][7] = 10;	/* Was missing in published program */
+
+	long LOOPS = benchmark_num_trials;
+
+	/* BENCHMARK START */
+	
+	// Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
+
+	for (long l = 0; l < LOOPS; ++l)
+	{
+		Proc5();
+		Proc4();
+		IntLoc1 = 2;
+		IntLoc2 = 3;
+		strcpy(String2Loc, "DHRYSTONE PROGRAM, 2'ND STRING");
+		EnumLoc = Ident2;
+		BoolGlob = ! Func2(String1Loc, String2Loc);
+		while (IntLoc1 < IntLoc2)
+		{
+			IntLoc3 = 5 * IntLoc1 - IntLoc2;
+			Proc7(IntLoc1, IntLoc2, &IntLoc3);
+			++IntLoc1;
+		}
+		Proc8(Array1Glob, Array2Glob, IntLoc1, IntLoc3);
+		Proc1(PtrGlb);
+		for (CharIndex = 'A'; CharIndex <= Char2Glob; ++CharIndex)
+			if (EnumLoc == Func1(CharIndex, 'C'))
+				Proc6(Ident1, &EnumLoc);
+		IntLoc3 = IntLoc2 * IntLoc1;
+		IntLoc2 = IntLoc3 / IntLoc1;
+		IntLoc2 = 7 * (IntLoc3 - IntLoc2) - IntLoc1;
+		Proc2(&IntLoc1);
+	}
+
+	/* BENCHMARK END */
+
+	// Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+
+	return 0;
+}
+
+
+Proc1(PtrParIn)
+REG RecordPtr	PtrParIn;
+{
+#define	NextRecord	(*(PtrParIn->PtrComp))
+
+	structassign(NextRecord, *PtrGlb);
+	PtrParIn->IntComp = 5;
+	NextRecord.IntComp = PtrParIn->IntComp;
+	NextRecord.PtrComp = PtrParIn->PtrComp;
+	Proc3(NextRecord.PtrComp);
+	if (NextRecord.Discr == Ident1)
+	{
+		NextRecord.IntComp = 6;
+		Proc6(PtrParIn->EnumComp, &NextRecord.EnumComp);
+		NextRecord.PtrComp = PtrGlb->PtrComp;
+		Proc7(NextRecord.IntComp, 10, &NextRecord.IntComp);
+	}
+	else
+		structassign(*PtrParIn, NextRecord);
+
+#undef	NextRecord
+}
+
+Proc2(IntParIO)
+OneToFifty	*IntParIO;
+{
+	REG OneToFifty		IntLoc;
+	REG Enumeration		EnumLoc;
+
+	IntLoc = *IntParIO + 10;
+	for(;;)
+	{
+		if (Char1Glob == 'A')
+		{
+			--IntLoc;
+			*IntParIO = IntLoc - IntGlob;
+			EnumLoc = Ident1;
+		}
+		if (EnumLoc == Ident1)
+			break;
+	}
+}
+
+Proc3(PtrParOut)
+RecordPtr	*PtrParOut;
+{
+	if (PtrGlb != NULL)
+		*PtrParOut = PtrGlb->PtrComp;
+	else
+		IntGlob = 100;
+	Proc7(10, IntGlob, &PtrGlb->IntComp);
+}
+
+Proc4()
+{
+	REG boolean	BoolLoc;
+
+	BoolLoc = Char1Glob == 'A';
+	BoolLoc |= BoolGlob;
+	Char2Glob = 'B';
+}
+
+Proc5()
+{
+	Char1Glob = 'A';
+	BoolGlob = FALSE;
+}
+
+extern boolean Func3();
+
+Proc6(EnumParIn, EnumParOut)
+REG Enumeration	EnumParIn;
+REG Enumeration	*EnumParOut;
+{
+	*EnumParOut = EnumParIn;
+	if (! Func3(EnumParIn) )
+		*EnumParOut = Ident4;
+	switch (EnumParIn)
+	{
+	case Ident1:	*EnumParOut = Ident1; break;
+	case Ident2:	if (IntGlob > 100) *EnumParOut = Ident1;
+			else *EnumParOut = Ident4;
+			break;
+	case Ident3:	*EnumParOut = Ident2; break;
+	case Ident4:	break;
+	case Ident5:	*EnumParOut = Ident3;
+	}
+}
+
+Proc7(IntParI1, IntParI2, IntParOut)
+OneToFifty	IntParI1;
+OneToFifty	IntParI2;
+OneToFifty	*IntParOut;
+{
+	REG OneToFifty	IntLoc;
+
+	IntLoc = IntParI1 + 2;
+	*IntParOut = IntParI2 + IntLoc;
+}
+
+Proc8(Array1Par, Array2Par, IntParI1, IntParI2)
+Array1Dim	Array1Par;
+Array2Dim	Array2Par;
+OneToFifty	IntParI1;
+OneToFifty	IntParI2;
+{
+	REG OneToFifty	IntLoc;
+	REG OneToFifty	IntIndex;
+
+	IntLoc = IntParI1 + 5;
+	Array1Par[IntLoc] = IntParI2;
+	Array1Par[IntLoc+1] = Array1Par[IntLoc];
+	Array1Par[IntLoc+30] = IntLoc;
+	for (IntIndex = IntLoc; IntIndex <= (IntLoc+1); ++IntIndex)
+		Array2Par[IntLoc][IntIndex] = IntLoc;
+	++Array2Par[IntLoc][IntLoc-1];
+	Array2Par[IntLoc+20][IntLoc] = Array1Par[IntLoc];
+	IntGlob = 5;
+}
+
+Enumeration Func1(CharPar1, CharPar2)
+CapitalLetter	CharPar1;
+CapitalLetter	CharPar2;
+{
+	REG CapitalLetter	CharLoc1;
+	REG CapitalLetter	CharLoc2;
+
+	CharLoc1 = CharPar1;
+	CharLoc2 = CharLoc1;
+	if (CharLoc2 != CharPar2)
+		return (Ident1);
+	else
+		return (Ident2);
+}
+
+boolean Func2(StrParI1, StrParI2)
+String30	StrParI1;
+String30	StrParI2;
+{
+	REG OneToThirty		IntLoc;
+	REG CapitalLetter	CharLoc;
+
+	IntLoc = 1;
+	while (IntLoc <= 1)
+		if (Func1(StrParI1[IntLoc], StrParI2[IntLoc+1]) == Ident1)
+		{
+			CharLoc = 'A';
+			++IntLoc;
+		}
+	if (CharLoc >= 'W' && CharLoc <= 'Z')
+		IntLoc = 7;
+	if (CharLoc == 'X')
+		return(TRUE);
+	else
+	{
+		if (strcmp(StrParI1, StrParI2) > 0)
+		{
+			IntLoc += 7;
+			return (TRUE);
+		}
+		else
+			return (FALSE);
+	}
+}
+
+boolean Func3(EnumParIn)
+REG Enumeration	EnumParIn;
+{
+	REG Enumeration	EnumLoc;
+
+	EnumLoc = EnumParIn;
+	if (EnumLoc == Ident3) return (TRUE);
+	return (FALSE);
+}
+
+
+#ifdef	NOSTRUCTASSIGN
+memcpy(d, s, l)
+register char	*d;
+register char	*s;
+register int	l;
+{
+	while (l--) *d++ = *s++;
+}
+#endif
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=C,frame=single,showstringspaces=false,caption={Código fuente del benchmark Whetstone},label=lst:whetstone-benchmark]
+
+/* BENCHMARKS TEST REQUIRED */
+#include "benchmarks_deploy.h"
+extern char *arm_cortex_pmu_events[];
+extern int benchmark_num_trials;
+extern int n_events;
+
+/* map the FORTRAN math functions, etc. to the C versions */
+#define DSIN	sin
+#define DCOS	cos
+#define DATAN	atan
+#define DLOG	log
+#define DEXP	exp
+#define DSQRT	sqrt
+#define IF		if
+
+/* function prototypes */
+void POUT(long N, long J, long K, double X1, double X2, double X3, double X4);
+void PA(double E[]);
+void P0(void);
+void P3(double X, double Y, double *Z);
+int do_whetstone_benchmark();
+
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+
+/*
+	COMMON T,T1,T2,E1(4),J,K,L
+*/
+double T,T1,T2,E1[5];
+int J,K,L;
+
+do_whetstone_benchmark()
+{
+	/* used in the FORTRAN version */
+	long I;
+	long N1, N2, N3, N4, N6, N7, N8, N9, N10, N11;
+	double X1,X2,X3,X4,X,Y,Z;
+	long LOOP;
+	int II, JJ, i;
+	long loopstart;
+	int continuous;
+
+	continuous = 1;
+	loopstart = benchmark_num_trials;
+
+	/* BENCHMARK START */
+
+	clock_gettime(CLOCK_MONOTONIC, &start);
+
+
+	T  = .499975;
+	T1 = 0.50025;
+	T2 = 2.0;
+
+	LOOP = (long) loopstart;
+	II   = 1;
+	JJ = 1;
+
+
+IILOOP:
+	N1  = 0;
+	N2  = 12 * LOOP;
+	N3  = 14 * LOOP;
+	N4  = 345 * LOOP;
+	N6  = 210 * LOOP;
+	N7  = 32 * LOOP;
+	N8  = 899 * LOOP;
+	N9  = 616 * LOOP;
+	N10 = 0;
+	N11 = 93 * LOOP;
+/*
+C
+C	Module 1: Simple identifiers
+C
+*/
+	X1  =  1.0;
+	X2  = -1.0;
+	X3  = -1.0;
+	X4  = -1.0;
+
+	for (I = 1; I <= N1; I++) {
+	    X1 = (X1 + X2 + X3 - X4) * T;
+	    X2 = (X1 + X2 - X3 + X4) * T;
+	    X3 = (X1 - X2 + X3 + X4) * T;
+	    X4 = (-X1+ X2 + X3 + X4) * T;
+	}
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N1,N1,N1,X1,X2,X3,X4);
+#endif
+
+/*
+C
+C	Module 2: Array elements
+C
+*/
+	E1[1] =  1.0;
+	E1[2] = -1.0;
+	E1[3] = -1.0;
+	E1[4] = -1.0;
+
+	for (I = 1; I <= N2; I++) {
+	    E1[1] = ( E1[1] + E1[2] + E1[3] - E1[4]) * T;
+	    E1[2] = ( E1[1] + E1[2] - E1[3] + E1[4]) * T;
+	    E1[3] = ( E1[1] - E1[2] + E1[3] + E1[4]) * T;
+	    E1[4] = (-E1[1] + E1[2] + E1[3] + E1[4]) * T;
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N2,N3,N2,E1[1],E1[2],E1[3],E1[4]);
+#endif
+
+/*
+C
+C	Module 3: Array as parameter
+C
+*/
+	for (I = 1; I <= N3; I++)
+		PA(E1);
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N3,N2,N2,E1[1],E1[2],E1[3],E1[4]);
+#endif
+
+/*
+C
+C	Module 4: Conditional jumps
+C
+*/
+	J = 1;
+	for (I = 1; I <= N4; I++) {
+		if (J == 1)
+			J = 2;
+		else
+			J = 3;
+
+		if (J > 2)
+			J = 0;
+		else
+			J = 1;
+
+		if (J < 1)
+			J = 1;
+		else
+			J = 0;
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N4,J,J,X1,X2,X3,X4);
+#endif
+
+/*
+C
+C	Module 5: Omitted
+C 	Module 6: Integer arithmetic
+C
+*/
+
+	J = 1;
+	K = 2;
+	L = 3;
+
+	for (I = 1; I <= N6; I++) {
+	    J = J * (K-J) * (L-K);
+	    K = L * K - (L-J) * K;
+	    L = (L-K) * (K+J);
+	    E1[L-1] = J + K + L;
+	    E1[K-1] = J * K * L;
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N6,J,K,E1[1],E1[2],E1[3],E1[4]);
+#endif
+
+/*
+C
+C	Module 7: Trigonometric functions
+C
+*/
+	X = 0.5;
+	Y = 0.5;
+
+	for (I = 1; I <= N7; I++) {
+		X = T * DATAN(T2*DSIN(X)*DCOS(X)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
+		Y = T * DATAN(T2*DSIN(Y)*DCOS(Y)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N7,J,K,X,X,Y,Y);
+#endif
+
+/*
+C
+C	Module 8: Procedure calls
+C
+*/
+	X = 1.0;
+	Y = 1.0;
+	Z = 1.0;
+
+	for (I = 1; I <= N8; I++)
+		P3(X,Y,&Z);
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N8,J,K,X,Y,Z,Z);
+#endif
+
+/*
+C
+C	Module 9: Array references
+C
+*/
+	J = 1;
+	K = 2;
+	L = 3;
+	E1[1] = 1.0;
+	E1[2] = 2.0;
+	E1[3] = 3.0;
+
+	for (I = 1; I <= N9; I++)
+		P0();
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N9,J,K,E1[1],E1[2],E1[3],E1[4]);
+#endif
+
+/*
+C
+C	Module 10: Integer arithmetic
+C
+*/
+	J = 2;
+	K = 3;
+
+	for (I = 1; I <= N10; I++) {
+	    J = J + K;
+	    K = J + K;
+	    J = K - J;
+	    K = K - J - J;
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N10,J,K,X1,X2,X3,X4);
+#endif
+
+/*
+C
+C	Module 11: Standard functions
+C
+*/
+	X = 0.75;
+
+	for (I = 1; I <= N11; I++)
+		X = DSQRT(DEXP(DLOG(X)/T1));
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N11,J,K,X,X,X,X);
+#endif
+
+/*
+C
+C      THIS IS THE END OF THE MAJOR LOOP.
+C
+*/
+	if (++JJ <= II)
+		goto IILOOP;
+
+
+	/* BENCHMARK END */
+
+	clock_gettime(CLOCK_MONOTONIC, &end);
+
+	// Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+
+	return 0;
+}
+
+void
+PA(double E[])
+{
+	J = 0;
+
+L10:
+	E[1] = ( E[1] + E[2] + E[3] - E[4]) * T;
+	E[2] = ( E[1] + E[2] - E[3] + E[4]) * T;
+	E[3] = ( E[1] - E[2] + E[3] + E[4]) * T;
+	E[4] = (-E[1] + E[2] + E[3] + E[4]) / T2;
+	J += 1;
+
+	if (J < 6)
+		goto L10;
+}
+
+void
+P0(void)
+{
+	E1[J] = E1[K];
+	E1[K] = E1[L];
+	E1[L] = E1[J];
+}
+
+void
+P3(double X, double Y, double *Z)
+{
+	double X1, Y1;
+
+	X1 = X;
+	Y1 = Y;
+	X1 = T * (X1 + Y1);
+	Y1 = T * (X1 + Y1);
+	*Z  = (X1 + Y1) / T2;
+}
+
+#ifdef PRINTOUT
+void
+POUT(long N, long J, long K, double X1, double X2, double X3, double X4)
+{
+	printf("%7ld %7ld %7ld %12.4e %12.4e %12.4e %12.4e\n",
+						N, J, K, X1, X2, X3, X4);
+}
+#endif
+\end{lstlisting}
+
+\begin{lstlisting}[language=C,frame=single,showstringspaces=false,caption={Código fuente del benchmark Cálculo de decimales del número Pi},label=lst:calcpi-benchmark]
+#include "benchmarks_deploy.h"
+
+extern char *arm_cortex_pmu_events[];
+extern int benchmark_num_trials;
+extern int n_events;
+int do_gauss_legendre_pi_benchmark();
+
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+do_gauss_legendre_pi_benchmark()
+{
+    
+    double a = 1.0;
+    double b = 1.0 / sqrt(2);
+    double t = 0.25;
+    double p = 1.0;
+    double pi;
+    int i;
+    int LOOP = benchmark_num_trials;
+    
+    /* BENCHMARK START */
+
+    // Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    
+    for (int i = 0; i < benchmark_num_trials; i++) {
+        double a_next = (a + b) / 2;
+        double b_next = sqrt(a * b);
+        double t_next = t - p * pow((a - a_next), 2);
+        double p_next = 2 * p;
+
+        a = a_next;
+        b = b_next;
+        t = t_next;
+        p = p_next;
+    }
+
+    pi = pow((a + b), 2) / (4 * t);
+
+    /* BENCHMARK END */
+    
+    // Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+    // Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+    return 0;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=C,frame=single,showstringspaces=false,caption={Código fuente del benchmark Cálculo de números primos},label=lst:calcprimes-benchmark]
+#include "benchmarks_deploy.h"
+extern char *arm_cortex_pmu_events[];
+extern int benchmark_num_trials;
+extern int n_events;
+int do_miller_rabin_primes_benchmark();
+
+/*
+* Declared time variables
+*/
+struct timespec start;
+struct timespec end;
+long seconds, nanoseconds;
+double elapsed;
+
+// Funcion para calcular a elevado a b modulo de m
+uint64_t power(uint64_t a, uint64_t b, uint64_t m) {
+    uint64_t result = 1;
+    a = a % m;
+    while (b > 0) {
+        if (b & 1) {
+            result = (result * a) % m;
+        }
+        b = b >> 1;
+        a = (a * a) % m;
+    }
+    return result;
+}
+
+// Test de primalidad de Miller-Rabin
+bool isPrimeMillerRabin(uint64_t n, int k) {
+    if (n <= 1 || n == 4) return false;
+    if (n <= 3) return true;
+
+    // Encontrar r y d tal que n - 1 = 2 elevado a r * d
+    uint64_t d = n - 1;
+    while (d % 2 == 0) {
+        d /= 2;
+    }
+
+    // Realizar el test de Miller-Rabin k veces
+    for (int i = 0; i < k; i++) {
+        uint64_t a = 2 + rand() % (n - 4);
+        uint64_t x = power(a, d, n);
+        if (x == 1 || x == n - 1) continue;
+
+        bool prime = false;
+        while (d != n - 1) {
+            x = (x * x) % n;
+            d *= 2;
+            if (x == 1) return false;
+            if (x == n - 1) {
+                prime = true;
+                break;
+            }
+        }
+        if (!prime) return false;
+    }
+    return true;
+}
+
+int do_miller_rabin_primes_benchmark() {
+    
+    int count = 0;
+    int LOOP = benchmark_num_trials;
+
+    /* BENCHMARK START */
+
+    // Tiempo inicial
+    clock_gettime(CLOCK_MONOTONIC, &start);
+
+    for (uint64_t num = 2; count < LOOP; num++) {
+        if (isPrimeMillerRabin(num, 10)) {
+            count++;
+        }
+    }
+
+    /* BENCHMARK END */
+    
+    // Obtener el tiempo final
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+    // Calcular el tiempo transcurrido
+    seconds = end.tv_sec - start.tv_sec;
+    nanoseconds = end.tv_nsec - start.tv_nsec;
+
+    // Ajustar si los nanosegundos del final son menores que los del inicio
+    if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += 1000000000;
+    }
+
+    elapsed = seconds + nanoseconds * 1e-9;
+    printf("Tiempo transcurrido: %.9f segundos.\n", elapsed);
+    return 0;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python,caption={Integración de modelado de energía en Gem5},label=lst:addPower,showstringspaces=false,frame=single]
+class CpuPowerOn(MathExprPowerModel):
+    def __init__(self, cpu_path, args, **kwargs):
+        super(CpuPowerOn, self).__init__(**kwargs)
+        
+        self.dyn = (
+            "((({}.numCycles * 0.000000000606992538845) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " + "
+            "(({}.dcache.overallAccesses * 0.00000000023263372317) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " + "
+            "(({}.executeStats0.numInsts * 0.000000000543933973638) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " - "
+            "((({}.executeStats0.commitStats0. committedInstType::IntAlu * 0.000000000543933973638) + ({}.commitStats0. committedInstType::IntMult * 0.000000000543933973638) + ({}.commitStats0. committedInstType::IntDiv * 0.000000000543933973638)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " + "
+            "(({}.dcache.WriteReq.misses::total * 0.0000000479625288372) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " + "
+            "(({}.dcache.ReadReq.accesses::total * 0.000000000841332534886) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18)))"
+            " + "
+            "((({}.executeStats0.commitStats0. committedInstType::IntAlu * 0.000000000244859350364) + ({}.commitStats0. committedInstType::IntMult * 0.000000000244859350364) + ({}.commitStats0. committedInstType::IntDiv * 0.000000000244859350364)) * ((system.clk_domain.clock * 1501.5 * (0.8688*0.8688) *1e12)/(simSeconds*1e18))))"
+            .format(cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path, cpu_path)
+        )
+        
+        self.st = (
+            "((-681.604059986) + (((1/(system.clk_domain.clock/1e12))/1e6) * 0.117551170367) + (system.voltage_domain.voltage * 2277.16890778) + (((1/(system.clk_domain.clock/1e12))/1e6)
+            * system.voltage_domain.voltage * (-0.491846201277)) + 
+            ((system.voltage_domain.voltage * system.voltage_domain.voltage) 
+            * (-2528.1574686)) + (((1/(system.clk_domain.clock/1e12))/1e6)* (system.voltage_domain.voltage *system.voltage_domain.voltage) * 0.645456768269) + ((system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * 932.937276293) + (((1/(system.clk_domain.clock/1e12))/1e6) * (system.voltage_domain.voltage * system.voltage_domain.voltage * system.voltage_domain.voltage) * (-0.271180478671))*(-1))"
+        )
+
+class CpuPowerOff(MathExprPowerModel):
+    dyn = "0"
+    st = "0"
+
+class CpuPowerModel(PowerModel):
+    def __init__(self, cpu_path, args, **kwargs):
+        super(CpuPowerModel, self).__init__(**kwargs)
+        self.pm = [
+            CpuPowerOn(cpu_path, args),  # ON
+            CpuPowerOff(),  # CLK-GATED
+            CpuPowerOff(),  # SRAM-RETENTION
+            CpuPowerOff(),  # OFF
+        ]
+
+class L2PowerOn(MathExprPowerModel):
+    def __init__(self, l2_path, **kwargs):
+        super(L2PowerOn, self).__init__(**kwargs)
+        self.dyn = (
+            "((((system.cpu_cluster.l2.overallAccesses *system.clk_domain.clock)/(simSeconds*1e18)) * 1501.5 * (0.8688*0.8688) * 0.00000000572830963981) * 1e12)"
+        )
+        self.st = "((0.8688 * 3)/10)"
+
+class L2PowerOff(MathExprPowerModel):
+    dyn = "0"
+    st = "0"
+    
+class L2PowerModel(PowerModel):
+    def __init__(self, l2_path, **kwargs):
+        super(L2PowerModel, self).__init__(**kwargs)
+        # Choose a power model for every power state
+        self.pm = [
+            L2PowerOn(l2_path),  # ON
+            L2PowerOff(),  # CLK-GATED
+            L2PowerOff(),  # SRAM-RETENTION
+            L2PowerOff(),  # OFF
+        ]
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash,caption={Makefile para automatizar compilaciones aarch64},label=lst:makefileCompilacionCruzada, showstringspaces=false,frame=single]
+TARGET_ISA=arm64
+CC=aarch64-linux-gnu-gcc
+OPTIMIZATION=-O0 -static
+EXTRA_PARAMS=-DREPETITIONS=3
+GEM5_PATH=/home/fluctlights/Escritorio/Repos/tfm/gem5
+CFLAGS=-I$(GEM5_PATH)/include -I$(GEM5_PATH)/util/m5/src
+LDFLAGS=-L$(GEM5_PATH)/util/m5/build/$(TARGET-ISA)/out -L/usr/lib/gcc-cross/aarch64-linux-gnu/11 -lm5 -lm
+
+SRCS=benchmarks_deploy_Gem5.c dhrystone-Gem5.c whetstone-Gem5.c calcular-pi-Gem5.c calcular-primos-Gem5.c
+OBJS_DIR=build
+OBJS=$(SRCS:%.c=$(OBJS_DIR)/%.o)
+TARGET=benchmarks
+
+# Create the directory for object files
+$(OBJS_DIR):
+    mkdir -p $(OBJS_DIR)
+
+# Rule to compile each source file to an object file in the specified directory
+$(OBJS_DIR)/%.o: %.c | $(OBJS_DIR)
+    $(CC) $(OPTIMIZATION) $(EXTRA_PARAMS) $(CFLAGS) -c $< -o $@ $(LDFLAGS)
+
+benchmarks: $(OBJS)
+    $(CC) $(OPTIMIZATION) $(EXTRA_PARAMS) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
+
+clean:
+    rm -f $(OBJS) $(TARGET)
+    rm -rf $(OBJS_DIR)
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash,frame=single,caption={Código fuente para automatizar las ejecuciones en el simulador Gem5},showstringspaces=false,label=lst:deploy-sh-sim]
+#!/bin/bash
+
+items=("D" "W" "p" "P")
+sizes_dhrystone=("60000" "120000" "240000" "480000" "960000")
+sizes_whetstone=("3000" "6000" "12000" "24000" "48000")
+sizes_calcpi=("300000" "600000" "1200000" "2400000" "4800000")
+sizes_calcprime=("3000" "6000" "12000" "24000" "48000")
+
+for item in "${items[@]}"
+do
+    if [[ $item == "D" ]]; then
+        for size_dhrystone in "${sizes_dhrystone[@]}"
+        do
+            ./benchmarks -b $item -s $size_dhrystone
+        done
+    fi
+
+    if [[ $item == "W" ]]; then
+        for size_whetstone in "${sizes_whetstone[@]}"
+        do
+            ./benchmarks -b $item -s $size_whetstone
+        done
+    fi
+
+    if [[ $item == "p" ]]; then
+        for size_calcpi in "${sizes_calcpi[@]}"
+        do
+            ./benchmarks -b $item -s $size_calcpi
+        done
+    fi
+
+    if [[ $item == "P" ]]; then
+        for size_calcprime in "${sizes_calcprime[@]}"
+        do
+            ./benchmarks -b $item -s $size_calcprime
+        done
+    fi
+done
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash,caption={Programa de filtrado de estadísticas de Gem5},label=lst:getStats, showstringspaces=false,frame=single]
+#!/bin/bash
+
+# DECLARACION DE VARIABLES DE ENTORNO
+export M5_PATH=/$(HOME)/Escritorio/Repos/tfm/gem5/Kernels
+export GEM5_HOME=/$(HOME)/Escritorio/Repos/tfm/gem5
+export GEM5_PATH=/$(HOME)/Escritorio/Repos/tfm/gem5
+export CODE_PATH=/$(HOME)/Escritorio/Repos/tfm/Codigo/Codigo-GEM5
+
+# DECLARACION DE VARIABLES
+simulation_lines=0 # lineas que ocupa una simulacion
+stats_file="$GEM5_PATH/pruebas/stats.txt"
+output_file=""
+python_script=""
+total_executions=0
+declare -a line_counts # lineas entre begin y end
+
+if [ -z "$1" ]; then
+    echo "ERROR! USAGE: ./get_stats.sh <base, benchmarks>"
+    exit 1
+fi
+
+BENCH_TYPE="$1"
+
+if [[ "$BENCH_TYPE" == "benchmarks" ]]; then
+    output_file="$CODE_PATH/Benchmarks/Information/Stats/bench.txt"
+    python_script="$CODE_PATH/Scripts/save_to_excel.py benchmarks"
+    total_executions=60
+    
+elif [[ "$BENCH_TYPE" == "base" ]]; then
+    output_file="$CODE_PATH/Base/base.txt"
+    python_script="$CODE_PATH/Scripts/save_to_excel.py base"
+    total_executions=27
+fi
+
+num_executions=0 # numero de ejecuciones realizadas
+
+declare -a general_attrs=(
+    "simFreq" 
+    "simTicks" 
+    "finalTick" 
+    "simInsts" 
+    "simOps" 
+    "simSeconds"
+    "hostSeconds"
+    "system.clk_domain.clock"
+)
+
+declare -a patterns=(
+    "system.cpu_cluster.cpus[0-3].power_model.dynamicPower"
+    "system.cpu_cluster.cpus[0-3].power_model.staticPower"
+    "system.cpu_cluster.cpus[0-3].numCycles"
+    "system.cpu_cluster.cpus[0-3].cpi"
+    "system.cpu_cluster.cpus[0-3].ipc"
+    "system.cpu_cluster.cpus[0-3].commit.committedInstType_0\:*"
+    "system.cpu_cluster.cpus[0-3].commitStats0.numOps"
+    "system.cpu_cluster.cpus[0-3].commitStats0.numInsts"
+    "system.cpu_cluster.cpus[0-3].executeStats0\.*"
+    "system.cpu_cluster.cpus[0-3].fetch\.*"
+    "system.cpu_cluster.cpus[0-3].decode\.*"
+    "system.cpu_cluster.cpus[0-3].statIssuedInstType_0\:*"
+    "system.cpu_cluster.cpus[0-3].dcache\.*"
+    "system.cpu_cluster.cpus[0-3].Icache\.*"
+    "system.cpu_cluster.l2\.*" # level 2 data cache info
+)
+
+declare -a patterns_description=(
+    "---- DYNAMIC POWER ----"
+    "---- STATIC POWER ----"
+    "---- NUMBER OF CYCLES ----"
+    "---- CYCLES PER INSTRUCTION ----"
+    "---- INSTRUCTIONS PER CYCLE ----"
+    "---- TYPES OF INSTRUCTIONS COMMITTED ----"
+    "---- OPERATIONS DONE BY EACH CPU THREAD ----"
+    "---- INSTRUCTIONS DONE BY EACH CPU THREAD ----"
+    "---- OPERATIONS EXECUTED BY EACH CPU THREAD ----" 
+    "---- OPERATIONS FETCHED BY EACH CPU THREAD ----"
+    "---- OPERATIONS DECODED BY EACH CPU THREAD ----"
+    "---- INSTRUCTIONS ISSUED BY EACH CPU THREAD ----"
+    "---- LEVEL 1 DATA CACHE INFORMATION BY EACH CPU THREAD ----"
+    "---- LEVEL 1 INST CACHE INFORMATION BY EACH CPU THREAD ----"
+    "---- LEVEL 2 DATA CACHE ACCESSES ----"
+)
+
+# DECLARACION DE FUNCIONES
+print_base_first_lines()
+{
+    echo "" >> $output_file
+    echo "####################################" >> $output_file
+    echo "" >> $output_file
+    
+    # Marcar nueva ejecucion de benchmark
+    if (( num_executions >= 0 && num_executions <= 2 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - SOLOMAIN BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 3 && num_executions <= 5 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - ALU-SUMS BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 6 && num_executions <= 8 )); then
+        echo "-----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - FPU-SUMS BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 9 && num_executions <= 11 )); then
+        echo "-----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - ALU-MULT BENCHMARK" >> $output_file
+        echo "-----------------------------------------------" >> $output_file
+    elif (( num_executions >= 12 && num_executions <= 14 )); then
+        echo "-----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - FPU-MULT BENCHMARK" >> $output_file
+        echo "-----------------------------------------------" >> $output_file
+    elif (( num_executions >= 15 && num_executions <= 17 )); then
+        echo "----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - ALU-DIV BENCHMARK" >> $output_file
+        echo "----------------------------------------------" >> $output_file
+    elif (( num_executions >= 18 && num_executions <= 20 )); then
+        echo "----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - FPU-DIV BENCHMARK" >> $output_file
+        echo "----------------------------------------------" >> $output_file
+    elif (( num_executions >= 21 && num_executions <= 23 )); then
+        echo "-------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - MEM-ACCESS BENCHMARK" >> $output_file
+        echo "-------------------------------------------------" >> $output_file
+    elif (( num_executions >= 24 && num_executions <= 26 )); then
+        echo "-----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - MEM-COPY BENCHMARK" >> $output_file
+        echo "-----------------------------------------------" >> $output_file
+    fi
+
+    # Imprimiendo los atributos iniciales, no pertenecientes a CPU concretas
+    echo "" >> $output_file
+    echo "---------- GLOBAL ATTRIBUTES ----------" >> $output_file
+    echo "" >> $output_file
+}
+
+print_benchmark_first_lines()
+{
+    echo "" >> $output_file
+    echo "####################################" >> $output_file
+    echo "" >> $output_file
+    
+    # Marcar nueva ejecucion de benchmark
+    if (( num_executions >= 0 && num_executions <= 14 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - DHRYSTONE BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 15 && num_executions <= 29 )); then
+        echo "------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - WHETSTONE BENCHMARK" >> $output_file
+        echo "------------------------------------------------" >> $output_file
+    elif (( num_executions >= 30 && num_executions <= 44 )); then
+        echo "----------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - CALC-PI BENCHMARK" >> $output_file
+        echo "----------------------------------------------" >> $output_file
+    elif (( num_executions >= 45 && num_executions <= 59 )); then
+        echo "--------------------------------------------------" >> $output_file
+        echo "EXECUTION $num_executions - CALC-PRIMES BENCHMARK" >> $output_file
+        echo "--------------------------------------------------" >> $output_file
+    fi
+
+    # Imprimiendo los atributos iniciales, no pertenecientes a CPU concretas
+    echo "" >> $output_file
+    echo "---------- GLOBAL ATTRIBUTES ----------" >> $output_file
+    echo "" >> $output_file
+}
+
+read_simulation_lines()
+{
+    # Obtiene el tamaño actual del archivo usando `stat`
+    current_size=$(stat --format="%s" "$stats_file")
+
+    # Comprobar que el fichero tiene simulaciones realizadas previamente
+    if [ "$current_size" -eq 0 ]; then
+        echo "File is empty! Try some simulation first!"
+        exit 1
+    fi
+    
+    # Flag para saber si estamos dentro de un bloque de simulacion
+    in=0
+
+    input_file="$stats_file"
+
+    # Leer fichero linea a linea desde Begin hasta encontrar End
+    # Asi sacamos el numero de lineas de cada bloque de simulacion
+    while IFS= read -r line; do
+
+        # Check for the start
+        if [[ "$line" == "---------- Begin Simulation Statistics ----------" ]]; then
+            in=1
+            sim_lines=$((sim_lines + 1))
+
+        # Check for the end
+        elif [[ "$line" == "---------- End Simulation Statistics   ----------" ]]; then
+            in=2
+            sim_lines=$((sim_lines + 1))
+        fi
+
+        if (( in == 2 )); then # end found
+            sim_lines=$((sim_lines - 1))
+            line_counts+=("$sim_lines")
+            sim_lines=0
+            in=0
+        else
+            sim_lines=$((sim_lines + 1)) # continue counting lines
+        fi
+    done < "$input_file"
+}
+
+main()
+{
+    # Leer fichero linea a linea desde Begin hasta encontrar End
+    # Asi sacamos el numero de lineas de cada bloque de simulacion
+    start_line=1
+    input_file="$stats_file"
+    index=0
+
+    while true; do
+
+        stats_desc_pointer=0
+
+        # Todas las ejecuciones realizadas
+        if (( num_executions == total_executions )); then
+            echo "Estadisticas guardadas!"
+            exit 0
+        fi
+        
+        simulation_lines=${line_counts[index]}
+        endline=$((start_line + simulation_lines - 1))
+        new_lines=$(sed -n "${start_line},${endline}p" "$input_file")
+
+        if [[ "$BENCH_TYPE" == "benchmarks" ]]; then
+            print_benchmark_first_lines
+        elif [[ "$BENCH_TYPE" == "base" ]]; then
+            print_base_first_lines     
+        fi
+
+        # Recorre la matriz de atributos generales
+        for pattern in "${general_attrs[@]}"; do
+            # Buscar cada patrón en las nuevas líneas
+            matches=$(echo "$new_lines" | grep -E "$pattern")
+            echo "$matches" >> $output_file
+        done
+
+        # Recorre la matriz de patrones de busqueda
+        for pattern in "${patterns[@]}"; do
+            
+            # Buscar cada patrón en las nuevas líneas
+            matches=$(echo "$new_lines" | grep -E "$pattern")
+
+            # Imprimir descritor
+            echo "" >> $output_file
+            echo "${patterns_description[stats_desc_pointer]}" >> $output_file
+            echo "" >> $output_file
+
+            # Muestreo por CPU de cada patrón
+            for cpu_num in {0..3}; do
+                
+                filtered_matches=$(echo "$matches" | grep "cpus$cpu_num")
+            
+                if [[ -n "$filtered_matches" ]]; then 
+                    echo "$filtered_matches" >> $output_file
+                    echo "" >> $output_file # Línea vacía
+                fi
+            done
+            
+            echo "" >> $output_file # Línea vacía para separar
+            stats_desc_pointer=$((stats_desc_pointer + 1))
+        done
+
+        num_executions=$((num_executions + 1)) # Nuevo descriptor
+        index=$((index + 1)) # Nuevo descriptor
+        start_line=$((start_line + simulation_lines))
+        new_lines=
+        python3 $python_script # Guardamos un excel
+
+    done
+}
+
+read_simulation_lines
+main
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python,showstringspaces=false,caption={Generación de Excel a partir de las estadísticas recogidas},label=lst:saveexcel, showstringspaces=false,frame=single]
+import warnings
+import pandas as pd
+import sys
+import os
+from collections import defaultdict
+warnings.filterwarnings("ignore")
+
+data = defaultdict(list)
+benchmark_type = sys.argv[1]
+benchmark_file = ''
+benchmark_spreadsheet = ''
+
+# Obtener la variable de entorno USER
+user = os.getenv('USER')
+
+if benchmark_type == 'base':
+    benchmark_file = f"/home/{user}/Escritorio/Repos/tfm/Codigo/        Codigo-Gem5/Base/base_stats.txt"
+    
+    benchmark_spreadsheet = f"/home/{user}/Escritorio/Repos/tfm/Codigo/    Codigo-Gem5/Base/resultados_base.xlsx"
+    
+else:
+    benchmark_file = f"/home/{user}/Escritorio/Repos/tfm/Codigo/    Codigo-Gem5/Benchmarks/benchmark_stats.txt"
+    
+    benchmark_spreadsheet = f"/home/{user}/Escritorio/Repos/tfm/Codigo/    Codigo-Gem5/Benchmarks/resultados_benchmark.xlsx"
+
+try:
+    with open(benchmark_file, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            if len(parts) != 2:
+                if len(parts) > 1:              
+                    if isinstance(parts[1], str):
+                        try:
+                            dato = int(parts[1])
+                            data[parts[0]].append(dato)
+                        except ValueError:
+                            pass
+            else:
+                name, value = parts
+                data[name].append(value)
+
+except Exception as e:
+    print(e)
+
+df = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in data.items()]))
+df.loc[-1] = [None] * len(df.columns)
+df.index = df.index + 1
+df = df.sort_index()
+df.to_excel(benchmark_spreadsheet, index=False)
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash,frame=single,caption={Código fuente para el lanzamiento automático de pruebas},showstringspaces=false,label=lst:deploy-sh-papi]
+#!/bin/bash
+
+items=("D" "W" "p" "P")
+sizes_dhrystone=("60000" "120000" "240000" "480000" "960000")
+sizes_whetstone=("3000" "6000" "12000" "24000" "48000")
+sizes_calcpi=("300000" "600000" "1200000" "2400000" "4800000")
+sizes_calcprime=("3000" "6000" "12000" "24000" "48000")
+n_repetitions=$2
+    
+gcc -O0 -static -DREPETITIONS=$n_repetitions benchmarks_deploy.c -o benchmarks_deploy -lm > /dev/null 2>&1
+
+for item in "${items[@]}"
+do
+    if [[ $item == "D" ]]; then
+        for size in "${sizes_dhrystone[@]}" 
+        do
+            echo "Ejecutando benchmark Dhrystone"
+            for i in {1..5}; do
+                ./benchmarks_deploy -b $item -s $size
+            done
+            sleep 1
+        done
+    fi
+
+    if [[ $item == "W" ]]; then
+        for size in "${sizes_whetstone[@]}" 
+        do
+            echo "Ejecutando benchmark Whetstone"
+            for i in {1..5}; do
+                ./benchmarks_deploy -b $item -s $size
+            done
+            sleep 1
+        done
+    fi
+
+    if [[ $item == "p" ]]; then
+        for size in "${sizes_calcpi[@]}" 
+        do
+            echo "Ejecutando benchmark Calculo de Pi"
+            for i in {1..5}; do
+                ./benchmarks_deploy -b $item -s $size
+            done
+            sleep 1
+        done
+    fi
+
+    if [[ $item == "P" ]]; then
+        for size in "${sizes_calcprime[@]}"
+        do
+            echo "Ejecutando benchmark Calculo de primos"
+            for i in {1..5}; do
+                ./benchmarks_deploy -b $item -s $size
+            done
+            sleep 1
+        done
+    fi
+done
+\end{lstlisting}
+
+\begin{lstlisting}[language=C,caption={Fragmento de código optimizado Dhrystone},label=dhrystoneOpti,showstringspaces=false,frame=single]
+do_dhrystone_benchmark()
+{
+
+    [...]
+
+    for (long l = 0; l < LOOPS; ++l)
+    {
+        Proc5();
+        Proc4();
+        IntLoc1 = 2;
+        IntLoc2 = 3;
+            /* SE COMENTA ESTA LINEA POR SER IRRELEVANTE */
+        /* strcpy(String2Loc, "DHRYSTONE PROGRAM, 2'ND STRING"); */
+        EnumLoc = Ident2;
+        BoolGlob = ! Func2(String1Loc, String2Loc);
+        while (IntLoc1 < IntLoc2)
+        {
+            IntLoc3 = 5 * IntLoc1 - IntLoc2;
+            Proc7(IntLoc1, IntLoc2, &IntLoc3);
+            ++IntLoc1;
+        }
+    
+            [...]
+    
+    }
+
+    [...]
+}
+\end{lstlisting}

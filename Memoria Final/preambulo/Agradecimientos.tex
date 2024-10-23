@@ -1,0 +1,30 @@
+% Selección del idioma principal del texto
+\ifspanish
+	\selectlanguage{spanish}
+\else
+	\selectlanguage{english}
+\fi
+
+% EDITAR: Según el gusto del usuario
+
+% -------------------------
+%
+% AGRADECIMIENTOS (recomendable máx. 1 pág.)
+%
+% -------------------------
+\phantomsection % Necesario con hyperref
+\chapter*{Agradecimientos} % Opción con * para que no aparezca en TOC ni numerada
+\addcontentsline{toc}{chapter}{Agradecimientos} % Añade al TOC.
+
+Antes que nada, quiero dar gracias a mi familia, que me ha hecho ser quien soy a día de hoy; a mis amigos, que han movido cielo y tierra para hacerme salir de fiesta con ellos cuando estaba agobiado; a mis tutores, por haberme guiado en todo momento, y a todos los compañeros del grupo \ac{ArCo}, por su inmensa paciencia cada vez que les he pedido algo.
+
+¡Muchas gracias a todos!
+
+
+\makeatletter		
+\begin{flushright}
+	\vspace{1,5cm}
+	\textit{\@autor}\\
+	\@cityTF, \@yearTF
+\end{flushright}
+\makeatother

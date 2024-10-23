@@ -1,0 +1,51 @@
+%--- Ajustes del documento.
+\pagestyle{plain}	% Páginas sólo con numeración inferior al pie
+
+% -------------------------
+%
+% RESUMEN:
+% 
+%
+
+% EDITAR: Resumen (máx. 1 pág.)
+%\cleardoublepage % Se incluye para modificar el contador de página antes de añadir bookmark
+\phantomsection  % Necesario con hyperref
+\addcontentsline{toc}{chapter}{Resumen} % Añade al TOC.
+\selectlanguage{spanish} % Selección de idioma del resumen.
+\makeatletter
+\begin{center} %
+   {\textsc{TRABAJO FIN DE MÁSTER - ESCUELA SUP. DE INFORMÁTICA (UCLM)}\par} % Tipo de trabajo
+   \vspace{1cm} %  
+   {\textbf{\Large Desarrollo y Evaluación de un Modelo de Consumo Energético\\para Procesadores ARM}\par}  % Título del trabajo
+   \vspace{0.4cm} %
+   {\@autor \\ \@cityTF,{} \@mesTF{} \@yearTF\par} 
+   \vspace{0.9cm} %
+   {\textbf{\large\textsf{Resumen}}\par} % Título de resumen
+\end{center}   
+\makeatother %
+
+En la actualidad, uno de los temas más importantes en el campo de la informática es el consumo de energía. En los últimos años, la totalidad de los fabricantes de semiconductores más importantes se han volcado en la afanosa tarea de reducir el consumo energético, manteniendo a la vez las prestaciones de los sistemas desarrollados, aspecto especialmente importante en dispositivos alimentados por baterías y de prestaciones contenidas. Esto ha dado lugar a numerosas investigaciones en este área, buscándose formas para poder hacer realidad el desarrollo de sistemas informáticos lo más eficientes posibles siendo una de las vías más relevantes la simulación de arquitecturas \textit{hardware}, con el objetivo de poder validar el consumo de energía bajo aplicaciones concretas, sin tener que realizar la compra de la plataforma real. En este TFM se estudia la caracterización del consumo de energía de una simulación de una plataforma concreta, basada en la Raspberry Pi 4, utilizando para ello un conjunto de programas \textit{benchmark}. Las métricas serán posteriormente comparadas con mediciones reales de consumo de la plataforma \textit{hardware}, con el objetivo de refinar las predicciones de consumo y así mejorar el tiempo de vida de los dispositivos. Este proceso de caracterización es fundamental para elaborar y desarrollar un planificador orientado a la gestión energética.
+
+%---
+\cleardoublepage % Se incluye para modificar el contador de página antes de añadir 
+
+% EDITAR: Abstract (máx. 1 pág.)
+%---
+\phantomsection  % Necesario con hyperref
+\addcontentsline{toc}{chapter}{Abstract} % Añade al TOC.
+\selectlanguage{english} % Selección de idioma del resumen.
+\makeatletter
+\begin{center} %
+   {\textsc{BACHELOR DISSERTATION - ESCUELA SUP. DE INFORMÁTICA (UCLM)}\par}
+   \vspace{1cm} %  
+   {\textbf{\Large Development and Evaluation of a Power Consumption Model\\for ARM Processors}\par}
+   \vspace{0.4cm} %
+   {\@autor \\ \@cityTF,{} \@monthTF{} \@yearTF\par} 
+   \vspace{0.9cm} %
+   {\textbf{\large\textsf{Abstract}}\par} 
+\end{center}   
+\makeatother %
+
+Currently, one of the most important issues in the field of computing is power consumption. In recent years, all major semiconductor manufacturers have been working hard to reduce energy consumption while maintaining the performance of the systems developed, which is especially important in battery-powered devices with low power consumption. This has given rise to numerous investigations in this area, seeking ways to make the development of computer systems as efficient as possible a reality, one of the most relevant ways being the simulation of hardware architectures, with the aim of being able to validate the energy consumption under specific applications, without having to purchase the real platform. In this TFM we study the characterization of the power consumption of a simulation of a concrete platform, based on the Raspberry Pi 4, using a set of benchmark programs. The metrics will be subsequently compared with real consumption measurements of the hardware platform, with the objective of refining the consumption predictions and thus improving the lifetime of the devices. This characterization process is fundamental to elaborate and develop a planner oriented to energy management.
+
+\cleardoublepage % Se incluye para modificar el contador de página antes de añadir 

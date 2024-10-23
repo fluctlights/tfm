@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: uclmTFGesi.aux
+A level-1 auxiliary file: ./caps/Introduccion.aux
+A level-1 auxiliary file: ./caps/Objetivo.aux
+A level-1 auxiliary file: ./caps/Estado-del-Arte.aux
+A level-1 auxiliary file: ./caps/Metodologia.aux
+A level-1 auxiliary file: ./caps/Resultados.aux
+A level-1 auxiliary file: ./caps/Conclusiones.aux
+The style file: plain.bst
+A level-1 auxiliary file: ./anexos/AnexoCodigo.aux
+A level-1 auxiliary file: ./anexos/AnexoMiscelaneos.aux
+Database file #1: biblioTFG.bib
+You've used 78 entries,
+            2118 wiz_defined-function locations,
+            916 strings with 21773 characters,
+and the built_in function-call counts, 17518 in all, are:
+= -- 1710
+> -- 635
+< -- 0
++ -- 273
+- -- 190
+* -- 556
+:= -- 2981
+add.period$ -- 305
+call.type$ -- 78
+change.case$ -- 328
+chr.to.int$ -- 0
+cite$ -- 78
+duplicate$ -- 576
+empty$ -- 1732
+format.name$ -- 190
+if$ -- 3809
+int.to.chr$ -- 0
+int.to.str$ -- 78
+missing$ -- 7
+newline$ -- 464
+num.names$ -- 156
+pop$ -- 746
+preamble$ -- 1
+purify$ -- 251
+quote$ -- 0
+skip$ -- 405
+stack$ -- 0
+substring$ -- 477
+swap$ -- 79
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 310
+warning$ -- 0
+while$ -- 161
+width$ -- 80
+write$ -- 862
